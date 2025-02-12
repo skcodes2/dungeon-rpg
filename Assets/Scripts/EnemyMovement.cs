@@ -52,8 +52,17 @@ public class EnemyMovement : MonoBehaviour
     private void UpdateTargetDirection()
     {
         // Determine the target direction based on different factors
-        HandleRandomDirectionChange();  // Change direction randomly after a cooldown
-        HandlePlayerTargeting();  // Track and move towards the player if detected
+        if (_playerAwarenessController.AwareOfPlayer)
+        {
+            // Track and move towards the player if detected
+            _targetDirection = _playerAwarenessController.DirectionToPlayer;
+        }
+        else
+        {
+            // Only change direction randomly if not aware of the player
+            HandleRandomDirectionChange();
+        }
+
         HandleObstacles();  // Handle obstacles by changing direction
         HandleEnemyOffScreen();  // Ensure enemy stays within screen bounds
     }
@@ -72,34 +81,6 @@ public class EnemyMovement : MonoBehaviour
 
             // Reset the cooldown timer for next random change
             _changeDirectionCooldown = Random.Range(1f, 5f);
-        }
-    }
-
-    private void HandlePlayerTargeting()
-    {
-        // If the enemy is aware of the player, track and move towards them
-        if (_playerAwarenessController.AwareOfPlayer)
-        {
-            _targetDirection = _playerAwarenessController.DirectionToPlayer;
-        }
-    }
-
-    private void HandleEnemyOffScreen()
-    {
-        // Get the screen position of the enemy
-        Vector2 screenPosition = _camera.WorldToScreenPoint(transform.position);
-
-        // Change direction if the enemy is near screen borders
-        if ((screenPosition.x < _screenBorder && _targetDirection.x < 0) ||
-            (screenPosition.x > _camera.pixelWidth - _screenBorder && _targetDirection.x > 0))
-        {
-            _targetDirection = new Vector2(-_targetDirection.x, _targetDirection.y);  // Reverse X direction
-        }
-
-        if ((screenPosition.y < _screenBorder && _targetDirection.y < 0) ||
-            (screenPosition.y > _camera.pixelHeight - _screenBorder && _targetDirection.y > 0))
-        {
-            _targetDirection = new Vector2(_targetDirection.x, -_targetDirection.y);  // Reverse Y direction
         }
     }
 
@@ -148,6 +129,25 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    private void HandleEnemyOffScreen()
+    {
+        // Get the screen position of the enemy
+        Vector2 screenPosition = _camera.WorldToScreenPoint(transform.position);
+
+        // Change direction if the enemy is near screen borders
+        if ((screenPosition.x < _screenBorder && _targetDirection.x < 0) ||
+            (screenPosition.x > _camera.pixelWidth - _screenBorder && _targetDirection.x > 0))
+        {
+            _targetDirection = new Vector2(-_targetDirection.x, _targetDirection.y);  // Reverse X direction
+        }
+
+        if ((screenPosition.y < _screenBorder && _targetDirection.y < 0) ||
+            (screenPosition.y > _camera.pixelHeight - _screenBorder && _targetDirection.y > 0))
+        {
+            _targetDirection = new Vector2(_targetDirection.x, -_targetDirection.y);  // Reverse Y direction
+        }
+    }
+
     private void RotateTowardsTarget()
     {
         // Smoothly rotate the enemy towards the target direction
@@ -161,5 +161,8 @@ public class EnemyMovement : MonoBehaviour
     {
         // Move the enemy forward based on its current direction
         _rigidbody.linearVelocity = transform.up * _speed;
+
+        // Debug log to check velocity
+        // Debug.Log("Velocity: " + _rigidbody.linearVelocity);
     }
 }
