@@ -18,10 +18,10 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         ProcessInputs();
-        AnimateMovement();
-        if(input.x < 0 && !facingLeft || input.x > 0 && facingLeft){
-            Flip();
-        }
+        WalkAnimation();
+        AttackAnimation();
+
+
         
     }
 
@@ -46,19 +46,28 @@ public class PlayerControl : MonoBehaviour
 
     }
 
-    void AnimateMovement(){
+    void WalkAnimation(){
         anim.SetFloat("MoveX", input.x);
         anim.SetFloat("MoveY", input.y);
         anim.SetFloat("LastMoveX", lastMoveDirection.x);
         anim.SetFloat("LastMoveY", lastMoveDirection.y);
         anim.SetFloat("MoveMagnitude", input.magnitude);
+        if(input.x < 0 && !facingLeft || input.x > 0 && facingLeft){
+            Flip();
+        }
+    }
+
+    void AttackAnimation(){
+        if(Input.GetKeyDown(KeyCode.Space)){
+            anim.SetTrigger("Kick");
+        }
     }
 
     void Flip(){
-       facingLeft = !facingLeft;
-    Vector3 characterScale = transform.localScale;
-    characterScale.x *= -1;
-    transform.localScale = characterScale;
+        facingLeft = !facingLeft;
+        Vector3 characterScale = transform.localScale;
+        characterScale.x *= -1;
+        transform.localScale = characterScale;
     }
 
 }
