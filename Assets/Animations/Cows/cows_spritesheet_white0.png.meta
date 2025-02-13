@@ -622,7 +622,27 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cows_spritesheet_white0_0: 8765284819286776548
+      cows_spritesheet_white0_1: 404065927181361506
+      cows_spritesheet_white0_10: -3334283737642839043
+      cows_spritesheet_white0_11: 1625555571371312570
+      cows_spritesheet_white0_12: -3463226247093265241
+      cows_spritesheet_white0_13: -5546121387348886297
+      cows_spritesheet_white0_14: 8496887416298775568
+      cows_spritesheet_white0_15: -900637555151449874
+      cows_spritesheet_white0_16: 6364346461555684922
+      cows_spritesheet_white0_17: -7972698502963280486
+      cows_spritesheet_white0_18: -2975575429847677692
+      cows_spritesheet_white0_19: 8287320812694912540
+      cows_spritesheet_white0_2: -4216462427149766247
+      cows_spritesheet_white0_3: 262852631152854859
+      cows_spritesheet_white0_4: 3168699101950326227
+      cows_spritesheet_white0_5: -6670099170401457224
+      cows_spritesheet_white0_6: -7084982850133550729
+      cows_spritesheet_white0_7: 7476821322211372879
+      cows_spritesheet_white0_8: 7954384523833454812
+      cows_spritesheet_white0_9: -3871086995369815180
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

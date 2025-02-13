@@ -622,7 +622,27 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cows_spritesheet_white_darkspots_0: -4412161323009488022
+      cows_spritesheet_white_darkspots_1: -7269957933477677785
+      cows_spritesheet_white_darkspots_10: -6128115938832897235
+      cows_spritesheet_white_darkspots_11: -773487787667314045
+      cows_spritesheet_white_darkspots_12: 2370382259760179274
+      cows_spritesheet_white_darkspots_13: 8071345306153881216
+      cows_spritesheet_white_darkspots_14: 840029466477072069
+      cows_spritesheet_white_darkspots_15: -6854062593217310567
+      cows_spritesheet_white_darkspots_16: -8359849236643552724
+      cows_spritesheet_white_darkspots_17: 4938273349051288759
+      cows_spritesheet_white_darkspots_18: -1428663054120770257
+      cows_spritesheet_white_darkspots_19: -277171700156967871
+      cows_spritesheet_white_darkspots_2: -1787453602797179831
+      cows_spritesheet_white_darkspots_3: -5968591579794495120
+      cows_spritesheet_white_darkspots_4: 1966828264095157215
+      cows_spritesheet_white_darkspots_5: 5995045234860754333
+      cows_spritesheet_white_darkspots_6: -3896150470103302445
+      cows_spritesheet_white_darkspots_7: -955783226588639080
+      cows_spritesheet_white_darkspots_8: 1226296298673593144
+      cows_spritesheet_white_darkspots_9: -2920674037210332743
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

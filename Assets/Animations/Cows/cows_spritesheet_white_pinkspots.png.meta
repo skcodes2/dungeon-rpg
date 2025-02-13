@@ -622,7 +622,27 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cows_spritesheet_white_pinkspots_0: -5301016851126069981
+      cows_spritesheet_white_pinkspots_1: -4201439965826208474
+      cows_spritesheet_white_pinkspots_10: 5492760722816444285
+      cows_spritesheet_white_pinkspots_11: 6393394167129379074
+      cows_spritesheet_white_pinkspots_12: 4903270120189322067
+      cows_spritesheet_white_pinkspots_13: 3502143065142617392
+      cows_spritesheet_white_pinkspots_14: -213760052379087929
+      cows_spritesheet_white_pinkspots_15: -2111095931482160502
+      cows_spritesheet_white_pinkspots_16: 476651096683600961
+      cows_spritesheet_white_pinkspots_17: 2396820521306032720
+      cows_spritesheet_white_pinkspots_18: -4532565292667303022
+      cows_spritesheet_white_pinkspots_19: -4680831763626060486
+      cows_spritesheet_white_pinkspots_2: 8665622702538745377
+      cows_spritesheet_white_pinkspots_3: -1380316132543306321
+      cows_spritesheet_white_pinkspots_4: 6042815126727598140
+      cows_spritesheet_white_pinkspots_5: 714735167995956141
+      cows_spritesheet_white_pinkspots_6: -6409250359871569275
+      cows_spritesheet_white_pinkspots_7: 6501334973775390027
+      cows_spritesheet_white_pinkspots_8: -2851934093024852206
+      cows_spritesheet_white_pinkspots_9: -4084008614304857789
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
