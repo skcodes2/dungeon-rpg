@@ -94,7 +94,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -108,7 +108,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -132,7 +132,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -174,19 +174,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 223
-        width: 33
-        height: 26
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4ea56b84a1c84a970800000000000000
-      internalID: 8765284819286776548
+      spriteID: a71d49ccf2fed924eb02e71ef95598cf
+      internalID: -848162172
       vertices: []
       indices: 
       edges: []
@@ -195,20 +195,20 @@ TextureImporter:
       name: cows_spritesheet_white0_1
       rect:
         serializedVersion: 2
-        x: 31
-        y: 223
-        width: 33
-        height: 26
+        x: 32
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 261eb77e1d78b9500800000000000000
-      internalID: 404065927181361506
+      spriteID: 4eb41328bc391fe42b455df81b554ff7
+      internalID: -2144221348
       vertices: []
       indices: 
       edges: []
@@ -217,20 +217,20 @@ TextureImporter:
       name: cows_spritesheet_white0_2
       rect:
         serializedVersion: 2
-        x: 63
-        y: 223
-        width: 33
-        height: 26
+        x: 64
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 991f4f423cd1c75c0800000000000000
-      internalID: -4216462427149766247
+      spriteID: b5d80762f086a4b4cb3b5b799f335d2b
+      internalID: -2125626491
       vertices: []
       indices: 
       edges: []
@@ -240,19 +240,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 191
+        y: 192
         width: 32
-        height: 26
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b47842c4317d5a300800000000000000
-      internalID: 262852631152854859
+      spriteID: 7b34cd7d0d8dca149915d9175e88200d
+      internalID: 1019496043
       vertices: []
       indices: 
       edges: []
@@ -261,20 +261,20 @@ TextureImporter:
       name: cows_spritesheet_white0_4
       rect:
         serializedVersion: 2
-        x: 31
-        y: 191
-        width: 34
-        height: 26
+        x: 32
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3d539d37b0b79fb20800000000000000
-      internalID: 3168699101950326227
+      spriteID: b5488c8caa6f6474f9d3e95f408fbb59
+      internalID: 144340306
       vertices: []
       indices: 
       edges: []
@@ -284,19 +284,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 159
-        width: 33
-        height: 26
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8bbe79be42c0f63a0800000000000000
-      internalID: -6670099170401457224
+      spriteID: 48bdbfd76e4cfa34183e6be980cbcb0c
+      internalID: -1862850009
       vertices: []
       indices: 
       edges: []
@@ -305,20 +305,20 @@ TextureImporter:
       name: cows_spritesheet_white0_6
       rect:
         serializedVersion: 2
-        x: 31
-        y: 159
-        width: 34
-        height: 23
+        x: 32
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7791e0ab2a51dad90800000000000000
-      internalID: -7084982850133550729
+      spriteID: 7c75f00e12ba85e468a92caefc6067ad
+      internalID: -2060138837
       vertices: []
       indices: 
       edges: []
@@ -327,20 +327,20 @@ TextureImporter:
       name: cows_spritesheet_white0_7
       rect:
         serializedVersion: 2
-        x: 63
-        y: 159
-        width: 65
-        height: 20
+        x: 64
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f4fa97fe06103c760800000000000000
-      internalID: 7476821322211372879
+      spriteID: 2c5b0eaefa8d14449bd419dcb19c4770
+      internalID: -1209172941
       vertices: []
       indices: 
       edges: []
@@ -349,20 +349,20 @@ TextureImporter:
       name: cows_spritesheet_white0_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 127
-        width: 33
-        height: 26
+        x: 96
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cd035fd8496a36e60800000000000000
-      internalID: 7954384523833454812
+      spriteID: 890e35e3dbcba894291ace24a0ffefe7
+      internalID: -85923651
       vertices: []
       indices: 
       edges: []
@@ -371,20 +371,20 @@ TextureImporter:
       name: cows_spritesheet_white0_9
       rect:
         serializedVersion: 2
-        x: 31
-        y: 127
-        width: 34
-        height: 27
+        x: 0
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 473195a33e2274ac0800000000000000
-      internalID: -3871086995369815180
+      spriteID: 696ffcf5cef8a744a9e740ba24721db1
+      internalID: 1859722322
       vertices: []
       indices: 
       edges: []
@@ -393,20 +393,20 @@ TextureImporter:
       name: cows_spritesheet_white0_10
       rect:
         serializedVersion: 2
-        x: 63
-        y: 127
-        width: 34
-        height: 28
+        x: 32
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: df3df6d3b9e3ab1d0800000000000000
-      internalID: -3334283737642839043
+      spriteID: c5f43615b0a64c540b0dfea1892bc981
+      internalID: 2001232855
       vertices: []
       indices: 
       edges: []
@@ -415,20 +415,20 @@ TextureImporter:
       name: cows_spritesheet_white0_11
       rect:
         serializedVersion: 2
-        x: 95
-        y: 127
-        width: 33
-        height: 28
+        x: 64
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ab58e3afd222f8610800000000000000
-      internalID: 1625555571371312570
+      spriteID: 0134cdbe9a5fa7840a8b54379af0bede
+      internalID: 1569015656
       vertices: []
       indices: 
       edges: []
@@ -437,20 +437,20 @@ TextureImporter:
       name: cows_spritesheet_white0_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 65
+        x: 96
+        y: 128
         width: 32
-        height: 56
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7ac5235c31620ffc0800000000000000
-      internalID: -3463226247093265241
+      spriteID: 33a0967ff884623468f2d1b16c691351
+      internalID: -676272672
       vertices: []
       indices: 
       edges: []
@@ -459,20 +459,20 @@ TextureImporter:
       name: cows_spritesheet_white0_13
       rect:
         serializedVersion: 2
-        x: 31
-        y: 95
-        width: 33
-        height: 26
+        x: 0
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7ec7fd99bf73803b0800000000000000
-      internalID: -5546121387348886297
+      spriteID: 188f2f8df12f45641965fe0281929bf4
+      internalID: 1319165095
       vertices: []
       indices: 
       edges: []
@@ -481,20 +481,20 @@ TextureImporter:
       name: cows_spritesheet_white0_14
       rect:
         serializedVersion: 2
-        x: 34
-        y: 31
-        width: 28
-        height: 65
+        x: 32
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 014a9f036120be570800000000000000
-      internalID: 8496887416298775568
+      spriteID: 8213aeb96aa29cd489d4e525551419f6
+      internalID: 1815458467
       vertices: []
       indices: 
       edges: []
@@ -503,20 +503,20 @@ TextureImporter:
       name: cows_spritesheet_white0_15
       rect:
         serializedVersion: 2
-        x: 63
-        y: 65
-        width: 33
-        height: 57
+        x: 64
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ee052d55aea4083f0800000000000000
-      internalID: -900637555151449874
+      spriteID: 8bf9384c9f1593d43996ef4b1009f22a
+      internalID: -941378777
       vertices: []
       indices: 
       edges: []
@@ -525,20 +525,20 @@ TextureImporter:
       name: cows_spritesheet_white0_16
       rect:
         serializedVersion: 2
-        x: 95
-        y: 95
-        width: 33
-        height: 27
+        x: 96
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a367a841363b25850800000000000000
-      internalID: 6364346461555684922
+      spriteID: 159598f13b062ce4dbea116a420c8275
+      internalID: 1483951947
       vertices: []
       indices: 
       edges: []
@@ -547,20 +547,20 @@ TextureImporter:
       name: cows_spritesheet_white0_17
       rect:
         serializedVersion: 2
-        x: 98
-        y: 31
-        width: 28
-        height: 65
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a95c595e3f84b5190800000000000000
-      internalID: -7972698502963280486
+      spriteID: 184f227c5ff14894d874d697b57cfffc
+      internalID: 1604155338
       vertices: []
       indices: 
       edges: []
@@ -569,9 +569,9 @@ TextureImporter:
       name: cows_spritesheet_white0_18
       rect:
         serializedVersion: 2
-        x: 2
-        y: 32
-        width: 28
+        x: 32
+        y: 64
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -579,10 +579,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4058c8d69e1a4b6d0800000000000000
-      internalID: -2975575429847677692
+      spriteID: 67f1584480597eb498a4e705373d0fef
+      internalID: 1281086840
       vertices: []
       indices: 
       edges: []
@@ -591,9 +591,9 @@ TextureImporter:
       name: cows_spritesheet_white0_19
       rect:
         serializedVersion: 2
-        x: 66
-        y: 32
-        width: 28
+        x: 64
+        y: 64
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -601,10 +601,120 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c1eb16cfe5a720370800000000000000
-      internalID: 8287320812694912540
+      spriteID: f9add8b7ab252f34c8418fe1811e0cfb
+      internalID: -556382499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cows_spritesheet_white0_20
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cefda440b1694d54b856a8ad5872243e
+      internalID: -396486027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cows_spritesheet_white0_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1596de6a9d3e8af4d99a2fc6784f94dd
+      internalID: -2108286766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cows_spritesheet_white0_22
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00d01e7f3c8d5f84598e1c1ed461c8b2
+      internalID: -261552121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cows_spritesheet_white0_23
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b179e916f55425408f5c873bad9ef36
+      internalID: -281573144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cows_spritesheet_white0_24
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bca49c3c45c630746af0b8a869927c04
+      internalID: -1015599949
       vertices: []
       indices: 
       edges: []
@@ -613,7 +723,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4b0338a0720bcb54d80fa2524daae581
     internalID: 0
     vertices: []
     indices: 
@@ -622,7 +732,32 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cows_spritesheet_white0_0: -848162172
+      cows_spritesheet_white0_1: -2144221348
+      cows_spritesheet_white0_10: 2001232855
+      cows_spritesheet_white0_11: 1569015656
+      cows_spritesheet_white0_12: -676272672
+      cows_spritesheet_white0_13: 1319165095
+      cows_spritesheet_white0_14: 1815458467
+      cows_spritesheet_white0_15: -941378777
+      cows_spritesheet_white0_16: 1483951947
+      cows_spritesheet_white0_17: 1604155338
+      cows_spritesheet_white0_18: 1281086840
+      cows_spritesheet_white0_19: -556382499
+      cows_spritesheet_white0_2: -2125626491
+      cows_spritesheet_white0_20: -396486027
+      cows_spritesheet_white0_21: -2108286766
+      cows_spritesheet_white0_22: -261552121
+      cows_spritesheet_white0_23: -281573144
+      cows_spritesheet_white0_24: -1015599949
+      cows_spritesheet_white0_3: 1019496043
+      cows_spritesheet_white0_4: 144340306
+      cows_spritesheet_white0_5: -1862850009
+      cows_spritesheet_white0_6: -2060138837
+      cows_spritesheet_white0_7: -1209172941
+      cows_spritesheet_white0_8: -85923651
+      cows_spritesheet_white0_9: 1859722322
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

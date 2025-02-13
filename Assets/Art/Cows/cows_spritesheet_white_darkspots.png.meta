@@ -94,7 +94,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -108,7 +108,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -132,7 +132,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -174,19 +174,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 223
-        width: 33
-        height: 26
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a6b4d4247aad4c2c0800000000000000
-      internalID: -4412161323009488022
+      spriteID: 895e7aa3ece473b42bd0cec15ed16e02
+      internalID: -151882951
       vertices: []
       indices: 
       edges: []
@@ -195,20 +195,20 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_1
       rect:
         serializedVersion: 2
-        x: 31
-        y: 223
-        width: 33
-        height: 26
+        x: 32
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 725b70307cbeb1b90800000000000000
-      internalID: -7269957933477677785
+      spriteID: fa25e49e482ac674a9361506e007bfc7
+      internalID: 2115442595
       vertices: []
       indices: 
       edges: []
@@ -217,20 +217,20 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_2
       rect:
         serializedVersion: 2
-        x: 63
-        y: 223
-        width: 33
-        height: 26
+        x: 64
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 94c28c82b60b137e0800000000000000
-      internalID: -1787453602797179831
+      spriteID: 0c13b7c3faf6bbe4ba49117eb384374a
+      internalID: 470551507
       vertices: []
       indices: 
       edges: []
@@ -240,19 +240,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 191
+        y: 192
         width: 32
-        height: 26
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 07926f4c49d4b2da0800000000000000
-      internalID: -5968591579794495120
+      spriteID: 3b0de60e7bef788408a39bc8f348419c
+      internalID: -1785587809
       vertices: []
       indices: 
       edges: []
@@ -261,20 +261,20 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_4
       rect:
         serializedVersion: 2
-        x: 31
-        y: 191
-        width: 34
-        height: 26
+        x: 32
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fdb079fa2e39b4b10800000000000000
-      internalID: 1966828264095157215
+      spriteID: 8d0bea4ef23805348ae375eb6ae23990
+      internalID: -124942143
       vertices: []
       indices: 
       edges: []
@@ -284,19 +284,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 159
-        width: 33
-        height: 26
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d950644c0eda23350800000000000000
-      internalID: 5995045234860754333
+      spriteID: f24d1b85e2c81084f8248083594ec0dd
+      internalID: 618853819
       vertices: []
       indices: 
       edges: []
@@ -305,20 +305,20 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_6
       rect:
         serializedVersion: 2
-        x: 31
-        y: 159
-        width: 34
-        height: 23
+        x: 32
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3de75064ac71ee9c0800000000000000
-      internalID: -3896150470103302445
+      spriteID: cde2c21b8838e5a4e8f67dcdce933248
+      internalID: -313450754
       vertices: []
       indices: 
       edges: []
@@ -327,20 +327,20 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_7
       rect:
         serializedVersion: 2
-        x: 63
-        y: 159
-        width: 65
-        height: 20
+        x: 64
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 89058e828306cb2f0800000000000000
-      internalID: -955783226588639080
+      spriteID: 17f075dd505f0b34a99fe6d6a0067569
+      internalID: 195227216
       vertices: []
       indices: 
       edges: []
@@ -349,20 +349,20 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 127
-        width: 33
-        height: 26
+        x: 96
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 83bd0d78cfda40110800000000000000
-      internalID: 1226296298673593144
+      spriteID: 63ce6ae125c5bcc45ad6c86a9e952699
+      internalID: 1907861228
       vertices: []
       indices: 
       edges: []
@@ -371,20 +371,20 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_9
       rect:
         serializedVersion: 2
-        x: 31
-        y: 127
-        width: 34
-        height: 27
+        x: 0
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9b14f53007ea777d0800000000000000
-      internalID: -2920674037210332743
+      spriteID: 0b68f766db4cb8f4f8677cf7cef6436f
+      internalID: 786495554
       vertices: []
       indices: 
       edges: []
@@ -393,20 +393,20 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_10
       rect:
         serializedVersion: 2
-        x: 63
-        y: 127
-        width: 34
-        height: 28
+        x: 32
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d2ba473950f84faa0800000000000000
-      internalID: -6128115938832897235
+      spriteID: c92b601a9f9b58d46904fb3dd188fb0d
+      internalID: 761296070
       vertices: []
       indices: 
       edges: []
@@ -415,20 +415,20 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_11
       rect:
         serializedVersion: 2
-        x: 95
-        y: 127
-        width: 33
-        height: 28
+        x: 64
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 38aacf984f40445f0800000000000000
-      internalID: -773487787667314045
+      spriteID: c7797c89318ec5646a078ff2b67df97f
+      internalID: 916581018
       vertices: []
       indices: 
       edges: []
@@ -437,20 +437,20 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 65
+        x: 96
+        y: 128
         width: 32
-        height: 56
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a48a4ee3b1a45e020800000000000000
-      internalID: 2370382259760179274
+      spriteID: ec94f27478d15bd489ba9f61a6825eab
+      internalID: 2119372299
       vertices: []
       indices: 
       edges: []
@@ -459,20 +459,20 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_13
       rect:
         serializedVersion: 2
-        x: 31
-        y: 95
-        width: 33
-        height: 26
+        x: 0
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 08e81d8cacd230070800000000000000
-      internalID: 8071345306153881216
+      spriteID: e1511d036c9ca194597fbd9cee49e4d5
+      internalID: -529498945
       vertices: []
       indices: 
       edges: []
@@ -481,20 +481,20 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_14
       rect:
         serializedVersion: 2
-        x: 34
-        y: 31
-        width: 28
-        height: 65
+        x: 32
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5ce0a3e595268ab00800000000000000
-      internalID: 840029466477072069
+      spriteID: 0f896b22380b97f499d5ff8438803b0c
+      internalID: 1908132149
       vertices: []
       indices: 
       edges: []
@@ -503,20 +503,20 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_15
       rect:
         serializedVersion: 2
-        x: 63
-        y: 65
-        width: 33
-        height: 57
+        x: 64
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9905df6c26a71e0a0800000000000000
-      internalID: -6854062593217310567
+      spriteID: 5f7849b697929614c8e30a6daac8c444
+      internalID: -1340156226
       vertices: []
       indices: 
       edges: []
@@ -525,20 +525,20 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_16
       rect:
         serializedVersion: 2
-        x: 95
-        y: 95
-        width: 33
-        height: 27
+        x: 96
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c226a026969dbfb80800000000000000
-      internalID: -8359849236643552724
+      spriteID: 2b26d5b6137dffb4b9e73022bed441c1
+      internalID: -1034147201
       vertices: []
       indices: 
       edges: []
@@ -547,20 +547,20 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_17
       rect:
         serializedVersion: 2
-        x: 98
-        y: 31
-        width: 28
-        height: 65
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7bc0bf56275488440800000000000000
-      internalID: 4938273349051288759
+      spriteID: f04bebaf4d2907d4d9638c5f4d5f42d1
+      internalID: -1785251094
       vertices: []
       indices: 
       edges: []
@@ -569,9 +569,9 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_18
       rect:
         serializedVersion: 2
-        x: 2
-        y: 32
-        width: 28
+        x: 32
+        y: 64
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -579,10 +579,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f25286b858e5c2ce0800000000000000
-      internalID: -1428663054120770257
+      spriteID: 1a19864189fd97647aab957c9b5fb46b
+      internalID: -118508505
       vertices: []
       indices: 
       edges: []
@@ -591,9 +591,9 @@ TextureImporter:
       name: cows_spritesheet_white_darkspots_19
       rect:
         serializedVersion: 2
-        x: 66
-        y: 32
-        width: 28
+        x: 64
+        y: 64
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -601,10 +601,120 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1445a56aec9472cf0800000000000000
-      internalID: -277171700156967871
+      spriteID: 7ef0668c33e63e64d814f4d47d2d996a
+      internalID: 1315030006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cows_spritesheet_white_darkspots_20
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af9ca1c948cd45c42b65e8f5bbc4d2f3
+      internalID: -341195993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cows_spritesheet_white_darkspots_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b1383a9277ffd941bfbf7102fe3f983
+      internalID: -1289979464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cows_spritesheet_white_darkspots_22
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e6c51f306c06524c8eecb603fc0bca4
+      internalID: -1135744110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cows_spritesheet_white_darkspots_23
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80f1d5a715d74be4cadf6a210bec3ceb
+      internalID: 1406686213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cows_spritesheet_white_darkspots_24
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28150026661382840a80eac63188c52f
+      internalID: -2059877265
       vertices: []
       indices: 
       edges: []
@@ -613,7 +723,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 36c2656dd03e24c41a4c01b772e2e1b6
     internalID: 0
     vertices: []
     indices: 
@@ -622,7 +732,32 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cows_spritesheet_white_darkspots_0: -151882951
+      cows_spritesheet_white_darkspots_1: 2115442595
+      cows_spritesheet_white_darkspots_10: 761296070
+      cows_spritesheet_white_darkspots_11: 916581018
+      cows_spritesheet_white_darkspots_12: 2119372299
+      cows_spritesheet_white_darkspots_13: -529498945
+      cows_spritesheet_white_darkspots_14: 1908132149
+      cows_spritesheet_white_darkspots_15: -1340156226
+      cows_spritesheet_white_darkspots_16: -1034147201
+      cows_spritesheet_white_darkspots_17: -1785251094
+      cows_spritesheet_white_darkspots_18: -118508505
+      cows_spritesheet_white_darkspots_19: 1315030006
+      cows_spritesheet_white_darkspots_2: 470551507
+      cows_spritesheet_white_darkspots_20: -341195993
+      cows_spritesheet_white_darkspots_21: -1289979464
+      cows_spritesheet_white_darkspots_22: -1135744110
+      cows_spritesheet_white_darkspots_23: 1406686213
+      cows_spritesheet_white_darkspots_24: -2059877265
+      cows_spritesheet_white_darkspots_3: -1785587809
+      cows_spritesheet_white_darkspots_4: -124942143
+      cows_spritesheet_white_darkspots_5: 618853819
+      cows_spritesheet_white_darkspots_6: -313450754
+      cows_spritesheet_white_darkspots_7: 195227216
+      cows_spritesheet_white_darkspots_8: 1907861228
+      cows_spritesheet_white_darkspots_9: 786495554
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

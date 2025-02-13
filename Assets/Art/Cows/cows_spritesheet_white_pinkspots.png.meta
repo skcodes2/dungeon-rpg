@@ -1,67 +1,67 @@
 fileFormatVersion: 2
-guid: f37aaaae055660048888dfd8b250e55b
+guid: 0f60a42f70dac0040a28397f1c2cd760
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6156274802597656792
-    second: cows_spritesheet_brown_0
+      213: -5301016851126069981
+    second: cows_spritesheet_white_pinkspots_0
   - first:
-      213: -1657075434560741459
-    second: cows_spritesheet_brown_1
+      213: -4201439965826208474
+    second: cows_spritesheet_white_pinkspots_1
   - first:
-      213: -6097341427339676047
-    second: cows_spritesheet_brown_2
+      213: 8665622702538745377
+    second: cows_spritesheet_white_pinkspots_2
   - first:
-      213: 7873532608108108411
-    second: cows_spritesheet_brown_3
+      213: -1380316132543306321
+    second: cows_spritesheet_white_pinkspots_3
   - first:
-      213: 2789612483604109638
-    second: cows_spritesheet_brown_4
+      213: 6042815126727598140
+    second: cows_spritesheet_white_pinkspots_4
   - first:
-      213: 4584124017932247300
-    second: cows_spritesheet_brown_5
+      213: 714735167995956141
+    second: cows_spritesheet_white_pinkspots_5
   - first:
-      213: 8865267552988567289
-    second: cows_spritesheet_brown_6
+      213: -6409250359871569275
+    second: cows_spritesheet_white_pinkspots_6
   - first:
-      213: -2500177086930380921
-    second: cows_spritesheet_brown_7
+      213: 6501334973775390027
+    second: cows_spritesheet_white_pinkspots_7
   - first:
-      213: -4337775853214037186
-    second: cows_spritesheet_brown_8
+      213: -2851934093024852206
+    second: cows_spritesheet_white_pinkspots_8
   - first:
-      213: -7916875321198933073
-    second: cows_spritesheet_brown_9
+      213: -4084008614304857789
+    second: cows_spritesheet_white_pinkspots_9
   - first:
-      213: 1849958278297236916
-    second: cows_spritesheet_brown_10
+      213: 5492760722816444285
+    second: cows_spritesheet_white_pinkspots_10
   - first:
-      213: -8005188531530969665
-    second: cows_spritesheet_brown_11
+      213: 6393394167129379074
+    second: cows_spritesheet_white_pinkspots_11
   - first:
-      213: 3767293781162432576
-    second: cows_spritesheet_brown_12
+      213: 4903270120189322067
+    second: cows_spritesheet_white_pinkspots_12
   - first:
-      213: -3501375776628086619
-    second: cows_spritesheet_brown_13
+      213: 3502143065142617392
+    second: cows_spritesheet_white_pinkspots_13
   - first:
-      213: -6655391245003698932
-    second: cows_spritesheet_brown_14
+      213: -213760052379087929
+    second: cows_spritesheet_white_pinkspots_14
   - first:
-      213: 1975675223953239461
-    second: cows_spritesheet_brown_15
+      213: -2111095931482160502
+    second: cows_spritesheet_white_pinkspots_15
   - first:
-      213: -3054586353653817441
-    second: cows_spritesheet_brown_16
+      213: 476651096683600961
+    second: cows_spritesheet_white_pinkspots_16
   - first:
-      213: 2423518019580250470
-    second: cows_spritesheet_brown_17
+      213: 2396820521306032720
+    second: cows_spritesheet_white_pinkspots_17
   - first:
-      213: 4533937276915518568
-    second: cows_spritesheet_brown_18
+      213: -4532565292667303022
+    second: cows_spritesheet_white_pinkspots_18
   - first:
-      213: -2862055976426842241
-    second: cows_spritesheet_brown_19
+      213: -4680831763626060486
+    second: cows_spritesheet_white_pinkspots_19
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -94,7 +94,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -108,7 +108,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -132,7 +132,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -170,7 +170,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cows_spritesheet_brown_0
+      name: cows_spritesheet_white_pinkspots_0
       rect:
         serializedVersion: 2
         x: 0
@@ -185,14 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebfab8f834ee3fc4ea70294c2f6cf474
-      internalID: 262497329
+      spriteID: f3f4b4985da89944185382bb9f0912c5
+      internalID: 366480538
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_1
+      name: cows_spritesheet_white_pinkspots_1
       rect:
         serializedVersion: 2
         x: 32
@@ -207,14 +207,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed3a75d6999bf8943aeabdd3c9016516
-      internalID: 1397002796
+      spriteID: 638de80f6fc34534891362fd4e67d216
+      internalID: -96505964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_2
+      name: cows_spritesheet_white_pinkspots_2
       rect:
         serializedVersion: 2
         x: 64
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b85656e758be4074baeca46f5252d6ec
-      internalID: 89080496
+      spriteID: fac447b168ad4a542950fb2f411427f9
+      internalID: 885782403
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_3
+      name: cows_spritesheet_white_pinkspots_3
       rect:
         serializedVersion: 2
         x: 0
@@ -251,14 +251,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1768f538da402f0448b2c239f5a071b7
-      internalID: 907452827
+      spriteID: 9c8640af6a5427b44809d7add5a5700a
+      internalID: 724062602
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_4
+      name: cows_spritesheet_white_pinkspots_4
       rect:
         serializedVersion: 2
         x: 32
@@ -273,14 +273,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54de8a31598e1b2428faf4627712a646
-      internalID: -988754375
+      spriteID: 2cc4aed646556c44c983995a2db02462
+      internalID: -637853920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_5
+      name: cows_spritesheet_white_pinkspots_5
       rect:
         serializedVersion: 2
         x: 0
@@ -295,14 +295,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d914877b0a22bae4e807722c4dd5c00d
-      internalID: -1082204453
+      spriteID: 52e2bc7a7657ac745b34842b7a1baca8
+      internalID: 511159448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_6
+      name: cows_spritesheet_white_pinkspots_6
       rect:
         serializedVersion: 2
         x: 32
@@ -317,14 +317,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7b61db4013193945b9b587f3097782d
-      internalID: 2137063244
+      spriteID: e876199c096d9a54693b776b56cc42f5
+      internalID: 263034365
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_7
+      name: cows_spritesheet_white_pinkspots_7
       rect:
         serializedVersion: 2
         x: 64
@@ -339,14 +339,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 145fdc8e16e32334faacf8c3144a8994
-      internalID: -2142400458
+      spriteID: d759f33fdc7c45f478b2826f3f3dea58
+      internalID: 1933179348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_8
+      name: cows_spritesheet_white_pinkspots_8
       rect:
         serializedVersion: 2
         x: 96
@@ -361,14 +361,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fde87364b9a4f143b5488e3222e4671
-      internalID: -2032965716
+      spriteID: 3e38673df98114a4487f4843189586c9
+      internalID: -1484354675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_9
+      name: cows_spritesheet_white_pinkspots_9
       rect:
         serializedVersion: 2
         x: 0
@@ -383,14 +383,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3656e4ca00a56044185116c471a6c5fa
-      internalID: -758723579
+      spriteID: d735fae5bcc9e8042878948e481fc860
+      internalID: -1697883956
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_10
+      name: cows_spritesheet_white_pinkspots_10
       rect:
         serializedVersion: 2
         x: 32
@@ -405,14 +405,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c76ebe5576aa9f45bdb7ef2f397b2c2
-      internalID: -71384607
+      spriteID: 21f0bfbb8b8165e438021d7a6bc4e951
+      internalID: 1363968931
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_11
+      name: cows_spritesheet_white_pinkspots_11
       rect:
         serializedVersion: 2
         x: 64
@@ -427,14 +427,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da7823cdcae625442af3606240ce36cd
-      internalID: -194745821
+      spriteID: c1fbb6aa7e867b54fa5ec8c50abc4be0
+      internalID: -1477367296
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_12
+      name: cows_spritesheet_white_pinkspots_12
       rect:
         serializedVersion: 2
         x: 96
@@ -449,14 +449,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f925d7a059800b4f954763325e65a79
-      internalID: -1520233427
+      spriteID: 96ea8f67b157b0e479218c99103ccaac
+      internalID: -202355220
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_13
+      name: cows_spritesheet_white_pinkspots_13
       rect:
         serializedVersion: 2
         x: 0
@@ -471,14 +471,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c58a44d337267742a8fbd53bebfbb9a
-      internalID: 1175713074
+      spriteID: da52ef016a6c8fb46b57e7288a9e5b83
+      internalID: -1675555527
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_14
+      name: cows_spritesheet_white_pinkspots_14
       rect:
         serializedVersion: 2
         x: 32
@@ -493,14 +493,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d63c0fcb6c51fbe4a9081719dbebcf4f
-      internalID: 1576942072
+      spriteID: 5f962330b48147b48834fe078f766d5e
+      internalID: 800355658
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_15
+      name: cows_spritesheet_white_pinkspots_15
       rect:
         serializedVersion: 2
         x: 64
@@ -515,14 +515,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c619faf5c73a6643b7b0749d197dba5
-      internalID: 2105827311
+      spriteID: ad9a97691bf24ab49892553a5259284a
+      internalID: -1190742829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_16
+      name: cows_spritesheet_white_pinkspots_16
       rect:
         serializedVersion: 2
         x: 96
@@ -537,14 +537,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4e9c4ed384af1b40abe21894c01ac83
-      internalID: -1231598840
+      spriteID: 5a27d4377a85c6344a61b0d791e7ea98
+      internalID: -1762006469
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_17
+      name: cows_spritesheet_white_pinkspots_17
       rect:
         serializedVersion: 2
         x: 0
@@ -559,14 +559,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4492bfd66e1af9649bafc0ee9461d816
-      internalID: -1419355010
+      spriteID: 63a688caf170083408672cae76b02050
+      internalID: -250692178
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_18
+      name: cows_spritesheet_white_pinkspots_18
       rect:
         serializedVersion: 2
         x: 32
@@ -581,14 +581,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be821db56ac23f749bc45fbdaf4822ed
-      internalID: -569926298
+      spriteID: b781d93cb4f8cf74996d2836a5b61c9e
+      internalID: 1957385731
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_19
+      name: cows_spritesheet_white_pinkspots_19
       rect:
         serializedVersion: 2
         x: 64
@@ -603,14 +603,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e36f1d1bc53bc94aa69405097a0072b
-      internalID: 1594311224
+      spriteID: b789ceb492d233a44b627eeee7abca06
+      internalID: -690367396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_20
+      name: cows_spritesheet_white_pinkspots_20
       rect:
         serializedVersion: 2
         x: 96
@@ -625,14 +625,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36834a2ba67ed114c9b4420674fbe681
-      internalID: -1687809578
+      spriteID: 20448e01d567ea442ad8f21cc7c1fba8
+      internalID: -1022885735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_21
+      name: cows_spritesheet_white_pinkspots_21
       rect:
         serializedVersion: 2
         x: 0
@@ -647,14 +647,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 187b2a87ef1904342a57fca3ce90e1ed
-      internalID: 1710356893
+      spriteID: 8954f3671bfd7094d9879740f5ffcf9d
+      internalID: -664489449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_22
+      name: cows_spritesheet_white_pinkspots_22
       rect:
         serializedVersion: 2
         x: 32
@@ -669,14 +669,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4dfcaefcab70284da28bf2bc55fbf6c
-      internalID: 533245349
+      spriteID: 3d7b7b9ac0d959145bdc2bef4556822c
+      internalID: -417262314
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_23
+      name: cows_spritesheet_white_pinkspots_23
       rect:
         serializedVersion: 2
         x: 64
@@ -691,14 +691,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7239bcd8b4c9898458e06f2ab1fbe116
-      internalID: -927400470
+      spriteID: d491df9381bf97b498b3d3f7e1dbd5fb
+      internalID: 1765206330
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cows_spritesheet_brown_24
+      name: cows_spritesheet_white_pinkspots_24
       rect:
         serializedVersion: 2
         x: 96
@@ -713,8 +713,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40bfb1662f39f6c4584ffbf5ca20b347
-      internalID: 1498544675
+      spriteID: c35f5b33a51c0314b84935080b7e769c
+      internalID: -831680031
       vertices: []
       indices: 
       edges: []
@@ -723,7 +723,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d503f8f95f74612409496b292c702f0e
+    spriteID: c6a7056ac7f46d745972324deae1135d
     internalID: 0
     vertices: []
     indices: 
@@ -733,31 +733,31 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cows_spritesheet_brown_0: 262497329
-      cows_spritesheet_brown_1: 1397002796
-      cows_spritesheet_brown_10: -71384607
-      cows_spritesheet_brown_11: -194745821
-      cows_spritesheet_brown_12: -1520233427
-      cows_spritesheet_brown_13: 1175713074
-      cows_spritesheet_brown_14: 1576942072
-      cows_spritesheet_brown_15: 2105827311
-      cows_spritesheet_brown_16: -1231598840
-      cows_spritesheet_brown_17: -1419355010
-      cows_spritesheet_brown_18: -569926298
-      cows_spritesheet_brown_19: 1594311224
-      cows_spritesheet_brown_2: 89080496
-      cows_spritesheet_brown_20: -1687809578
-      cows_spritesheet_brown_21: 1710356893
-      cows_spritesheet_brown_22: 533245349
-      cows_spritesheet_brown_23: -927400470
-      cows_spritesheet_brown_24: 1498544675
-      cows_spritesheet_brown_3: 907452827
-      cows_spritesheet_brown_4: -988754375
-      cows_spritesheet_brown_5: -1082204453
-      cows_spritesheet_brown_6: 2137063244
-      cows_spritesheet_brown_7: -2142400458
-      cows_spritesheet_brown_8: -2032965716
-      cows_spritesheet_brown_9: -758723579
+      cows_spritesheet_white_pinkspots_0: 366480538
+      cows_spritesheet_white_pinkspots_1: -96505964
+      cows_spritesheet_white_pinkspots_10: 1363968931
+      cows_spritesheet_white_pinkspots_11: -1477367296
+      cows_spritesheet_white_pinkspots_12: -202355220
+      cows_spritesheet_white_pinkspots_13: -1675555527
+      cows_spritesheet_white_pinkspots_14: 800355658
+      cows_spritesheet_white_pinkspots_15: -1190742829
+      cows_spritesheet_white_pinkspots_16: -1762006469
+      cows_spritesheet_white_pinkspots_17: -250692178
+      cows_spritesheet_white_pinkspots_18: 1957385731
+      cows_spritesheet_white_pinkspots_19: -690367396
+      cows_spritesheet_white_pinkspots_2: 885782403
+      cows_spritesheet_white_pinkspots_20: -1022885735
+      cows_spritesheet_white_pinkspots_21: -664489449
+      cows_spritesheet_white_pinkspots_22: -417262314
+      cows_spritesheet_white_pinkspots_23: 1765206330
+      cows_spritesheet_white_pinkspots_24: -831680031
+      cows_spritesheet_white_pinkspots_3: 724062602
+      cows_spritesheet_white_pinkspots_4: -637853920
+      cows_spritesheet_white_pinkspots_5: 511159448
+      cows_spritesheet_white_pinkspots_6: 263034365
+      cows_spritesheet_white_pinkspots_7: 1933179348
+      cows_spritesheet_white_pinkspots_8: -1484354675
+      cows_spritesheet_white_pinkspots_9: -1697883956
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
