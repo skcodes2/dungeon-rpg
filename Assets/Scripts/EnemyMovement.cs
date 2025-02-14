@@ -5,10 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField]
-    private float _speed; // Speed at which the enemy moves
-
-    [SerializeField]
-    private float _rotationSpeed; // Speed of enemy's rotation towards target
+    private EnemyStats _enemyStats; // Reference to the EnemyStats class
 
     [SerializeField]
     private float _screenBorder; // Distance from screen borders to change direction
@@ -129,7 +126,7 @@ public class EnemyMovement : MonoBehaviour
 
             // Rotate the enemy to avoid the obstacle
             var targetRotation = Quaternion.LookRotation(transform.forward, _obstacleAvoidanceTargetDirection);
-            var rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+            var rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _enemyStats.RotationSpeed * Time.deltaTime);
 
             _targetDirection = rotation * Vector2.up; // Update target direction
             break; // Only avoid one obstacle at a time
@@ -159,7 +156,7 @@ public class EnemyMovement : MonoBehaviour
     {
         // Smoothly rotate the enemy towards the target direction
         Quaternion targetRotation = Quaternion.LookRotation(transform.forward, _targetDirection);
-        Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+        Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _enemyStats.RotationSpeed * Time.deltaTime);
 
         _rigidbody.SetRotation(rotation); // Apply the rotation to the Rigidbody2D
     }
@@ -167,6 +164,18 @@ public class EnemyMovement : MonoBehaviour
     private void SetVelocity()
     {
         // Move the enemy forward based on its current direction
-        _rigidbody.linearVelocity = transform.up * _speed;
+        _rigidbody.linearVelocity = transform.up * _enemyStats.Speed;
     }
+    public void TakeDamage(float amount)
+    {
+        print("Enemy health: " + _enemyStats.Health);
+        _enemyStats.TakeDamage(amount, this);
+    }
+
+    public void Die()
+    {
+        // Handle enemy death (e.g., play animation, destroy game object, etc.)
+        Destroy(gameObject);
+    }
+   
 }

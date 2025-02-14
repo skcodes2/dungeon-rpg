@@ -2,34 +2,53 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    public float moveSpeed = 5f; // Speed of the player
     private Rigidbody2D rb;
     private Vector2 input;
     Animator anim;
     private Vector2 lastMoveDirection;
     private bool facingLeft = true;
+    private bool isMoving = false;
+    PlayerStats playerStats;
+    public Transform AttactHitBox;
+    public GameObject Kick; 
+    private float attackDuration = 0.3f;
+    private float attackTimer =  0f;
+    bool isAttacking = false;
+    
+
+    void Awake(){
+        playerStats = PlayerStats.Instance;
+    }
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component
         anim = GetComponent<Animator>();
+        
     }
 
     void Update()
     {
         ProcessInputs();
         WalkAnimation();
-        AttackAnimation();
-
-
-        
+        CheckKickTimer();
+        if(Input.GetKeyDown(KeyCode.Space)){
+            anim.SetTrigger("Kick");
+            onAttack();
+        }
+     
     }
 
     void FixedUpdate()
     {
         // Move the player based on input
-        rb.linearVelocity = input.normalized * moveSpeed;
+        rb.linearVelocity = input.normalized * playerStats.moveSpeed;
+        if(isMoving){
+            Vector3 vec3 = Vector3.left * input.x + Vector3.down * input.y;
+            AttactHitBox.rotation = Quaternion.LookRotation(Vector3.forward, vec3);
+        }
     }
+
 
     void ProcessInputs(){
         // Get input from player (WASD or Arrow Keys)
@@ -38,6 +57,12 @@ public class PlayerControl : MonoBehaviour
 
         if((moveX != 0 || moveY != 0) && (input.x != 0 || input.y != 0)){
             lastMoveDirection = input;
+            isMoving = true;
+        }
+        else{
+            isMoving = false;
+            Vector3 vec3 = Vector3.left * lastMoveDirection.x + Vector3.down * lastMoveDirection.y;
+            AttactHitBox.rotation = Quaternion.LookRotation(Vector3.forward, vec3);
         }
 
         // Set the input vector
@@ -47,6 +72,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     void WalkAnimation(){
+
         anim.SetFloat("MoveX", input.x);
         anim.SetFloat("MoveY", input.y);
         anim.SetFloat("LastMoveX", lastMoveDirection.x);
@@ -55,11 +81,25 @@ public class PlayerControl : MonoBehaviour
         if(input.x < 0 && !facingLeft || input.x > 0 && facingLeft){
             Flip();
         }
+        
     }
 
-    void AttackAnimation(){
-        if(Input.GetKeyDown(KeyCode.Space)){
-            anim.SetTrigger("Kick");
+    void CheckKickTimer(){
+        if(isAttacking){
+            attackTimer += Time.deltaTime;
+            if(attackTimer >= attackDuration){
+                isAttacking = false;
+                attackTimer = 0;
+                Kick.SetActive(false);
+            }
+        }
+    }
+
+    void onAttack(){
+        if(!isAttacking){
+            isAttacking = true;
+            Kick.SetActive(true);
+            
         }
     }
 
