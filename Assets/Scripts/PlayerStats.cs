@@ -22,7 +22,8 @@ public class PlayerStats : MonoBehaviour
     }
 
     public float health = 100f;
-    public float moveSpeed = 3f;
+    public float walkSpeed = 2f;
+    public float runSpeed = 4f;
 
     void Awake()
     {
@@ -56,17 +57,5 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void IncreaseMoveSpeed(float amount)
-    {
-        moveSpeed += amount;
-    }
-
-    public void DecreaseMoveSpeed(float amount)
-    {
-        moveSpeed -= amount;
-        if (moveSpeed < 0)
-        {
-            moveSpeed = 0; // Ensure move speed doesn't go negative
-        }
-    }
+    
 }

@@ -13,7 +13,10 @@ public class PlayerControl : MonoBehaviour
     public GameObject Kick; 
     private float attackDuration = 0.3f;
     private float attackTimer =  0f;
+
     bool isAttacking = false;
+    private bool isWalking = false;
+    private bool isRunning = false;
     
 
     void Awake(){
@@ -42,7 +45,8 @@ public class PlayerControl : MonoBehaviour
     void FixedUpdate()
     {
         // Move the player based on input
-        rb.linearVelocity = input.normalized * playerStats.moveSpeed;
+        float speed = isRunning ? playerStats.runSpeed : playerStats.walkSpeed;
+        rb.linearVelocity = input.normalized * speed;
         if(isMoving){
             Vector3 vec3 = Vector3.left * input.x + Vector3.down * input.y;
             AttactHitBox.rotation = Quaternion.LookRotation(Vector3.forward, vec3);
@@ -58,8 +62,12 @@ public class PlayerControl : MonoBehaviour
         if((moveX != 0 || moveY != 0) && (input.x != 0 || input.y != 0)){
             lastMoveDirection = input;
             isMoving = true;
+            isWalking = !Input.GetKey(KeyCode.LeftShift);
+            isRunning = Input.GetKey(KeyCode.LeftShift);
         }
         else{
+            isWalking = false;
+            isRunning = false;
             isMoving = false;
             Vector3 vec3 = Vector3.left * lastMoveDirection.x + Vector3.down * lastMoveDirection.y;
             AttactHitBox.rotation = Quaternion.LookRotation(Vector3.forward, vec3);
@@ -73,11 +81,15 @@ public class PlayerControl : MonoBehaviour
 
     void WalkAnimation(){
 
+        
+
         anim.SetFloat("MoveX", input.x);
         anim.SetFloat("MoveY", input.y);
         anim.SetFloat("LastMoveX", lastMoveDirection.x);
         anim.SetFloat("LastMoveY", lastMoveDirection.y);
         anim.SetFloat("MoveMagnitude", input.magnitude);
+        anim.SetBool("isWalking", isWalking);
+        anim.SetBool("isRunning", isRunning);
         if(input.x < 0 && !facingLeft || input.x > 0 && facingLeft){
             Flip();
         }
