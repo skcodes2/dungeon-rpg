@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class PlayerControl : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -17,6 +17,14 @@ public class PlayerControl : MonoBehaviour
     bool isAttacking = false;
     private bool isWalking = false;
     private bool isRunning = false;
+    private float slideDuration = 1.14f;
+
+    IEnumerator Slide()
+{
+    playerStats.IncreaseSpeed(1f); // Increase speed during slide
+    yield return new WaitForSeconds(slideDuration); // Wait for the slide duration
+    playerStats.DecreaseSpeed(1f); // Decrease speed back to normal
+}
     
 
     void Awake(){
@@ -35,10 +43,19 @@ public class PlayerControl : MonoBehaviour
         ProcessInputs();
         WalkAnimation();
         CheckKickTimer();
+
         if(Input.GetKeyDown(KeyCode.Space)){
             anim.SetTrigger("Kick");
             onAttack();
         }
+
+        if (Input.GetKeyDown(KeyCode.M) && isRunning)
+        {
+            anim.SetTrigger("slide");
+            StartCoroutine(Slide());
+            
+        }
+        
      
     }
 

@@ -57,5 +57,15 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void IncreaseSpeed(float amount)
+    {
+        runSpeed += amount;
+    }
+
+    public void DecreaseSpeed(float amount)
+    {
+        runSpeed -= amount;
+    }
+
     
 }

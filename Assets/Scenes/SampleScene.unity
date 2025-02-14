@@ -1590,7 +1590,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  moveSpeed: 3
+  walkSpeed: 2
+  runSpeed: 4
 --- !u!1 &873473294
 GameObject:
   m_ObjectHideFlags: 0
