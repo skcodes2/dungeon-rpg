@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public GameObject Slash;
     public GameObject RunAttack;
     public GameObject SwordSlam;
+    public GameObject Pummel;
+
 
     // Movement variables
     private Vector2 input;
@@ -48,12 +50,23 @@ public class PlayerController : MonoBehaviour
     public float swordSlamCooldown = 1.5f;
     private float swordSlamCooldownTimer = 0f;
 
+    private bool isPummeling = false;
+    private float pummelDuration = 0.4f;
+    private float pummelTimer = 0f;
+    public float pummelCooldown = 1.5f;
+    private float pummelCooldownTimer = 0f;
+
 
     // Slide variables
     private bool isSliding = false;
     private float slideDuration = 1.14f;
     public float slideCooldown = 1.5f;
     private float slideCooldownTimer = 0f;
+
+    private bool isRolling = false;
+    private float rollDuration = 1.14f;
+    public float rollCooldown = 1.5f;
+    private float rollCooldownTimer = 0f;
 
     void Awake()
     {
@@ -73,6 +86,7 @@ public class PlayerController : MonoBehaviour
         UpdateTimers();
         HandleAttacks();
         HandleSlide();
+        HandleRoll();
     }
 
     void FixedUpdate()
@@ -103,9 +117,6 @@ public class PlayerController : MonoBehaviour
             isWalking = false;
             isRunning = false;
             isMoving = false;
-
-            
-          
         }
 
         input.x = Input.GetAxisRaw("Horizontal");
@@ -160,10 +171,16 @@ public class PlayerController : MonoBehaviour
             swordSlamCooldownTimer -= Time.deltaTime;
         }
 
+        if(pummelCooldownTimer > 0)
+        {
+            pummelCooldownTimer -= Time.deltaTime;
+        }
+
         CheckTimer(ref isKicking, Kick, kickDuration, ref kickTimer);
         CheckTimer(ref isSlashing, Slash, slashDuration, ref slashTimer);
         CheckTimer(ref isRunAttacking, RunAttack, runAttackDuration, ref runAttackTimer);
         CheckTimer(ref isSwordSlamming, SwordSlam, swordSlamDuration, ref swordSlamTimer);
+        CheckTimer(ref isPummeling, Pummel, pummelDuration, ref pummelTimer);
     }
 
     private void HandleAttacks()
@@ -195,6 +212,13 @@ public class PlayerController : MonoBehaviour
             onAttack(ref isSwordSlamming, SwordSlam);
             swordSlamCooldownTimer = swordSlamCooldown;
         }
+
+        if (Input.GetKeyDown(KeyCode.X) && pummelCooldownTimer <= 0 && !isRunning)
+        {
+            anim.SetTrigger("Pummel");
+            onAttack(ref isPummeling, Pummel);
+            pummelCooldownTimer = pummelCooldown;
+        }
     }
 
     private void HandleSlide()
@@ -204,6 +228,16 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("Slide");
             StartCoroutine(Slide());
             slideCooldownTimer = slideCooldown;
+        }
+    }
+
+    private void HandleRoll()
+    {
+        if (Input.GetKeyDown(KeyCode.C) && isRunning && rollCooldownTimer <= 0)
+        {
+            anim.SetTrigger("Roll");
+            StartCoroutine(Roll());
+            rollCooldownTimer = rollCooldown;
         }
     }
 
@@ -263,5 +297,14 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(slideDuration);
         playerStats.DecreaseSpeed(1f);
         isSliding = false;
+    }
+
+    private IEnumerator Roll()
+    {
+        isRolling = true;
+        playerStats.IncreaseSpeed(1f);
+        yield return new WaitForSeconds(rollDuration);
+        playerStats.DecreaseSpeed(1f);
+        isRolling = false;
     }
 }
