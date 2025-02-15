@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public GameObject RunAttack;
     public GameObject SwordSlam;
     public GameObject Pummel;
+    public GameObject Swipe;
 
 
     // Movement variables
@@ -55,6 +56,12 @@ public class PlayerController : MonoBehaviour
     private float pummelTimer = 0f;
     public float pummelCooldown = 1.5f;
     private float pummelCooldownTimer = 0f;
+
+    private bool isSwiping = false;
+    private float swipeDuration = 0.4f;
+    private float swipeTimer = 0f;
+    public float swipeCooldown = 1.5f;
+    private float swipeCooldownTimer = 0f;
 
 
     // Slide variables
@@ -176,11 +183,17 @@ public class PlayerController : MonoBehaviour
             pummelCooldownTimer -= Time.deltaTime;
         }
 
+        if(swipeCooldownTimer > 0)
+        {
+            swipeCooldownTimer -= Time.deltaTime;
+        }
+
         CheckTimer(ref isKicking, Kick, kickDuration, ref kickTimer);
         CheckTimer(ref isSlashing, Slash, slashDuration, ref slashTimer);
         CheckTimer(ref isRunAttacking, RunAttack, runAttackDuration, ref runAttackTimer);
         CheckTimer(ref isSwordSlamming, SwordSlam, swordSlamDuration, ref swordSlamTimer);
         CheckTimer(ref isPummeling, Pummel, pummelDuration, ref pummelTimer);
+        CheckTimer(ref isSwiping, Swipe, swipeDuration, ref swipeTimer);
     }
 
     private void HandleAttacks()
@@ -218,6 +231,13 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("Pummel");
             onAttack(ref isPummeling, Pummel);
             pummelCooldownTimer = pummelCooldown;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z) && swipeCooldownTimer <= 0 && !isRunning)
+        {
+            anim.SetTrigger("Swipe");
+            onAttack(ref isSwiping, Swipe);
+            swipeCooldownTimer = swipeCooldown;
         }
     }
 
