@@ -62,9 +62,4 @@ public class Inventory : MonoBehaviour
     {
         items.Remove(item);
     }
-
-    public bool HasItem(string item)
-    {
-        return items.Contains(item);
-    }
 }

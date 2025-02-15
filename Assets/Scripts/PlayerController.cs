@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Kick; 
     public GameObject Slash;
     public GameObject RunAttack;
+    public GameObject SwordSlam;
 
     // Movement variables
     private Vector2 input;
@@ -40,6 +41,12 @@ public class PlayerController : MonoBehaviour
     private float runAttackTimer = 0f;
     public float runAttackCooldown = 1.5f;
     private float runAttackCooldownTimer = 0f;
+
+    private bool isSwordSlamming = false;
+    private float swordSlamDuration = 0.3f;
+    private float swordSlamTimer = 0f;
+    public float swordSlamCooldown = 1.5f;
+    private float swordSlamCooldownTimer = 0f;
 
 
     // Slide variables
@@ -148,9 +155,15 @@ public class PlayerController : MonoBehaviour
             runAttackCooldownTimer -= Time.deltaTime;
         }
 
+        if (swordSlamCooldownTimer > 0)
+        {
+            swordSlamCooldownTimer -= Time.deltaTime;
+        }
+
         CheckTimer(ref isKicking, Kick, kickDuration, ref kickTimer);
         CheckTimer(ref isSlashing, Slash, slashDuration, ref slashTimer);
         CheckTimer(ref isRunAttacking, RunAttack, runAttackDuration, ref runAttackTimer);
+        CheckTimer(ref isSwordSlamming, SwordSlam, swordSlamDuration, ref swordSlamTimer);
     }
 
     private void HandleAttacks()
@@ -174,6 +187,13 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("SpinAttack");
             onAttack(ref isRunAttacking, RunAttack);
             runAttackCooldownTimer = runAttackCooldown;
+        }
+
+        if (Input.GetKeyDown(KeyCode.V) && swordSlamCooldownTimer <= 0 && !isRunning)
+        {
+            anim.SetTrigger("SwordSlam");
+            onAttack(ref isSwordSlamming, SwordSlam);
+            swordSlamCooldownTimer = swordSlamCooldown;
         }
     }
 
