@@ -97,10 +97,7 @@ public class PlayerController : MonoBehaviour
             isRunning = false;
             isMoving = false;
 
-            if(isKicking){
-                Vector3 vec3 = Vector3.left * lastMoveDirection.x + Vector3.down * lastMoveDirection.y;
-                AttactHitBox.rotation = Quaternion.LookRotation(Vector3.forward, vec3);
-            }
+            
           
         }
 
@@ -122,6 +119,11 @@ public class PlayerController : MonoBehaviour
         {
             Flip();
         }
+        if (input != Vector2.zero)
+            {
+                float angle = Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg + 90f;
+                AttactHitBox.rotation = Quaternion.Euler(0, 0, angle);
+            }
     }
 
     private void UpdateTimers()
@@ -193,11 +195,9 @@ public class PlayerController : MonoBehaviour
         }
         rb.linearVelocity = input.normalized * speed;
 
-        if (isMoving)
-        {
-            Vector3 vec3 = Vector3.left * input.x + Vector3.down * input.y;
-            AttactHitBox.rotation = Quaternion.LookRotation(Vector3.forward, vec3);
-        }
+        
+           
+        
     }
 
     private void CheckTimer(ref bool isAttacking, GameObject weapon, float attackDuration, ref float attackTimer)
@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour
         {
             attackTimer += Time.deltaTime;
 
-            if (attackTimer >= attackDuration / 2)
+            if (attackTimer >= attackDuration * (3/4f))
             {
                 weapon.SetActive(true);
             }
