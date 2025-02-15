@@ -1,31 +1,37 @@
 using UnityEngine;
 using System.Collections;
-public class PlayerControl : MonoBehaviour
+
+public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private Vector2 input;
-    Animator anim;
-    private Vector2 lastMoveDirection;
-    private bool facingLeft = true;
-    private bool isMoving = false;
     PlayerStats playerStats;
     public Transform AttactHitBox;
     public GameObject Kick; 
-    private float attackDuration = 0.3f;
-    private float attackTimer =  0f;
+    public GameObject Slash;
+    Animator anim;
 
-    bool isAttacking = false;
+    private Vector2 input;
+    private Vector2 lastMoveDirection;
+    private bool facingLeft = true;
+
+    bool isKicking = false;
+    bool isSlashing = false;
     private bool isWalking = false;
     private bool isRunning = false;
+    private bool isMoving = false;
+
     private float slideDuration = 1.14f;
+    private float kickDuration = 0.3f;
+    private float kickTimer =  0f;
+    private float slashDuration = 0.3f;
+    private float slashTimer = 0f;
 
     IEnumerator Slide()
-{
-    playerStats.IncreaseSpeed(1f); // Increase speed during slide
-    yield return new WaitForSeconds(slideDuration); // Wait for the slide duration
-    playerStats.DecreaseSpeed(1f); // Decrease speed back to normal
-}
-    
+    {
+        playerStats.IncreaseSpeed(1f); // Increase speed during slide
+        yield return new WaitForSeconds(slideDuration); // Wait for the slide duration
+        playerStats.DecreaseSpeed(1f); // Decrease speed back to normal
+    }
 
     void Awake(){
         playerStats = PlayerStats.Instance;
@@ -35,28 +41,31 @@ public class PlayerControl : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component
         anim = GetComponent<Animator>();
-        
     }
 
     void Update()
     {
         ProcessInputs();
         WalkAnimation();
-        CheckKickTimer();
+
+        CheckTimer(ref isKicking, Kick, kickDuration, ref kickTimer);
+        CheckTimer(ref isSlashing, Slash, slashDuration, ref slashTimer);
 
         if(Input.GetKeyDown(KeyCode.Space)){
             anim.SetTrigger("Kick");
-            onAttack();
+            onAttack(ref isKicking, Kick);
+        }
+
+        if(Input.GetKeyDown(KeyCode.N)){
+            anim.SetTrigger("Slash");
+            onAttack(ref isSlashing, Slash);
         }
 
         if (Input.GetKeyDown(KeyCode.M) && isRunning)
         {
             anim.SetTrigger("slide");
             StartCoroutine(Slide());
-            
         }
-        
-     
     }
 
     void FixedUpdate()
@@ -70,13 +79,18 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-
     void ProcessInputs(){
         // Get input from player (WASD or Arrow Keys)
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
 
         if((moveX != 0 || moveY != 0) && (input.x != 0 || input.y != 0)){
+            // Check for 180-degree turn
+            // if (Vector2.Dot(lastMoveDirection, input) < -0.9f) // Adjust the threshold as needed
+            // {
+            //     anim.SetTrigger("Turn180");
+            // }
+
             lastMoveDirection = input;
             isMoving = true;
             isWalking = !Input.GetKey(KeyCode.LeftShift);
@@ -93,13 +107,9 @@ public class PlayerControl : MonoBehaviour
         // Set the input vector
         input.x = Input.GetAxisRaw("Horizontal"); // Left (-1) / Right (1)
         input.y = Input.GetAxisRaw("Vertical");   // Down (-1) / Up (1)
-
     }
 
     void WalkAnimation(){
-
-        
-
         anim.SetFloat("MoveX", input.x);
         anim.SetFloat("MoveY", input.y);
         anim.SetFloat("LastMoveX", lastMoveDirection.x);
@@ -110,25 +120,24 @@ public class PlayerControl : MonoBehaviour
         if(input.x < 0 && !facingLeft || input.x > 0 && facingLeft){
             Flip();
         }
-        
     }
 
-    void CheckKickTimer(){
+    void CheckTimer(ref bool isAttacking, GameObject weapon, float attackDuration, ref float attackTimer){
         if(isAttacking){
             attackTimer += Time.deltaTime;
+            
             if(attackTimer >= attackDuration){
                 isAttacking = false;
                 attackTimer = 0;
-                Kick.SetActive(false);
+                weapon.SetActive(false);
             }
         }
     }
 
-    void onAttack(){
+    void onAttack(ref bool isAttacking, GameObject weapon){
         if(!isAttacking){
             isAttacking = true;
-            Kick.SetActive(true);
-            
+            weapon.SetActive(true);
         }
     }
 
@@ -138,5 +147,4 @@ public class PlayerControl : MonoBehaviour
         characterScale.x *= -1;
         transform.localScale = characterScale;
     }
-
 }

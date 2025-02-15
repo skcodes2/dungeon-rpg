@@ -168,8 +168,8 @@ public class EnemyMovement : MonoBehaviour
     }
     public void TakeDamage(float amount)
     {
-        print("Enemy health: " + _enemyStats.Health);
         _enemyStats.TakeDamage(amount, this);
+        print("Enemy health: " + _enemyStats.Health);
     }
 
     public void Die()
