@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public Transform AttactHitBox;
     public GameObject Kick; 
     public GameObject Slash;
+    public GameObject RunAttack;
 
     // Movement variables
     private Vector2 input;
@@ -23,15 +24,23 @@ public class PlayerController : MonoBehaviour
 
     // Attack variables
     private bool isKicking = false;
-    private bool isSlashing = false;
-    private float kickDuration = 0.3f;
     private float kickTimer = 0f;
+    public float kickCooldown = 1.5f;
+    private float kickDuration = 0.3f;
+    private float kickCooldownTimer = 0f;
+
+    private bool isSlashing = false;
     private float slashDuration = 0.3f;
     private float slashTimer = 0f;
-    public float kickCooldown = 1.5f;
     public float slashCooldown = 1.5f;
-    private float kickCooldownTimer = 0f;
     private float slashCooldownTimer = 0f;
+
+    private bool isRunAttacking = false;
+    private float runAttackDuration = 0.3f;
+    private float runAttackTimer = 0f;
+    public float runAttackCooldown = 1.5f;
+    private float runAttackCooldownTimer = 0f;
+
 
     // Slide variables
     private bool isSliding = false;
@@ -87,8 +96,12 @@ public class PlayerController : MonoBehaviour
             isWalking = false;
             isRunning = false;
             isMoving = false;
-            Vector3 vec3 = Vector3.left * lastMoveDirection.x + Vector3.down * lastMoveDirection.y;
-            AttactHitBox.rotation = Quaternion.LookRotation(Vector3.forward, vec3);
+
+            if(isKicking){
+                Vector3 vec3 = Vector3.left * lastMoveDirection.x + Vector3.down * lastMoveDirection.y;
+                AttactHitBox.rotation = Quaternion.LookRotation(Vector3.forward, vec3);
+            }
+          
         }
 
         input.x = Input.GetAxisRaw("Horizontal");
@@ -128,24 +141,37 @@ public class PlayerController : MonoBehaviour
             slideCooldownTimer -= Time.deltaTime;
         }
 
+        if (runAttackCooldownTimer > 0)
+        {
+            runAttackCooldownTimer -= Time.deltaTime;
+        }
+
         CheckTimer(ref isKicking, Kick, kickDuration, ref kickTimer);
         CheckTimer(ref isSlashing, Slash, slashDuration, ref slashTimer);
+        CheckTimer(ref isRunAttacking, RunAttack, runAttackDuration, ref runAttackTimer);
     }
 
     private void HandleAttacks()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && kickCooldownTimer <= 0)
+        if (Input.GetKeyDown(KeyCode.Space) && kickCooldownTimer <= 0 && !isRunning)
         {
             anim.SetTrigger("Kick");
             onAttack(ref isKicking, Kick);
             kickCooldownTimer = kickCooldown;
         }
 
-        if (Input.GetKeyDown(KeyCode.N) && slashCooldownTimer <= 0)
+        if (Input.GetKeyDown(KeyCode.N) && slashCooldownTimer <= 0 && !isRunning)
         {
             anim.SetTrigger("Slash");
             onAttack(ref isSlashing, Slash);
             slashCooldownTimer = slashCooldown;
+        }
+
+        if (Input.GetKeyDown(KeyCode.B) && runAttackCooldownTimer <= 0 && isRunning)
+        {
+            anim.SetTrigger("SpinAttack");
+            onAttack(ref isRunAttacking, RunAttack);
+            runAttackCooldownTimer = runAttackCooldown;
         }
     }
 
@@ -162,6 +188,9 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer()
     {
         float speed = isRunning ? playerStats.runSpeed : playerStats.walkSpeed;
+        if(isKicking){
+            speed = playerStats.walkSpeed;
+        }
         rb.linearVelocity = input.normalized * speed;
 
         if (isMoving)
