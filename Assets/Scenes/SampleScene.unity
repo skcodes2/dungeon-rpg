@@ -162,10 +162,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 20767943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c695cd903064b34c9bd052bab8b09ac, type: 3}
+  m_Script: {fileID: 11500000, guid: de239970660a8b5459691719bf8a37a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageAmount: 20
+  _damageAmount: 0
 --- !u!60 &20767946
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1275,10 +1275,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 420938105}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c695cd903064b34c9bd052bab8b09ac, type: 3}
+  m_Script: {fileID: 11500000, guid: de239970660a8b5459691719bf8a37a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageAmount: 10
+  _damageAmount: 0
 --- !u!50 &420938110
 Rigidbody2D:
   serializedVersion: 5
@@ -1438,7 +1438,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.6454563, y: -1.97082, z: -10}
+  m_LocalPosition: {x: -3.6421025, y: -1.97082, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1591,24 +1591,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 693144917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10a6ba5f51305054daf0f69aa3def9b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 7328182e4b50c8b4da92cbb2b6faeeab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AttactHitBox: {fileID: 2064975864}
-  Kick: {fileID: 420938105}
-  Slash: {fileID: 1147215935}
-  RunAttack: {fileID: 2055744876}
-  SwordSlam: {fileID: 2003525032}
-  Pummel: {fileID: 1330431222}
-  Swipe: {fileID: 20767943}
-  kickCooldown: 1.5
-  slashCooldown: 1.5
-  runAttackCooldown: 1.5
-  swordSlamCooldown: 1.5
-  pummelCooldown: 1.5
-  swipeCooldown: 1.5
-  slideCooldown: 1.5
-  rollCooldown: 1.5
+  kickGameObject: {fileID: 420938105}
+  slashGameObject: {fileID: 1147215935}
+  runAttackGameObject: {fileID: 2055744876}
+  swordSlamGameObject: {fileID: 2003525032}
+  pummelGameObject: {fileID: 1330431222}
+  swipeGameObject: {fileID: 20767943}
+  kickController:
+    abilityCooldown: 1
+    keyBind: 9
+  slashController:
+    abilityCooldown: 1
+    keyBind: 110
+  runAttackController:
+    abilityCooldown: 1
+    keyBind: 98
+  swordSlamController:
+    abilityCooldown: 1
+    keyBind: 118
+  pummelController:
+    abilityCooldown: 1
+    keyBind: 120
+  swipeController:
+    abilityCooldown: 1
+    keyBind: 122
+  slideController:
+    abilityCooldown: 0
+    keyBind: 0
+  rollController:
+    abilityCooldown: 0
+    keyBind: 0
 --- !u!61 &693144919
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1784,7 +1800,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 693144917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21099346b2357394282ca8916f1922bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 13137c486ee96b34c84c69e384af12f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
@@ -2888,10 +2904,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1147215935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c695cd903064b34c9bd052bab8b09ac, type: 3}
+  m_Script: {fileID: 11500000, guid: de239970660a8b5459691719bf8a37a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageAmount: 20
+  _damageAmount: 0
 --- !u!212 &1147215938
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3230,10 +3246,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1330431222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c695cd903064b34c9bd052bab8b09ac, type: 3}
+  m_Script: {fileID: 11500000, guid: de239970660a8b5459691719bf8a37a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageAmount: 10
+  _damageAmount: 0
 --- !u!60 &1330431225
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4462,10 +4478,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2003525032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c695cd903064b34c9bd052bab8b09ac, type: 3}
+  m_Script: {fileID: 11500000, guid: de239970660a8b5459691719bf8a37a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageAmount: 30
+  _damageAmount: 0
 --- !u!60 &2003525035
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6457,7 +6473,7 @@ GameObject:
   - component: {fileID: 2055744879}
   - component: {fileID: 2055744878}
   m_Layer: 0
-  m_Name: RunAttack
+  m_Name: SpinAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6487,10 +6503,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2055744876}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c695cd903064b34c9bd052bab8b09ac, type: 3}
+  m_Script: {fileID: 11500000, guid: de239970660a8b5459691719bf8a37a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageAmount: 20
+  _damageAmount: 0
 --- !u!60 &2055744879
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6705,6 +6721,18 @@ PrefabInstance:
     - target: {fileID: 7786858974437909340, guid: da11fa38b1c48cd42abc7774f84967e3, type: 3}
       propertyPath: m_BodyType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8947524976673336188, guid: da11fa38b1c48cd42abc7774f84967e3, type: 3}
+      propertyPath: _enemyStats.Speed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8947524976673336188, guid: da11fa38b1c48cd42abc7774f84967e3, type: 3}
+      propertyPath: _enemyStats.Health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8947524976673336188, guid: da11fa38b1c48cd42abc7774f84967e3, type: 3}
+      propertyPath: _enemyStats.RotationSpeed
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

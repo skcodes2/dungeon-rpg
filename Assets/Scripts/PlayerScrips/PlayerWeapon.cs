@@ -7,13 +7,13 @@ public class PlayerWeapon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
+
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
             // Get the EnemyMovement component from the collided enemy
             EnemyMovement enemyMovement = collision.gameObject.GetComponent<EnemyMovement>();
-            
+
             if (enemyMovement != null)
             {
                 // Apply damage to the enemy
@@ -29,4 +29,6 @@ public class PlayerWeapon : MonoBehaviour
             Debug.Log("Collision with non-enemy object: " + collision.gameObject.name);
         }
     }
+
+
 }
