@@ -137,10 +137,10 @@ TextureImporter:
       name: Torch Yellow R_0
       rect:
         serializedVersion: 2
-        x: 9
+        x: 0
         y: 0
-        width: 8
-        height: 13
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,10 +159,10 @@ TextureImporter:
       name: Torch Yellow R_1
       rect:
         serializedVersion: 2
-        x: 25
+        x: 16
         y: 0
-        width: 8
-        height: 15
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,10 +181,10 @@ TextureImporter:
       name: Torch Yellow R_2
       rect:
         serializedVersion: 2
-        x: 41
+        x: 32
         y: 0
-        width: 8
-        height: 14
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,10 +203,10 @@ TextureImporter:
       name: Torch Yellow R_3
       rect:
         serializedVersion: 2
-        x: 57
+        x: 48
         y: 0
-        width: 8
-        height: 14
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,10 +225,10 @@ TextureImporter:
       name: Torch Yellow R_4
       rect:
         serializedVersion: 2
-        x: 73
+        x: 64
         y: 0
-        width: 8
-        height: 13
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,10 +247,10 @@ TextureImporter:
       name: Torch Yellow R_5
       rect:
         serializedVersion: 2
-        x: 89
+        x: 80
         y: 0
-        width: 8
-        height: 15
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -269,10 +269,10 @@ TextureImporter:
       name: Torch Yellow R_6
       rect:
         serializedVersion: 2
-        x: 105
+        x: 96
         y: 0
-        width: 8
-        height: 15
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -291,10 +291,10 @@ TextureImporter:
       name: Torch Yellow R_7
       rect:
         serializedVersion: 2
-        x: 121
+        x: 112
         y: 0
-        width: 7
-        height: 14
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,7 +313,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9cb7ce527f940b8479e6c18defbd5fd3
     internalID: 0
     vertices: []
     indices: 
