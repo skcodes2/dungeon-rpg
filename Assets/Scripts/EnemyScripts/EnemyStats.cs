@@ -20,7 +20,7 @@ public class EnemyStats
     public void TakeDamage(float amount, EnemyMovement enemyMovement)
     {
         Health -= amount;
-        
+
         if (Health <= 0)
         {
             enemyMovement.Die();
@@ -37,5 +37,14 @@ public class EnemyStats
         // Handle enemy death (e.g., play animation, destroy game object, etc.)
         // This method can be expanded or overridden in a derived class if needed
         Debug.Log("Enemy died");
+    }
+
+    public void StopEnemyMovement()
+    {
+        Speed = 0;
+    }
+    public void ResumeEnemyMovement()
+    {
+        Speed = 2;
     }
 }
