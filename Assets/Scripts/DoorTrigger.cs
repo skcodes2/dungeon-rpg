@@ -1,10 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class DoorTrigger : MonoBehaviour
 {
     public string sceneToLoad;  // Scene name to load
     public string spawnPointTag; // The tag of the spawn point in the next scene
+
+    [SerializeField]
+    private List<DialogueTrigger> dialogueTriggers;
 
     private void Start()
     {
@@ -25,6 +29,8 @@ public class DoorTrigger : MonoBehaviour
             PlayerPrefs.SetString("LastSpawnPoint", spawnPointTag); // Save spawn point
             PlayerPrefs.Save(); // Ensure it's written immediately
             SceneManager.LoadScene(sceneToLoad); // Load the next scene
+
+
         }
     }
 }

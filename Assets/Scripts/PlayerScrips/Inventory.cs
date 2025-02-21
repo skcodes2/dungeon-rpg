@@ -5,6 +5,9 @@ public class Inventory : MonoBehaviour
 {
     private static Inventory _instance;
     public static Inventory Instance
+
+
+
     {
         get
         {
@@ -21,9 +24,12 @@ public class Inventory : MonoBehaviour
             return _instance;
         }
     }
-
+    [SerializeField]
+    private List<DialogueTrigger> dialogueTriggers; // List of DialogueTriggers
     public List<string> items = new List<string>();
     public int coins = 0;
+
+
 
     void Awake()
     {
@@ -36,10 +42,16 @@ public class Inventory : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+
     }
 
     public void AddCoins(int amount)
     {
+        if (coins == 0)
+        {
+            DialogueManager.TriggerDialogue("FirstCoin", dialogueTriggers);
+        }
         coins += amount;
         print("Coins: " + coins);
     }
@@ -62,4 +74,7 @@ public class Inventory : MonoBehaviour
     {
         items.Remove(item);
     }
+
+
+
 }

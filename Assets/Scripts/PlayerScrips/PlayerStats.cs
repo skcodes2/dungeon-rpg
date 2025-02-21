@@ -25,6 +25,8 @@ public class PlayerStats : MonoBehaviour
     public float walkSpeed = 2f;
     public float runSpeed = 4f;
 
+    public float baseDamage = 5f;
+
     void Awake()
     {
         if (_instance == null)
@@ -67,5 +69,17 @@ public class PlayerStats : MonoBehaviour
         runSpeed -= amount;
     }
 
-    
+    public void StopPlayer()
+    {
+        walkSpeed = 0f;
+        runSpeed = 0f;
+    }
+
+    public void ResumePlayer()
+    {
+        walkSpeed = 2f;
+        runSpeed = 4f;
+    }
+
+
 }

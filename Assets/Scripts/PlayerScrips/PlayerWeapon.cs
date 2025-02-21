@@ -17,7 +17,7 @@ public class PlayerWeapon : MonoBehaviour
             if (enemyMovement != null)
             {
                 // Apply damage to the enemy
-                enemyMovement.TakeDamage(_damageAmount);
+                enemyMovement.TakeDamage(_damageAmount + PlayerStats.Instance.baseDamage);
             }
             else
             {
