@@ -141,7 +141,8 @@ PlayerSettings:
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
   bundleVersion: 1.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -673,11 +674,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 8ab61f8e-87e1-4631-baef-69e814da426e
+  cloudProjectId: 997941ad-9bc4-4f38-ba6d-1f9895ba9fdf
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: dungeon-rpg
-  organizationId: sabikahlon7345
+  projectName: MadCowGame
+  organizationId: echao8
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

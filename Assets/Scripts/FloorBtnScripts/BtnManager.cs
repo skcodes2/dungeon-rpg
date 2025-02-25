@@ -8,7 +8,7 @@ public class ButtonManager : MonoBehaviour
     private BoxCollider2D stairsCollider;
     private SpriteRenderer stairsRenderer;
 
-    public List<DialogueTrigger> dialogueTriggers; // Assign in the Inspector
+    // public List<DialogueTrigger> dialogueTriggers; // Assign in the Inspector
 
     public Sprite stairsSprite; // Assign the staircase sprite in Inspector
 
@@ -50,7 +50,7 @@ public class ButtonManager : MonoBehaviour
         {
             stairsRenderer.enabled = true; // Make stairs visible
             stairsRenderer.sprite = stairsSprite;
-            DialogueManager.TriggerDialogue("ShowStairs", dialogueTriggers); // Trigger dialogue
+            // DialogueManager.TriggerDialogue("ShowStairs", dialogueTriggers); // Trigger dialogue
         }
 
         if (stairsCollider != null)

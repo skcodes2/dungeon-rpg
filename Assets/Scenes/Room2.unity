@@ -497,7 +497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &165915572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1344,7 +1344,7 @@ Transform:
   m_GameObject: {fileID: 311645136}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.6343088, y: 1.9785999, z: -10}
+  m_LocalPosition: {x: -3.6351337, y: 1.9785999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1640,7 +1640,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496246091}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -5111,7 +5111,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060461937}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 524f2631e2b160c44b6eb34fa1702d61, type: 3}
   m_Name: 
@@ -5546,7 +5546,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1369323005}
   - component: {fileID: 1369323006}
-  - component: {fileID: 1369323007}
   m_Layer: 0
   m_Name: BtnManager
   m_TagString: Untagged
@@ -5582,26 +5581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secretStairs: {fileID: 496246091}
-  dialogueTriggers:
-  - {fileID: 1369323007}
   stairsSprite: {fileID: -125871371, guid: 804a460eacb736e4c901d13c60aab843, type: 3}
---- !u!114 &1369323007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369323003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 463f2023c747eea4fafc60b86eec71c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerID: ShowStairs
-  dialogue:
-    name: Sir Knight
-    sentences:
-    - Where could these stairs lead to
 --- !u!1 &1539330239
 GameObject:
   m_ObjectHideFlags: 0

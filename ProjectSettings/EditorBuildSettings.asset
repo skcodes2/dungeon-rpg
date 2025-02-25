@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Room2.unity
     guid: a83fff03472a72d4da4d054189ee8cb5
+  - enabled: 1
+    path: Assets/Scenes/TreasureRoom.unity
+    guid: 24d6e12e0de49314183aa6c23df0db0a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
