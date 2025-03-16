@@ -5,9 +5,6 @@ public class Inventory : MonoBehaviour
 {
     private static Inventory _instance;
     public static Inventory Instance
-
-
-
     {
         get
         {
@@ -26,8 +23,47 @@ public class Inventory : MonoBehaviour
     }
     [SerializeField]
     private List<DialogueTrigger> dialogueTriggers; // List of DialogueTriggers
-    public List<string> items = new List<string>();
-    public int coins = 0;
+
+    public int coins = 100;
+
+    private SkillsTreeButton[] selectedAbilities = new SkillsTreeButton[4];
+
+    //special-0 basic2-1 basic1-2 movement-3
+    public void AddSelectedAbility(SkillsTreeButton ability, string name)
+    {
+        if (name == "roll" || name == "slide")
+        {
+            selectedAbilities[3] = ability;
+        }
+        else if (name == "swipe" || name == "slash")
+        {
+            selectedAbilities[1] = ability;
+        }
+        else if (name == "pummel" || name == "kick")
+        {
+            selectedAbilities[2] = ability;
+        }
+        else if (name == "slam" || name == "spin")
+        {
+            selectedAbilities[0] = ability;
+        }
+    }
+
+    public bool ContainsAbility(string name)
+    {
+        for (int i = 0; i < selectedAbilities.Length; i++)
+        {
+            if (selectedAbilities[i] == null)
+            {
+                continue;
+            }
+            if (selectedAbilities[i].getName() == name)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 
@@ -44,6 +80,11 @@ public class Inventory : MonoBehaviour
         }
 
 
+    }
+
+    public int getCoins()
+    {
+        return coins;
     }
 
     public void AddCoins(int amount)
@@ -65,15 +106,6 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AddItem(string item)
-    {
-        items.Add(item);
-    }
-
-    public void RemoveItem(string item)
-    {
-        items.Remove(item);
-    }
 
 
 
