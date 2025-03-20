@@ -1,181 +1,103 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField]
-    private EnemyStats _enemyStats; // Reference to the EnemyStats class
+    [SerializeField] 
+    private Transform target;  // Reference to the target (player)
+    
+    [SerializeField] 
+    private float speed = 3.5f;  // Control speed of the enemy
+    
+    [SerializeField] 
+    private EnemyStats _enemyStats;  // Reference to the EnemyStats class
+    
+    private NavMeshAgent agent;
+    private Animator animator;  // Reference to the Animator component
+    
+    [SerializeField] 
+    private float detectionRange = 5f;  // The range at which the enemy starts following the player
 
-    [SerializeField]
-    private float _screenBorder; // Distance from screen borders to change direction
+    private bool isPlayerInRange = false;  // Track if the player is within detection range
 
-    [SerializeField]
-    private float _obstacleCheckCircleRadius; // Radius for obstacle detection
-
-    [SerializeField]
-    private float _obstacleCheckDistance; // Distance ahead for obstacle checks
-
-    [SerializeField]
-    private LayerMask _obstacleLayerMask; // Layer mask for detecting obstacles
-
-    private Rigidbody2D _rigidbody; // Reference to Rigidbody2D for movement
-    private PlayerDetection _playerAwarenessController; // Reference to player detection script
-    private Vector2 _targetDirection; // Current movement direction
-    private float _changeDirectionCooldown; // Cooldown timer for random direction changes
-    private Camera _camera; // Reference to the camera
-    private RaycastHit2D[] _obstacleCollisions; // Array to store obstacle collisions
-    private float _obstacleAvoidanceCooldown; // Cooldown timer for avoiding obstacles
-    private Vector2 _obstacleAvoidanceTargetDirection; // Direction to avoid obstacles
-
-    private void Awake()
+    private void Start()
     {
-        // Initialize references
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _playerAwarenessController = GetComponent<PlayerDetection>();
-        _targetDirection = transform.up; // Initially facing up
-        _camera = Camera.main;
-        _obstacleCollisions = new RaycastHit2D[10]; // Array to store obstacle collisions
+        agent = GetComponent<NavMeshAgent>(); 
+        animator = GetComponent<Animator>();  // Get the Animator component
+        
+        agent.updateRotation = false; 
+        agent.updateUpAxis = false;
+
+        // Set the initial speed of the agent
+        agent.speed = speed;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        // If not aware of the player, stay idle
-        if (!_playerAwarenessController.AwareOfPlayer)
+        // Check if the player is within detection range
+        float distanceToPlayer = Vector3.Distance(transform.position, target.position);
+        if (distanceToPlayer <= detectionRange)
         {
-            _rigidbody.linearVelocity = Vector2.zero; // Stop movement
-            return;
-        }
-
-        // If aware of the player, update movement logic
-        UpdateTargetDirection();
-        RotateTowardsTarget();
-        SetVelocity();
-    }
-
-    private void UpdateTargetDirection()
-    {
-        // Determine the target direction based on different factors
-        if (_playerAwarenessController.AwareOfPlayer)
-        {
-            // Track and move towards the player if detected
-            _targetDirection = _playerAwarenessController.DirectionToPlayer;
+            // Player is within range, start following
+            isPlayerInRange = true;
         }
         else
         {
-            // Only change direction randomly if not aware of the player
-            HandleRandomDirectionChange();
+            // Player is out of range, stop following
+            isPlayerInRange = false;
         }
 
-        HandleObstacles();  // Handle obstacles by changing direction
-        HandleEnemyOffScreen();  // Ensure enemy stays within screen bounds
-    }
-
-    private void HandleRandomDirectionChange()
-    {
-        // Cooldown timer for random direction change
-        _changeDirectionCooldown -= Time.deltaTime;
-
-        if (_changeDirectionCooldown <= 0)
+        // If the player is in range, update the destination and handle movement
+        if (isPlayerInRange)
         {
-            // Apply a random angle to change the movement direction
-            float angleChange = Random.Range(-90f, 90f);
-            Quaternion rotation = Quaternion.AngleAxis(angleChange, transform.forward);
-            _targetDirection = rotation * _targetDirection;
-
-            // Reset the cooldown timer for next random change
-            _changeDirectionCooldown = Random.Range(1f, 5f);
+            agent.SetDestination(target.position);
+            HandleMovementAnimations();
         }
-    }
-
-    private void HandleObstacles()
-    {
-        // Cooldown for obstacle avoidance
-        _obstacleAvoidanceCooldown -= Time.deltaTime;
-
-        // Set up the contact filter to detect obstacles in the specified layer
-        var contactFilter = new ContactFilter2D();
-        contactFilter.SetLayerMask(_obstacleLayerMask);
-
-        // Cast a circle to detect obstacles ahead of the enemy
-        int numberOfCollisions = Physics2D.CircleCast(
-            transform.position,
-            _obstacleCheckCircleRadius,
-            transform.up,
-            contactFilter,
-            _obstacleCollisions,
-            _obstacleCheckDistance);
-
-        // Loop through all detected obstacles
-        for (int index = 0; index < numberOfCollisions; index++)
+        else
         {
-            var obstacleCollision = _obstacleCollisions[index];
-
-            // Skip self-collisions
-            if (obstacleCollision.collider.gameObject == gameObject)
-            {
-                continue;
-            }
-
-            // If the cooldown is over, avoid the obstacle
-            if (_obstacleAvoidanceCooldown <= 0)
-            {
-                _obstacleAvoidanceTargetDirection = obstacleCollision.normal; // Get the direction to avoid the obstacle
-                _obstacleAvoidanceCooldown = 0.5f;  // Reset cooldown for next avoidance
-            }
-
-            // Rotate the enemy to avoid the obstacle
-            var targetRotation = Quaternion.LookRotation(transform.forward, _obstacleAvoidanceTargetDirection);
-            var rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _enemyStats.RotationSpeed * Time.deltaTime);
-
-            _targetDirection = rotation * Vector2.up; // Update target direction
-            break; // Only avoid one obstacle at a time
+            // If the player is out of range, stop the enemy
+            StopEnemy();
         }
     }
 
-    private void HandleEnemyOffScreen()
+    private void HandleMovementAnimations()
     {
-        // Get the screen position of the enemy
-        Vector2 screenPosition = _camera.WorldToScreenPoint(transform.position);
-
-        // Change direction if the enemy is near screen borders
-        if ((screenPosition.x < _screenBorder && _targetDirection.x < 0) ||
-            (screenPosition.x > _camera.pixelWidth - _screenBorder && _targetDirection.x > 0))
+        // Handle movement animation
+        if (agent.velocity.sqrMagnitude > 0.1f)  // If the enemy is moving
         {
-            _targetDirection = new Vector2(-_targetDirection.x, _targetDirection.y);  // Reverse X direction
+            animator.SetBool("IsMoving", true);  // Set walking animation
         }
-
-        if ((screenPosition.y < _screenBorder && _targetDirection.y < 0) ||
-            (screenPosition.y > _camera.pixelHeight - _screenBorder && _targetDirection.y > 0))
+        else
         {
-            _targetDirection = new Vector2(_targetDirection.x, -_targetDirection.y);  // Reverse Y direction
+            animator.SetBool("IsMoving", false);  // Set idle animation
         }
     }
 
-    private void RotateTowardsTarget()
+    // Method to update the speed dynamically
+    public void SetSpeed(float newSpeed)
     {
-        // Smoothly rotate the enemy towards the target direction
-        Quaternion targetRotation = Quaternion.LookRotation(transform.forward, _targetDirection);
-        Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _enemyStats.RotationSpeed * Time.deltaTime);
-
-        _rigidbody.SetRotation(rotation); // Apply the rotation to the Rigidbody2D
+        speed = newSpeed;
+        agent.speed = newSpeed;  // Apply the speed change to the NavMeshAgent
     }
 
-    private void SetVelocity()
-    {
-        // Move the enemy forward based on its current direction
-        _rigidbody.linearVelocity = transform.up * _enemyStats.Speed;
-    }
+    // Method to handle taking damage
     public void TakeDamage(float amount)
     {
         _enemyStats.TakeDamage(amount, this);
         print("Enemy health: " + _enemyStats.Health);
     }
 
+    // Handle enemy death
     public void Die()
     {
-        // Handle enemy death (e.g., play animation, destroy game object, etc.)
-        Destroy(gameObject);
+        animator.SetTrigger("Die");  // Trigger death animation (make sure to have a death animation in the Animator)
+        Destroy(gameObject, 2f);  // Destroy after animation completes (you can adjust the delay)
     }
-   
+
+    private void StopEnemy()
+    {
+        // Stop the enemy's movement
+        agent.SetDestination(transform.position);  // Stay in place (or implement other logic for idle)
+        animator.SetBool("IsMoving", false);  // Set idle animation
+    }
 }

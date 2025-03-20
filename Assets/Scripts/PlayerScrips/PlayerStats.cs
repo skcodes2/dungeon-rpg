@@ -25,7 +25,12 @@ public class PlayerStats : MonoBehaviour
     public float walkSpeed = 2f;
     public float runSpeed = 4f;
 
+    public float tmpWalkSpeed = 0f;
+    public float tmpRunSpeed = 0f;
+
     public float baseDamage = 5f;
+
+    public float armour = 0f;
 
     void Awake()
     {
@@ -50,6 +55,11 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void IncreaseArmour(float amount)
+    {
+        armour += amount;
+    }
+
     public void Heal(float amount)
     {
         health += amount;
@@ -71,14 +81,19 @@ public class PlayerStats : MonoBehaviour
 
     public void StopPlayer()
     {
+        tmpRunSpeed = runSpeed;
+        tmpWalkSpeed = walkSpeed;
         walkSpeed = 0f;
         runSpeed = 0f;
+
     }
 
     public void ResumePlayer()
     {
-        walkSpeed = 2f;
-        runSpeed = 4f;
+        walkSpeed = tmpWalkSpeed;
+        runSpeed = tmpRunSpeed;
+        tmpWalkSpeed = 0f;
+        tmpRunSpeed = 0f;
     }
 
 

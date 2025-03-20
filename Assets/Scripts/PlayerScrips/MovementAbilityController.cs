@@ -9,18 +9,23 @@ public class MovementAbilityController : AbilityController
 
     private MonoBehaviour coroutineRunner;
 
+    private Inventory inventory;
+
     public MovementAbilityController(MonoBehaviour runner, Animator anim, KeyCode keyBind, float abilityDuration, float abilityCooldown, float additionalSpeed)
         : base(anim, keyBind, abilityDuration, abilityCooldown)
     {
         this.additionalSpeed = additionalSpeed;
         this.playerStats = PlayerStats.Instance;
         this.coroutineRunner = runner;
+        this.inventory = Inventory.Instance;
     }
 
     public override void Update()
     {
+
         base.UpdateCooldownTimer();
         CheckKeyBoardInput();
+
     }
 
     protected IEnumerator CheckDurationTimer()

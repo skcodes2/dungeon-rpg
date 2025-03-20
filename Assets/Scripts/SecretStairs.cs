@@ -9,7 +9,7 @@ public class SecretStairs : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        {
+        {  
             playerIsNearby = true; // Player is near the stairs
             Debug.Log("Press 'E' to enter the Treasure Room.");
         }
