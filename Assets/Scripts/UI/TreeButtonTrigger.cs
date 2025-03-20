@@ -57,6 +57,7 @@ public class ButtonTrigger : MonoBehaviour
 
     private void InitializeUI()
     {
+
         uiDoc = GetComponent<UIDocument>();
         buttons = uiDoc.rootVisualElement.Query<Button>().ToList();
         print(buttons.Count);

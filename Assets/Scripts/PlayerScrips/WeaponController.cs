@@ -15,28 +15,10 @@ public class WeaponController : AbilityController
 
     public override void Update()
     {
-        string abilityName = "";
-        if (base.ability.name == "SpinAttack")
-        {
-            abilityName = "spin";
-        }
-        else if (base.ability.name == "SwordSlam")
-        {
-            abilityName = "slam";
-        }
 
-        else
-        {
-            abilityName = base.ability.name.ToLower();
-        }
-
-        if (inventory.ContainsAbility(abilityName))
-        {
-            CheckDurationTimer();
-            base.UpdateCooldownTimer();
-            CheckKeyBoardInput();
-        }
-
+        CheckDurationTimer();
+        base.UpdateCooldownTimer();
+        CheckKeyBoardInput();
 
     }
 

@@ -22,13 +22,10 @@ public class MovementAbilityController : AbilityController
 
     public override void Update()
     {
-        string abilityName = base.ability.name.ToLower();
 
-        if (inventory.ContainsAbility(abilityName))
-        {
-            base.UpdateCooldownTimer();
-            CheckKeyBoardInput();
-        }
+        base.UpdateCooldownTimer();
+        CheckKeyBoardInput();
+
     }
 
     protected IEnumerator CheckDurationTimer()
