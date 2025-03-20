@@ -86,6 +86,3 @@ crashlytics-build.properties
 *_bak*.hipnc
 
 *.DS_Store
-
-# Ignore all .meta files
-*.meta
