@@ -1673,7 +1673,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.85566, y: 1.9791499, z: -10}
+  m_LocalPosition: {x: -3.6340878, y: 1.9785999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2215,7 +2215,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueTriggers:
   - {fileID: 693144926}
-  coins: 0
 --- !u!1 &727328191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2682,7 +2681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4, y: -174.9}
+  m_AnchoredPosition: {x: 4, y: -174.89996}
   m_SizeDelta: {x: -82.31, y: -356.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &961820914
@@ -2878,7 +2877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1009195051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5597,14 +5596,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a237d1f3b3d1f4cb2014c07c57151a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyStats:
-    Speed: 0
-    RotationSpeed: 0
-    Health: 0
-    Damage: 0
-  attackCooldown: 1.5
-  animator: {fileID: 0}
-  canAttack: 1
 --- !u!1 &1576490183
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private List<DialogueTrigger> dialogueTriggers; // List of DialogueTriggers
 
-    public int coins = 100;
+    private int coins = 150;
 
     private SkillsTreeButton[] selectedAbilities = new SkillsTreeButton[4];
 
@@ -33,31 +33,39 @@ public class Inventory : MonoBehaviour
     {
         if (name == "roll" || name == "slide")
         {
-            selectedAbilities[3] = ability;
+            this.selectedAbilities[3] = ability;
         }
         else if (name == "swipe" || name == "slash")
         {
-            selectedAbilities[1] = ability;
+            this.selectedAbilities[1] = ability;
         }
         else if (name == "pummel" || name == "kick")
         {
-            selectedAbilities[2] = ability;
+            this.selectedAbilities[2] = ability;
         }
         else if (name == "slam" || name == "spin")
         {
-            selectedAbilities[0] = ability;
+            this.selectedAbilities[0] = ability;
+        }
+        for (int i = 0; i < this.selectedAbilities.Length; i++)
+        {
+            if (this.selectedAbilities[i] == null)
+            {
+                continue;
+            }
+            Debug.Log("Selected Ability Added: " + this.selectedAbilities[i].getName());
         }
     }
 
     public bool ContainsAbility(string name)
     {
-        for (int i = 0; i < selectedAbilities.Length; i++)
+        for (int i = 0; i < this.selectedAbilities.Length; i++)
         {
-            if (selectedAbilities[i] == null)
+            if (this.selectedAbilities[i] == null)
             {
                 continue;
             }
-            if (selectedAbilities[i].getName() == name)
+            if (this.selectedAbilities[i].getName() == name)
             {
                 return true;
             }
@@ -84,29 +92,18 @@ public class Inventory : MonoBehaviour
 
     public int getCoins()
     {
-        return coins;
+        return this.coins;
     }
 
-    public void AddCoins(int amount)
+    public void AddCoins(int coins)
     {
-        if (coins == 0)
-        {
-            DialogueManager.TriggerDialogue("FirstCoin", dialogueTriggers);
-        }
-        coins += amount;
-        print("Coins: " + coins);
+        this.coins += coins;
     }
 
-    public void RemoveCoins(int amount)
+    public void RemoveCoins(int coins)
     {
-        coins -= amount;
-        if (coins < 0)
-        {
-            coins = 0;
-        }
+        this.coins -= coins;
     }
-
-
 
 
 }
