@@ -1673,7 +1673,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.85566, y: 1.9791499, z: -10}
+  m_LocalPosition: {x: -3.9470475, y: 1.97838, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2043,7 +2043,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 100
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -5512,8 +5512,8 @@ MonoBehaviour:
     Health: 100
     Damage: 0
   playerDetection: {fileID: 1573424582}
-  verticalRangeAbove: 1.6
-  verticalRangeBelow: 0.9
+  verticalRangeAbove: 1.5
+  verticalRangeBelow: 1
 --- !u!114 &1573424582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5597,14 +5597,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a237d1f3b3d1f4cb2014c07c57151a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyStats:
-    Speed: 0
-    RotationSpeed: 0
-    Health: 0
-    Damage: 0
-  attackCooldown: 1.5
-  animator: {fileID: 0}
-  canAttack: 1
 --- !u!1 &1576490183
 GameObject:
   m_ObjectHideFlags: 0

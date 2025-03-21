@@ -48,6 +48,7 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
+        print("Player Health:" + health);
         if (health <= 0)
         {
             health = 0;
