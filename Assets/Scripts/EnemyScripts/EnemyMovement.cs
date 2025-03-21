@@ -3,76 +3,75 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private Transform target;  // Reference to the player
-    [SerializeField] private float speed = 3.5f;  // Speed of the enemy
-    [SerializeField] private float attackRange = 1.5f;  // Range for attacking the player
-    [SerializeField] private EnemyStats _enemyStats;  // Reference to the EnemyStats
-    [SerializeField] private PlayerDetection playerDetection;  // Reference to the PlayerDetection
+    [SerializeField] private Transform target;  
+    [SerializeField] private float speed = 3.5f;  
+    [SerializeField] private float attackRange = 1.5f;
+    [SerializeField] private float damage = 10f;   
+    [SerializeField] private EnemyStats _enemyStats;  
+    [SerializeField] private PlayerDetection playerDetection;  
     
-    [SerializeField] private float verticalRangeAbove = 1.6f;  // Tolerance for when the player is above
-    [SerializeField] private float verticalRangeBelow = 0.9f;  // Tolerance for when the player is below
+    [SerializeField] private float verticalRangeAbove = 1.5f;  
+    [SerializeField] private float verticalRangeBelow = 1.0f;  
 
     private NavMeshAgent agent;
     private Animator animator;
+    private bool isAttacking = false; // Track attack state
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        playerDetection = GetComponent<PlayerDetection>();  // Get the PlayerDetection script
+        playerDetection = GetComponent<PlayerDetection>();  
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        agent.speed = speed; // Set the initial speed of the agent
+        agent.speed = speed; 
     }
 
     private void Update()
     {
-        // Check if the attack animation is still playing
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        // If the attack animation is still playing, don't do anything else
-        if (stateInfo.IsName("Attack") && stateInfo.normalizedTime < 1f)
+        // Reset attack state if animation is done
+        if (stateInfo.IsName("Attack") && stateInfo.normalizedTime >= 1f)
         {
-            return;  // Exit if the attack animation is still running
+            isAttacking = false;
         }
-        else
-        {
-            animator.SetBool("IsAttacking", false);
-            
-            if (playerDetection.AwareOfPlayer)
-            {
-                // Player is in range to follow or attack
-                float distanceToPlayer = Vector3.Distance(new Vector3(transform.position.x, 0f, transform.position.z), new Vector3(target.position.x, 0f, target.position.z));
-                float verticalDistanceToPlayer = Mathf.Abs(transform.position.y - target.position.y); // Check vertical distance
 
-                // Check if the player is within horizontal attack range and the appropriate vertical range
-                if (distanceToPlayer <= attackRange)
+        if (isAttacking)
+            return; // Skip movement logic while attacking
+
+        animator.SetBool("IsAttacking", false);
+        
+        if (playerDetection.AwareOfPlayer)
+        {
+            float distanceToPlayer = Vector3.Distance(new Vector3(transform.position.x, 0f, transform.position.z), 
+                                                    new Vector3(target.position.x, 0f, target.position.z));
+            float verticalDistanceToPlayer = Mathf.Abs(transform.position.y - target.position.y); 
+
+            if (distanceToPlayer <= attackRange)
+            {
+                if (target.position.y > transform.position.y && verticalDistanceToPlayer <= verticalRangeAbove ||
+                    target.position.y < transform.position.y && verticalDistanceToPlayer <= verticalRangeBelow)
                 {
-                    if (target.position.y > transform.position.y && verticalDistanceToPlayer <= verticalRangeAbove)  // Player is above
+                    if (!stateInfo.IsName("Attack")) // Prevent re-triggering attack mid-animation
                     {
                         AttackPlayer();
-                    }
-                    else if (target.position.y < transform.position.y && verticalDistanceToPlayer <= verticalRangeBelow)  // Player is below
-                    {
-                        AttackPlayer();
-                    }
-                    else
-                    {
-                        FollowPlayer();
                     }
                 }
                 else
                 {
-                    // Player is within detection range but not in attack range
                     FollowPlayer();
                 }
             }
             else
             {
-                // Player is out of detection range, stop movement
-                StopEnemy();
+                FollowPlayer();
             }
+        }
+        else
+        {
+            StopEnemy();
         }
     }
 
@@ -84,54 +83,55 @@ public class EnemyMovement : MonoBehaviour
 
     private void HandleMovementAnimations()
     {
-        // Only handle movement animations if the attack animation is NOT playing
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        if (!stateInfo.IsName("Attack"))  // Check if the attack animation is NOT playing
+        if (!stateInfo.IsName("Attack"))  
         {
-            if (agent.velocity.sqrMagnitude > 0.1f)
-            {
-                animator.SetBool("IsMoving", true);  // Set walking animation
-            }
-            else
-            {
-                animator.SetBool("IsMoving", false);  // Set idle animation
-            }
+            animator.SetBool("IsMoving", agent.velocity.sqrMagnitude > 0.1f);
         }
     }
 
     private void AttackPlayer()
     {
-        animator.SetBool("IsAttacking", true);
-        print("Attack");
-        // Stop movement and trigger attack animation
-        agent.SetDestination(transform.position);  // Stop movement
+        if (!isAttacking) 
+        {
+            isAttacking = true;
+            animator.SetBool("IsAttacking", true);
+            print("Attack");
+            agent.SetDestination(transform.position);  
 
-        // Stop any other animation instantly by crossfading to the attack animation
-        animator.CrossFade("Attack", 0f, 0); // Crossfade with 0 time to instantly switch to Attack animation
+            // Cancel current animation and directly play attack animation
+            animator.Play("Attack", 0, 0f); // Play attack immediately, canceling other animations
+
+            // Apply damage to the player when attack animation is triggered
+            if (target != null)
+            {
+                PlayerStats.Instance.TakeDamage(damage); // Call TakeDamage on PlayerStats
+            }
+        }
     }
 
     private void StopEnemy()
     {
-        agent.SetDestination(transform.position);  // Stay in place
-        animator.SetBool("IsMoving", false);  // Set idle animation
+        agent.SetDestination(transform.position);  
+        animator.SetBool("IsMoving", false);  
     }
+
 
     public void TakeDamage(float amount)
     {
-        _enemyStats.TakeDamage(amount, this);  // Take damage and pass EnemyMovement as a parameter
+        _enemyStats.TakeDamage(amount, this);  
         print("Enemy health: " + _enemyStats.Health);
     }
 
     public void Die()
     {
-        animator.SetTrigger("Die");  // Trigger death animation
-        Destroy(gameObject, 2f);  // Destroy after animation completes (adjust delay as needed)
+        animator.SetTrigger("Die");  
+        Destroy(gameObject, 2f);  
     }
 
-    // Optional: Method to dynamically change enemy speed
     public void SetSpeed(float newSpeed)
     {
         speed = newSpeed;
-        agent.speed = newSpeed;  // Apply the speed change to the NavMeshAgent
+        agent.speed = newSpeed;  
     }
 }
