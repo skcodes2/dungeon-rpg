@@ -123,10 +123,13 @@ public class EnemyMovement : MonoBehaviour
         _enemyStats.TakeDamage(amount, this);
         print($"Enemy took {amount} damage. Health left: {_enemyStats.Health}");
 
+        // Flicker effect (change color to red)
+        StartCoroutine(FlickerRed());
+
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            // Directly use the player's facing direction for knockback
+            // Apply knockback based on player's facing direction
             Vector2 knockbackVector = playerFacingDirection.normalized * knockbackForce;
 
             print($"Player's facing direction: {playerFacingDirection}");
@@ -144,6 +147,23 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    private IEnumerator FlickerRed()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            // Change color to red
+            spriteRenderer.color = Color.red;
+
+            // Wait for a short duration (flicker effect)
+            yield return new WaitForSeconds(0.1f);
+
+            // Change back to original color
+            spriteRenderer.color = Color.white;
+        }
+    }
+
+
     private IEnumerator ReduceKnockback(Rigidbody2D rb)
     {
         while (rb.linearVelocity.magnitude > 0.1f) // Stop when almost still
@@ -155,18 +175,22 @@ public class EnemyMovement : MonoBehaviour
     }
 
 
-
-
-
-
-
-
-
     public void Die()
     {
-        animator.SetTrigger("Die");  
-        Destroy(gameObject, 2f);  
+        // Stop the NavMeshAgent from moving and tracking the player
+        if (agent != null)
+        {
+            agent.isStopped = true;   // Stop the agent from moving
+            agent.velocity = Vector3.zero; // Reset the velocity
+        }
+
+        // Trigger the death animation
+        animator.SetTrigger("Die");
+
+        // Destroy the enemy after the death animation has finished (10 seconds here)
+        Destroy(gameObject, 1.6f);
     }
+
 
     public void SetSpeed(float newSpeed)
     {
