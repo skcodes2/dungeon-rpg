@@ -105,7 +105,7 @@ public class Inventory : MonoBehaviour
         Debug.Log("Coins: " + coins);
     }
 
-    public void RemoveCoins(int coins)
+    public void RemoveCoins(int amount)
     {
         this.coins -= amount;
         if (coins < 0)
