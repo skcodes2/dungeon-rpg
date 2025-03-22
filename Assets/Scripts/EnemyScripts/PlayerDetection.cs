@@ -11,8 +11,7 @@ public class PlayerDetection : MonoBehaviour
     public Vector2 DirectionToPlayer { get; private set; }
 
     // The detection radius within which the player is noticed
-    [SerializeField]
-    private float _playerAwarenessDistance;
+    [SerializeField] private float _playerAwarenessDistance;
 
     // Cached reference to the player's transform
     private Transform _player;

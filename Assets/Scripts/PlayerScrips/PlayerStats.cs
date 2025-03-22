@@ -23,7 +23,7 @@ public class PlayerStats : MonoBehaviour
 
     public float health = 100f;
     public float walkSpeed = 2f;
-    public float runSpeed = 4f;
+    public float runSpeed;
 
     public float tmpWalkSpeed = 0f;
     public float tmpRunSpeed = 0f;
@@ -57,11 +57,12 @@ public class PlayerStats : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        runSpeed = walkSpeed * 1.5f;
     }
 
     public void TakeDamage(float amount)
     {
-        health -= amount;
+        this.health -= amount;
 
         // Ensure healthBar is assigned before using it
         if (healthBar != null)
@@ -75,48 +76,48 @@ public class PlayerStats : MonoBehaviour
 
         if (health <= 0)
         {
-            health = 0;
+            this.health = 0;
             // Handle player death (e.g., call a method to handle death)
         }
     }
 
     public void IncreaseArmour(float amount)
     {
-        armour += amount;
+        this.armour += amount;
     }
 
     public void Heal(float amount)
     {
-        health += amount;
+        this.health += amount;
         if (health > 100f)
         {
-            health = 100f; // Cap health at 100
+            this.health = 100f; // Cap health at 100
         }
     }
 
     public void IncreaseSpeed(float amount)
     {
-        runSpeed += amount;
+        this.walkSpeed += amount;
     }
 
     public void DecreaseSpeed(float amount)
     {
-        runSpeed -= amount;
+        this.walkSpeed -= amount;
     }
 
     public void StopPlayer()
     {
-        tmpRunSpeed = runSpeed;
-        tmpWalkSpeed = walkSpeed;
-        walkSpeed = 0f;
-        runSpeed = 0f;
+        this.tmpRunSpeed = this.runSpeed;
+        this.tmpWalkSpeed = this.walkSpeed;
+        this.walkSpeed = 0f;
+        this.runSpeed = 0f;
     }
 
     public void ResumePlayer()
     {
-        walkSpeed = tmpWalkSpeed;
-        runSpeed = tmpRunSpeed;
-        tmpWalkSpeed = 0f;
-        tmpRunSpeed = 0f;
+        this.walkSpeed = this.tmpWalkSpeed;
+        this.runSpeed = this.tmpRunSpeed;
+        this.tmpWalkSpeed = 0f;
+        this.tmpRunSpeed = 0f;
     }
 }

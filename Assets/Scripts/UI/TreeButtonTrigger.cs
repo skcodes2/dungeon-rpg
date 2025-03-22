@@ -5,6 +5,11 @@ using UnityEngine.UIElements;
 public class ButtonTrigger : MonoBehaviour
 {
     private List<SkillsTreeButton> skillTreeButtons = new List<SkillsTreeButton>();
+
+    private Label healthLabel;
+    private Label damageLabel;
+    private Label speedLabel;
+    private Label armourLabel;
     private List<Button> buttons;
     private UIDocument uiDoc;
     private PlayerStats playerStats;
@@ -33,8 +38,8 @@ public class ButtonTrigger : MonoBehaviour
         // Speed Line
         SkillsTreeButton slide = new SkillsTreeButton(true, false, 20, "slide", null);
         SkillsTreeButton roll = new SkillsTreeButton(true, false, 15, "roll", slide);
-        SkillsTreeButton speed5 = new SkillsTreeButton(false, false, 10, "speed5", roll);
-        SkillsTreeButton speed3 = new SkillsTreeButton(false, true, 5, "speed3", speed5);
+        SkillsTreeButton speed3 = new SkillsTreeButton(false, false, 10, "speed3", roll);
+        SkillsTreeButton speed1 = new SkillsTreeButton(false, true, 5, "speed1", speed3);
 
         // Defense Line
         SkillsTreeButton spin = new SkillsTreeButton(true, false, 20, "spin", null);
@@ -50,19 +55,39 @@ public class ButtonTrigger : MonoBehaviour
 
         skillTreeButtons.AddRange(new List<SkillsTreeButton>
         {
-            pummel, atk10, atk5, atk1, slide, roll, speed5, speed3,
+            pummel, atk10, atk5, atk1, slide, roll, speed3, speed1,
             spin, slash, armour5, armour2, slam, swipe, hp25, hp20
         });
+
+
     }
 
     private void InitializeUI()
     {
-
-        uiDoc = GetComponent<UIDocument>();
-        buttons = uiDoc.rootVisualElement.Query<Button>().ToList();
-        print(buttons.Count);
         playerStats = PlayerStats.Instance;
         inventory = Inventory.Instance;
+        uiDoc = GetComponent<UIDocument>();
+        VisualElement root = uiDoc.rootVisualElement;
+        VisualElement rightSide = root.Q<VisualElement>("RightSide");
+        VisualElement stats = rightSide.Q<VisualElement>("Stats");
+
+        healthLabel = stats.Query<Label>("Health");
+
+        damageLabel = stats.Query<Label>("Attack");
+        speedLabel = stats.Query<Label>("Speed");
+        armourLabel = stats.Query<Label>("Armour");
+
+
+
+        healthLabel.text = playerStats.health.ToString();
+
+        damageLabel.text = playerStats.baseDamage.ToString();
+        speedLabel.text = playerStats.walkSpeed.ToString();
+        armourLabel.text = playerStats.armour.ToString();
+
+        buttons = root.Query<Button>().ToList();
+
+
     }
 
     private void RegisterButtonEvents()
@@ -71,11 +96,13 @@ public class ButtonTrigger : MonoBehaviour
         {
             btn.BringToFront();
             btn.RegisterCallback<ClickEvent>(OnClick);
+            print("Registered ClickEvent for button: " + btn.name);
         }
     }
 
     private void UnregisterButtonEvents()
     {
+        print("Unregistering button events");
         foreach (Button btn in buttons)
         {
             btn.UnregisterCallback<ClickEvent>(OnClick);
@@ -84,22 +111,36 @@ public class ButtonTrigger : MonoBehaviour
 
     private void OnClick(ClickEvent evt)
     {
-        print("Button clicked");
+
         Button clickedButton = evt.target as Button;
+
         if (clickedButton == null) return;
 
+
         SkillsTreeButton skillTreeButton = GetSkillTreeButton(clickedButton.name);
+
+
         if (skillTreeButton == null) return;
+
+        if (skillTreeButton.getNextButton() == null)
+        {
+            HandleAbilityClicked(skillTreeButton, null);
+            return;
+        }
+
 
         Button nextUXMLButton = GetNextButton(skillTreeButton.getNextButton()?.getName());
 
+
         if (!skillTreeButton.getIsActive() || inventory.getCoins() < skillTreeButton.getPrice())
         {
+            print("Not enough coins or button is inactive");
             return;
         }
 
         if (skillTreeButton.getIsAbilityUpgrade())
         {
+
             HandleAbilityClicked(skillTreeButton, nextUXMLButton);
         }
         else
@@ -110,8 +151,15 @@ public class ButtonTrigger : MonoBehaviour
 
     private void HandleAbilityClicked(SkillsTreeButton skillTreeButton, Button nextUXMLButton)
     {
-        if (!skillTreeButton.getIsPurchased())
+        if (nextUXMLButton == null && !skillTreeButton.getIsPurchased())
         {
+            inventory.RemoveCoins(skillTreeButton.getPrice());
+            skillTreeButton.setIsPurchased(true);
+        }
+
+        else if (!skillTreeButton.getIsPurchased())
+        {
+
             inventory.RemoveCoins(skillTreeButton.getPrice());
             skillTreeButton.setIsPurchased(true);
             UnlockNextButton(skillTreeButton, nextUXMLButton);
@@ -153,43 +201,52 @@ public class ButtonTrigger : MonoBehaviour
         {
             case "atk1":
                 playerStats.baseDamage += 1;
+                damageLabel.text = playerStats.baseDamage.ToString();
                 break;
             case "atk5":
                 playerStats.baseDamage += 5;
+                damageLabel.text = playerStats.baseDamage.ToString();
                 break;
             case "atk10":
                 playerStats.baseDamage += 10;
-                break;
-            case "speed5":
-                playerStats.walkSpeed += 3;
-                playerStats.runSpeed += 3;
+                damageLabel.text = playerStats.baseDamage.ToString();
                 break;
             case "speed3":
+                playerStats.walkSpeed += 3;
+                speedLabel.text = playerStats.walkSpeed.ToString();
+                break;
+            case "speed1":
                 playerStats.walkSpeed += 1;
-                playerStats.runSpeed += 1;
+                speedLabel.text = playerStats.walkSpeed.ToString();
                 break;
             case "armour2":
                 playerStats.armour += 2;
+                armourLabel.text = playerStats.armour.ToString();
                 break;
             case "armour5":
                 playerStats.armour += 5;
+                armourLabel.text = playerStats.armour.ToString();
                 break;
             case "hp25":
                 playerStats.health += 25;
+                healthLabel.text = playerStats.health.ToString();
                 break;
             case "hp20":
                 playerStats.health += 20;
+                healthLabel.text = playerStats.health.ToString();
                 break;
         }
     }
 
     private SkillsTreeButton GetSkillTreeButton(string name)
     {
+
         return skillTreeButtons.Find(skill => skill.getName() == name);
     }
 
     private Button GetNextButton(string name)
     {
+        print("Getting button: " + name);
         return buttons.Find(button => button.name == name);
     }
 }

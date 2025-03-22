@@ -1,103 +1,200 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] 
-    private Transform target;  // Reference to the target (player)
+    [SerializeField] private Transform target;  
+    [SerializeField] private float speed = 3.5f;  
+    [SerializeField] private float attackRange = 1.5f;
+    [SerializeField] private float damage = 10f;   
+    [SerializeField] private EnemyStats _enemyStats;  
+    [SerializeField] private PlayerDetection playerDetection;  
     
-    [SerializeField] 
-    private float speed = 3.5f;  // Control speed of the enemy
-    
-    [SerializeField] 
-    private EnemyStats _enemyStats;  // Reference to the EnemyStats class
-    
-    private NavMeshAgent agent;
-    private Animator animator;  // Reference to the Animator component
-    
-    [SerializeField] 
-    private float detectionRange = 5f;  // The range at which the enemy starts following the player
+    [SerializeField] private float verticalRangeAbove = 1.5f;  
+    [SerializeField] private float verticalRangeBelow = 1.0f;  
 
-    private bool isPlayerInRange = false;  // Track if the player is within detection range
+    private NavMeshAgent agent;
+    private Animator animator;
+    private bool isAttacking = false; // Track attack state
 
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>(); 
-        animator = GetComponent<Animator>();  // Get the Animator component
-        
-        agent.updateRotation = false; 
-        agent.updateUpAxis = false;
+        agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        playerDetection = GetComponent<PlayerDetection>();  
 
-        // Set the initial speed of the agent
-        agent.speed = speed;
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        agent.speed = speed; 
     }
 
     private void Update()
     {
-        // Check if the player is within detection range
-        float distanceToPlayer = Vector3.Distance(transform.position, target.position);
-        if (distanceToPlayer <= detectionRange)
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        // Reset attack state if animation is done
+        if (stateInfo.IsName("Attack") && stateInfo.normalizedTime >= 1f)
         {
-            // Player is within range, start following
-            isPlayerInRange = true;
-        }
-        else
-        {
-            // Player is out of range, stop following
-            isPlayerInRange = false;
+            isAttacking = false;
         }
 
-        // If the player is in range, update the destination and handle movement
-        if (isPlayerInRange)
+        if (isAttacking)
+            return; // Skip movement logic while attacking
+
+        animator.SetBool("IsAttacking", false);
+        
+        if (playerDetection.AwareOfPlayer)
         {
-            agent.SetDestination(target.position);
-            HandleMovementAnimations();
+            float distanceToPlayer = Vector3.Distance(new Vector3(transform.position.x, 0f, transform.position.z), 
+                                                    new Vector3(target.position.x, 0f, target.position.z));
+            float verticalDistanceToPlayer = Mathf.Abs(transform.position.y - target.position.y); 
+
+            if (distanceToPlayer <= attackRange)
+            {
+                if (target.position.y > transform.position.y && verticalDistanceToPlayer <= verticalRangeAbove ||
+                    target.position.y < transform.position.y && verticalDistanceToPlayer <= verticalRangeBelow)
+                {
+                    if (!stateInfo.IsName("Attack")) // Prevent re-triggering attack mid-animation
+                    {
+                        AttackPlayer();
+                    }
+                }
+                else
+                {
+                    FollowPlayer();
+                }
+            }
+            else
+            {
+                FollowPlayer();
+            }
         }
         else
         {
-            // If the player is out of range, stop the enemy
             StopEnemy();
         }
     }
 
+    private void FollowPlayer()
+    {
+        agent.SetDestination(target.position);
+        HandleMovementAnimations();
+    }
+
     private void HandleMovementAnimations()
     {
-        // Handle movement animation
-        if (agent.velocity.sqrMagnitude > 0.1f)  // If the enemy is moving
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if (!stateInfo.IsName("Attack"))  
         {
-            animator.SetBool("IsMoving", true);  // Set walking animation
-        }
-        else
-        {
-            animator.SetBool("IsMoving", false);  // Set idle animation
+            animator.SetBool("IsMoving", agent.velocity.sqrMagnitude > 0.1f);
         }
     }
 
-    // Method to update the speed dynamically
-    public void SetSpeed(float newSpeed)
+    private void AttackPlayer()
     {
-        speed = newSpeed;
-        agent.speed = newSpeed;  // Apply the speed change to the NavMeshAgent
-    }
+        if (!isAttacking) 
+        {
+            isAttacking = true;
+            animator.SetBool("IsAttacking", true);
+            print("Attack");
+            agent.SetDestination(transform.position);  
 
-    // Method to handle taking damage
-    public void TakeDamage(float amount)
-    {
-        _enemyStats.TakeDamage(amount, this);
-        print("Enemy health: " + _enemyStats.Health);
-    }
+            // Cancel current animation and directly play attack animation
+            animator.Play("Attack", 0, 0f); // Play attack immediately, canceling other animations
 
-    // Handle enemy death
-    public void Die()
-    {
-        animator.SetTrigger("Die");  // Trigger death animation (make sure to have a death animation in the Animator)
-        Destroy(gameObject, 2f);  // Destroy after animation completes (you can adjust the delay)
+            // Apply damage to the player when attack animation is triggered
+            if (target != null)
+            {
+                PlayerStats.Instance.TakeDamage(damage); // Call TakeDamage on PlayerStats
+            }
+        }
     }
 
     private void StopEnemy()
     {
-        // Stop the enemy's movement
-        agent.SetDestination(transform.position);  // Stay in place (or implement other logic for idle)
-        animator.SetBool("IsMoving", false);  // Set idle animation
+        agent.SetDestination(transform.position);  
+        animator.SetBool("IsMoving", false);  
+    }
+
+
+    public void TakeDamage(float amount, Vector2 attackOrigin, float knockbackForce, Vector2 playerFacingDirection)
+    {
+        _enemyStats.TakeDamage(amount, this);
+        print($"Enemy took {amount} damage. Health left: {_enemyStats.Health}");
+
+        // Flicker effect (change color to red)
+        StartCoroutine(FlickerRed());
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            // Apply knockback based on player's facing direction
+            Vector2 knockbackVector = playerFacingDirection.normalized * knockbackForce;
+
+            print($"Player's facing direction: {playerFacingDirection}");
+            print($"Applying knockback force: {knockbackVector}");
+
+            // Apply the knockback velocity to the Rigidbody2D
+            rb.linearVelocity = knockbackVector;
+
+            // Gradually reduce the knockback over time
+            StartCoroutine(ReduceKnockback(rb)); // Gradually stop movement
+        }
+        else
+        {
+            print("Rigidbody2D not found on enemy!");
+        }
+    }
+
+    private IEnumerator FlickerRed()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            // Change color to red
+            spriteRenderer.color = Color.red;
+
+            // Wait for a short duration (flicker effect)
+            yield return new WaitForSeconds(0.1f);
+
+            // Change back to original color
+            spriteRenderer.color = Color.white;
+        }
+    }
+
+
+    private IEnumerator ReduceKnockback(Rigidbody2D rb)
+    {
+        while (rb.linearVelocity.magnitude > 0.1f) // Stop when almost still
+        {
+            rb.linearVelocity *= 0.9f; // Reduce velocity over time
+            yield return new WaitForSeconds(0.05f); // Adjust timing if needed
+        }
+        rb.linearVelocity = Vector2.zero; // Fully stop movement
+    }
+
+
+    public void Die()
+    {
+        // Stop the NavMeshAgent from moving and tracking the player
+        if (agent != null)
+        {
+            agent.isStopped = true;   // Stop the agent from moving
+            agent.velocity = Vector3.zero; // Reset the velocity
+        }
+
+        // Trigger the death animation
+        animator.SetTrigger("Die");
+
+        // Destroy the enemy after the death animation has finished (10 seconds here)
+        Destroy(gameObject, 1.6f);
+    }
+
+
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+        agent.speed = newSpeed;  
     }
 }
