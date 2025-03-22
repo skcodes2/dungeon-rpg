@@ -61,8 +61,6 @@ public class PlayerController : MonoBehaviour
         // slideController = new MovementAbilityController(this, anim, KeyCode.Space, 1f, 1.5f, 1f);
 
         // rollController = new MovementAbilityController(this, anim, KeyCode.Space, 0.4f, 1.5f, 1f);
-
-
     }
 
     void Update()

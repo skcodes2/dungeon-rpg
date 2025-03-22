@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 public class Inventory : MonoBehaviour
 {
@@ -23,9 +24,8 @@ public class Inventory : MonoBehaviour
     }
     [SerializeField]
     private List<DialogueTrigger> dialogueTriggers; // List of DialogueTriggers
-
     public int coins = 100;
-
+    public UnityEvent<int> OnCoinsUpdated = new UnityEvent<int>(); // Event for UI updates
     private SkillsTreeButton[] selectedAbilities = new SkillsTreeButton[4];
 
     //special-0 basic2-1 basic1-2 movement-3
@@ -65,8 +65,6 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
-
-
     void Awake()
     {
         if (_instance == null)
@@ -78,8 +76,6 @@ public class Inventory : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-
     }
 
     public int getCoins()
@@ -94,7 +90,11 @@ public class Inventory : MonoBehaviour
             DialogueManager.TriggerDialogue("FirstCoin", dialogueTriggers);
         }
         coins += amount;
-        print("Coins: " + coins);
+
+        // Trigger UI update event
+        OnCoinsUpdated.Invoke(coins);
+
+        Debug.Log("Coins: " + coins);
     }
 
     public void RemoveCoins(int amount)
@@ -104,9 +104,8 @@ public class Inventory : MonoBehaviour
         {
             coins = 0;
         }
+
+        // Trigger UI update event
+        OnCoinsUpdated.Invoke(coins);
     }
-
-
-
-
 }

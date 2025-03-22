@@ -32,6 +32,20 @@ public class PlayerStats : MonoBehaviour
 
     public float armour = 0f;
 
+    public HealthBar healthBar;
+
+    void Start()
+    {
+        if (healthBar != null)
+        {
+            healthBar.SetMaxHealth((int)health);
+        }
+        else
+        {
+            Debug.LogWarning("HealthBar is not assigned in PlayerStats.");
+        }
+    }
+
     void Awake()
     {
         if (_instance == null)
@@ -48,6 +62,17 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
+
+        // Ensure healthBar is assigned before using it
+        if (healthBar != null)
+        {
+            healthBar.SetHealth((int)health);
+        }
+        else
+        {
+            Debug.LogWarning("HealthBar is not assigned in PlayerStats.");
+        }
+
         if (health <= 0)
         {
             health = 0;
@@ -85,7 +110,6 @@ public class PlayerStats : MonoBehaviour
         tmpWalkSpeed = walkSpeed;
         walkSpeed = 0f;
         runSpeed = 0f;
-
     }
 
     public void ResumePlayer()
@@ -95,6 +119,4 @@ public class PlayerStats : MonoBehaviour
         tmpWalkSpeed = 0f;
         tmpRunSpeed = 0f;
     }
-
-
 }
