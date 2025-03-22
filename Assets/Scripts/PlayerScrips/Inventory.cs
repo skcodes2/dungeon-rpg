@@ -97,7 +97,7 @@ public class Inventory : MonoBehaviour
         {
             DialogueManager.TriggerDialogue("FirstCoin", dialogueTriggers);
         }
-        coins += amount;
+        this.coins += amount;
 
         // Trigger UI update event
         OnCoinsUpdated.Invoke(coins);
@@ -107,7 +107,7 @@ public class Inventory : MonoBehaviour
 
     public void RemoveCoins(int coins)
     {
-        coins -= amount;
+        this.coins -= amount;
         if (coins < 0)
         {
             coins = 0;

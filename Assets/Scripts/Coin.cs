@@ -3,14 +3,8 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     private Animator anim;
-    Inventory inventory;
     private bool isCollected = false;
     public int coinValue = 1;
-
-    void Awake()
-    {
-        inventory = Inventory.Instance;
-    }
 
     void Start()
     {
@@ -29,10 +23,15 @@ public class Coin : MonoBehaviour
     void CollectCoin()
     {
         // Play the collection animation
-        anim.SetTrigger("CollectCoin");
-        inventory.AddCoins(coinValue);
+        if (anim != null)
+        {
+            anim.SetTrigger("CollectCoin");
+        }
 
-        // Destroy the coin object after the animation has played
+        // Add coins to the inventory and trigger UI update
+        Inventory.Instance.AddCoins(coinValue);
+
+        // Destroy the coin object after animation
         Destroy(gameObject, 0.255f);
     }
 }
