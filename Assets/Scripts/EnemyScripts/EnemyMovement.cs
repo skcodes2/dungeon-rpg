@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -117,11 +118,49 @@ public class EnemyMovement : MonoBehaviour
     }
 
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, Vector2 attackOrigin, float knockbackForce, Vector2 playerFacingDirection)
     {
-        _enemyStats.TakeDamage(amount, this);  
-        print("Enemy health: " + _enemyStats.Health);
+        _enemyStats.TakeDamage(amount, this);
+        print($"Enemy took {amount} damage. Health left: {_enemyStats.Health}");
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            // Directly use the player's facing direction for knockback
+            Vector2 knockbackVector = playerFacingDirection.normalized * knockbackForce;
+
+            print($"Player's facing direction: {playerFacingDirection}");
+            print($"Applying knockback force: {knockbackVector}");
+
+            // Apply the knockback velocity to the Rigidbody2D
+            rb.linearVelocity = knockbackVector;
+
+            // Gradually reduce the knockback over time
+            StartCoroutine(ReduceKnockback(rb)); // Gradually stop movement
+        }
+        else
+        {
+            print("Rigidbody2D not found on enemy!");
+        }
     }
+
+    private IEnumerator ReduceKnockback(Rigidbody2D rb)
+    {
+        while (rb.linearVelocity.magnitude > 0.1f) // Stop when almost still
+        {
+            rb.linearVelocity *= 0.9f; // Reduce velocity over time
+            yield return new WaitForSeconds(0.05f); // Adjust timing if needed
+        }
+        rb.linearVelocity = Vector2.zero; // Fully stop movement
+    }
+
+
+
+
+
+
+
+
 
     public void Die()
     {

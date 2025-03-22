@@ -1973,7 +1973,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.6372018, y: 1.9785999, z: -10}
+  m_LocalPosition: {x: -3.2525203, y: 1.9788699, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2515,7 +2515,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueTriggers:
   - {fileID: 693144926}
-  coins: 0
 --- !u!1 &727328191
 GameObject:
   m_ObjectHideFlags: 0
@@ -6630,6 +6629,7 @@ MonoBehaviour:
   target: {fileID: 693144922}
   speed: 1
   attackRange: 1.2
+  damage: 10
   _enemyStats:
     Speed: 1
     RotationSpeed: 200

@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,10 +31,6 @@ public class PlayerController : MonoBehaviour
     public WeaponController pummelController;
     public WeaponController swipeController;
 
-    // // Movement ability controllers
-    // public MovementAbilityController slideController;
-    // public MovementAbilityController rollController;
-
     void Awake()
     {
         playerStats = PlayerStats.Instance;
@@ -46,23 +41,13 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        // Initialize weapon controllers  
+        // Initialize weapon controllers
         pummelController = new WeaponController(pummelGameObject, anim, KeyCode.M, 0.5f, 1.5f);
         kickController = new WeaponController(kickGameObject, anim, KeyCode.N, 1f, 1.5f);
-
-
         runAttackController = new WeaponController(runAttackGameObject, anim, KeyCode.B, 0.3f, 1.5f);
         swordSlamController = new WeaponController(swordSlamGameObject, anim, KeyCode.V, 1f, 1.5f);
-
         slashController = new WeaponController(slashGameObject, anim, KeyCode.C, 0.5f, 1.5f);
         swipeController = new WeaponController(swipeGameObject, anim, KeyCode.X, 0.4f, 1.5f);
-
-        // Initialize movement ability controllers
-        // slideController = new MovementAbilityController(this, anim, KeyCode.Space, 1f, 1.5f, 1f);
-
-        // rollController = new MovementAbilityController(this, anim, KeyCode.Space, 0.4f, 1.5f, 1f);
-
-
     }
 
     void Update()
@@ -84,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
         if ((moveX != 0 || moveY != 0) && (input.x != 0 || input.y != 0))
         {
-            lastMoveDirection = input;
+            lastMoveDirection = input;  // Update the last movement direction
             isWalking = !Input.GetKey(KeyCode.LeftShift);
             isRunning = Input.GetKey(KeyCode.LeftShift);
             UpdateAbilityRunning();
@@ -107,8 +92,6 @@ public class PlayerController : MonoBehaviour
         swordSlamController.Update();
         pummelController.Update();
         swipeController.Update();
-        // slideController.Update();
-        // rollController.Update();
     }
 
     private void UpdateAbilityRunning()
@@ -119,16 +102,14 @@ public class PlayerController : MonoBehaviour
         swordSlamController.SetRunning(isRunning);
         pummelController.SetRunning(isRunning);
         swipeController.SetRunning(isRunning);
-        // slideController.SetRunning(isRunning);
-        // rollController.SetRunning(isRunning);
     }
 
     private void UpdateAnimations()
     {
         anim.SetFloat("MoveX", input.x);
         anim.SetFloat("MoveY", input.y);
-        anim.SetFloat("LastMoveX", lastMoveDirection.x);
-        anim.SetFloat("LastMoveY", lastMoveDirection.y);
+        anim.SetFloat("LastMoveX", lastMoveDirection.x);  // Set LastMoveX for weapon facing
+        anim.SetFloat("LastMoveY", lastMoveDirection.y);  // Set LastMoveY for weapon facing
         anim.SetFloat("MoveMagnitude", input.magnitude);
         anim.SetBool("isWalking", isWalking);
         anim.SetBool("isRunning", isRunning);
@@ -137,6 +118,7 @@ public class PlayerController : MonoBehaviour
         {
             Flip();
         }
+
         if (input != Vector2.zero)
         {
             float angle = Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg + 90f;
@@ -156,5 +138,11 @@ public class PlayerController : MonoBehaviour
         Vector3 characterScale = transform.localScale;
         characterScale.x *= -1;
         transform.localScale = characterScale;
+    }
+
+    // Public method to get the last movement direction
+    public Vector2 GetLastMoveDirection()
+    {
+        return lastMoveDirection;
     }
 }
