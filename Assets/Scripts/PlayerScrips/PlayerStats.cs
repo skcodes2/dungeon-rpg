@@ -21,7 +21,9 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public float health = 100f;
+    public float health;
+
+    public float maxHealth = 100f;
     public float walkSpeed = 2f;
     public float runSpeed;
 
@@ -38,7 +40,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (healthBar != null)
         {
-            healthBar.SetMaxHealth((int)health);
+            healthBar.SetMaxHealth((int)maxHealth);
         }
         else
         {
@@ -57,7 +59,21 @@ public class PlayerStats : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        health = maxHealth;
         runSpeed = walkSpeed * 1.5f;
+    }
+
+    public void SetMaxHealth(float amount)
+    {
+        this.maxHealth = amount;
+        if (healthBar != null)
+        {
+            healthBar.SetMaxHealth((int)maxHealth);
+        }
+        else
+        {
+            Debug.LogWarning("HealthBar is not assigned in PlayerStats.");
+        }
     }
 
     public void TakeDamage(float amount)
