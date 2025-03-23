@@ -228,12 +228,12 @@ public class ButtonTrigger : MonoBehaviour
                 armourLabel.text = playerStats.armour.ToString();
                 break;
             case "hp25":
-                playerStats.health += 25;
-                healthLabel.text = playerStats.health.ToString();
+                playerStats.SetMaxHealth(playerStats.maxHealth + 25);
+                healthLabel.text = playerStats.maxHealth.ToString();
                 break;
             case "hp20":
-                playerStats.health += 20;
-                healthLabel.text = playerStats.health.ToString();
+                playerStats.SetMaxHealth(playerStats.maxHealth + 20);
+                healthLabel.text = playerStats.maxHealth.ToString();
                 break;
         }
     }
