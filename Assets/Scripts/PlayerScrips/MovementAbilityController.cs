@@ -22,10 +22,13 @@ public class MovementAbilityController : AbilityController
 
     public override void Update()
     {
+        string abilityName = abilityDuration == 1f ? "slide" : "roll";
 
-        base.UpdateCooldownTimer();
-        CheckKeyBoardInput();
-
+        if (inventory.ContainsAbility(abilityName))
+        {
+            base.UpdateCooldownTimer();
+            CheckKeyBoardInput();
+        }
     }
 
     protected IEnumerator CheckDurationTimer()

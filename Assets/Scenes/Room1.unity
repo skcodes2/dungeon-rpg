@@ -2123,7 +2123,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.635524, y: 1.9785999, z: -10}
+  m_LocalPosition: {x: -3.6330652, y: 1.9785999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2417,6 +2417,7 @@ MonoBehaviour:
   swordSlamGameObject: {fileID: 2003525032}
   pummelGameObject: {fileID: 1330431222}
   swipeGameObject: {fileID: 20767943}
+  skillTreeMenu: {fileID: 1009195050}
   kickController:
     abilityCooldown: 1
     keyBind: 9
@@ -2435,6 +2436,12 @@ MonoBehaviour:
   swipeController:
     abilityCooldown: 1
     keyBind: 122
+  slideController:
+    abilityCooldown: 0
+    keyBind: 0
+  rollController:
+    abilityCooldown: 0
+    keyBind: 0
 --- !u!61 &693144919
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2667,9 +2674,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueTriggers:
   - {fileID: 693144926}
+  skillTreeButtons: []
   OnCoinsUpdated:
     m_PersistentCalls:
       m_Calls: []
+  selectedAbilities: []
 --- !u!1 &727328191
 GameObject:
   m_ObjectHideFlags: 0

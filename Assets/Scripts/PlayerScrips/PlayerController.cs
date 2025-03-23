@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public GameObject pummelGameObject;
     public GameObject swipeGameObject;
 
+    public GameObject skillTreeMenu;
+
     // Movement variables
     private Vector2 input;
     private Vector2 lastMoveDirection;
@@ -31,6 +33,10 @@ public class PlayerController : MonoBehaviour
     public WeaponController pummelController;
     public WeaponController swipeController;
 
+    // Movement ability variables
+    public MovementAbilityController slideController;
+    public MovementAbilityController rollController;
+
     void Awake()
     {
         playerStats = PlayerStats.Instance;
@@ -42,17 +48,17 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         // Initialize weapon controllers
-        pummelController = new WeaponController(pummelGameObject, anim, KeyCode.M, 0.5f, 1.5f);
-        kickController = new WeaponController(kickGameObject, anim, KeyCode.N, 1f, 1.5f);
-        runAttackController = new WeaponController(runAttackGameObject, anim, KeyCode.B, 0.3f, 1.5f);
-        swordSlamController = new WeaponController(swordSlamGameObject, anim, KeyCode.V, 1f, 1.5f);
-        slashController = new WeaponController(slashGameObject, anim, KeyCode.C, 0.5f, 1.5f);
-        swipeController = new WeaponController(swipeGameObject, anim, KeyCode.X, 0.4f, 1.5f);
+        pummelController = new WeaponController(pummelGameObject, anim, KeyCode.I, 0.5f, 1.5f);
+        kickController = new WeaponController(kickGameObject, anim, KeyCode.I, 1f, 1.5f);
+        runAttackController = new WeaponController(runAttackGameObject, anim, KeyCode.P, 0.3f, 1.5f);
+        swordSlamController = new WeaponController(swordSlamGameObject, anim, KeyCode.P, 1f, 1.5f);
+        slashController = new WeaponController(slashGameObject, anim, KeyCode.O, 0.5f, 1.5f);
+        swipeController = new WeaponController(swipeGameObject, anim, KeyCode.O, 0.4f, 1.5f);
 
         // Initialize movement ability controllers
-        // slideController = new MovementAbilityController(this, anim, KeyCode.Space, 1f, 1.5f, 1f);
+        slideController = new MovementAbilityController(this, anim, KeyCode.Space, 1f, 1.5f, 0.5f);
 
-        // rollController = new MovementAbilityController(this, anim, KeyCode.Space, 0.4f, 1.5f, 1f);
+        rollController = new MovementAbilityController(this, anim, KeyCode.Space, 0.4f, 1.5f, 1f);
     }
 
     void Update()
@@ -71,6 +77,13 @@ public class PlayerController : MonoBehaviour
     {
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
+
+        //if esc pressed, toggle skill tree menu
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            skillTreeMenu.SetActive(!skillTreeMenu.activeSelf);
+        }
+
 
         if ((moveX != 0 || moveY != 0) && (input.x != 0 || input.y != 0))
         {
@@ -97,6 +110,8 @@ public class PlayerController : MonoBehaviour
         swordSlamController.Update();
         pummelController.Update();
         swipeController.Update();
+        slideController.Update();
+        rollController.Update();
     }
 
     private void UpdateAbilityRunning()
@@ -107,6 +122,8 @@ public class PlayerController : MonoBehaviour
         swordSlamController.SetRunning(isRunning);
         pummelController.SetRunning(isRunning);
         swipeController.SetRunning(isRunning);
+        slideController.SetRunning(isRunning);
+        rollController.SetRunning(isRunning);
     }
 
     private void UpdateAnimations()

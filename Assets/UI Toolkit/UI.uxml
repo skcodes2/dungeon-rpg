@@ -38,24 +38,26 @@
                 <engine:Label text="0&#10;" name="Attack" class="header2" style="top: 20px; left: 750px; color: rgb(255, 255, 255); font-size: 30px;" />
             </engine:VisualElement>
             <engine:VisualElement name="Tree" style="flex-grow: 1; width: auto; background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Gui_parts/file%20(5).png?fileID=2800000&amp;guid=9e0ad9c7a42ef0c419a5e9de86d42d90&amp;type=3#file (5)&quot;); background-size: 100% 80%; background-position-x: left -50px;">
-                <engine:VisualElement name="Root" class="treeButtonFrame" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon23.png?fileID=2800000&amp;guid=28bf7cad73d672e45bd03452d3bf4bf1&amp;type=3#Icon23&quot;); width: 109px; height: 120px; max-height: 107px; left: 360px; top: 40px;" />
+                <engine:VisualElement name="kick" class="treeButtonFrame" style="flex-grow: 1; background-image: none; width: 109px; height: 120px; max-height: 107px; left: 360px; top: 40px;">
+                    <engine:Button name="kick" class="treeButtonFrame treeButtonUnlockable" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon23.png?fileID=2800000&amp;guid=28bf7cad73d672e45bd03452d3bf4bf1&amp;type=3#Icon23&quot;);" />
+                </engine:VisualElement>
                 <engine:VisualElement name="VisualElement" class="treeButtonContainer" style="flex-direction: row; flex-wrap: wrap; flex-grow: 1; justify-content: flex-start; align-self: auto; align-items: flex-start; align-content: auto;">
                     <engine:VisualElement name="AttackUp" class="treeButtonFrame" style="flex-grow: 1; position: relative; top: 225px; align-items: auto; justify-content: center;">
-                        <engine:Button text="Attack +1" selectable="false" tooltip="Increase Base Attack by 5" enabled="true" name="atk1" class="treeButtonUnlockable activeButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon12.png?fileID=2800000&amp;guid=200c9f1e00146df42a8af1697918ebe4&amp;type=3#Icon12&quot;);" />
+                        <engine:Button selectable="false" tooltip="Increase Base Attack by 5" enabled="true" name="atk1" class="treeButtonUnlockable activeButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon12.png?fileID=2800000&amp;guid=200c9f1e00146df42a8af1697918ebe4&amp;type=3#Icon12&quot;);" />
                         <engine:VisualElement style="flex-grow: 1; position: absolute; width: 100px; height: 50px; flex-direction: row; left: 100px; bottom: 0; top: 10px;">
                             <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/coin-1.png?fileID=2800000&amp;guid=2e27a44e903cff54395b4e9cf608802a&amp;type=3#coin-1&quot;); height: 49px; width: 35px; background-size: 70% 70%;" />
                             <engine:Label text="5" style="width: 38px; font-size: 24px; color: rgb(255, 255, 255);" />
                         </engine:VisualElement>
                     </engine:VisualElement>
                     <engine:VisualElement class="treeButtonFrame" style="flex-grow: 1; position: absolute; top: 400px;">
-                        <engine:Button text="Attack +5" parse-escape-sequences="true" emoji-fallback-support="false" name="atk5" class="treeButtonUnlockable InactiveButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon11.png?fileID=2800000&amp;guid=d2c172aa3e9179b45ba708ba0fc85004&amp;type=3#Icon11&quot;); -unity-font-style: bold; -unity-font-definition: url(&quot;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#LegacyRuntime&quot;);" />
+                        <engine:Button parse-escape-sequences="true" emoji-fallback-support="false" name="atk5" class="treeButtonUnlockable InactiveButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon11.png?fileID=2800000&amp;guid=d2c172aa3e9179b45ba708ba0fc85004&amp;type=3#Icon11&quot;); -unity-font-style: bold; -unity-font-definition: url(&quot;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#LegacyRuntime&quot;);" />
                         <engine:VisualElement style="flex-grow: 1; position: absolute; width: 100px; height: 50px; flex-direction: row; left: 100px;">
                             <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/coin-1.png?fileID=2800000&amp;guid=2e27a44e903cff54395b4e9cf608802a&amp;type=3#coin-1&quot;); height: 49px; width: 35px; background-size: 70% 70%;" />
                             <engine:Label text="10" style="width: 38px; font-size: 24px; color: rgb(255, 255, 255);" />
                         </engine:VisualElement>
                     </engine:VisualElement>
                     <engine:VisualElement class="treeButtonFrame" style="flex-grow: 1; position: absolute; top: 550px;">
-                        <engine:Button text="Attack +7" name="atk10" class="treeButtonUnlockable InactiveButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon24.png?fileID=2800000&amp;guid=24ca1564d9757be46a4286efea9a1c27&amp;type=3#Icon24&quot;);" />
+                        <engine:Button name="atk10" class="treeButtonUnlockable InactiveButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon24.png?fileID=2800000&amp;guid=24ca1564d9757be46a4286efea9a1c27&amp;type=3#Icon24&quot;);" />
                         <engine:VisualElement style="flex-grow: 1; position: absolute; width: 100px; height: 50px; flex-direction: row; left: 100px;">
                             <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/coin-1.png?fileID=2800000&amp;guid=2e27a44e903cff54395b4e9cf608802a&amp;type=3#coin-1&quot;); height: 49px; width: 35px; background-size: 70% 70%;" />
                             <engine:Label text="15" style="width: 38px; font-size: 24px; color: rgb(255, 255, 255);" />
@@ -69,14 +71,14 @@
                         </engine:VisualElement>
                     </engine:VisualElement>
                     <engine:VisualElement class="treeButtonFrame" style="flex-grow: 1; position: absolute; left: 250px; top: 225px;">
-                        <engine:Button text="Speed +1" name="speed1" class="treeButtonUnlockable activeButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon35.png?fileID=2800000&amp;guid=204d646bf75ba694588d69b1539a2ce9&amp;type=3#Icon35&quot;);" />
+                        <engine:Button name="speed1" class="treeButtonUnlockable activeButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon35.png?fileID=2800000&amp;guid=204d646bf75ba694588d69b1539a2ce9&amp;type=3#Icon35&quot;);" />
                         <engine:VisualElement style="flex-grow: 1; position: absolute; width: 100px; height: 50px; flex-direction: row; left: 100px;">
                             <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/coin-1.png?fileID=2800000&amp;guid=2e27a44e903cff54395b4e9cf608802a&amp;type=3#coin-1&quot;); height: 49px; width: 35px; background-size: 70% 70%;" />
                             <engine:Label text="5" style="width: 38px; font-size: 24px; color: rgb(255, 255, 255);" />
                         </engine:VisualElement>
                     </engine:VisualElement>
                     <engine:VisualElement class="treeButtonFrame" style="flex-grow: 1; position: absolute; left: 250px; top: 400px;">
-                        <engine:Button text="Speed +3" name="speed3" class="treeButtonUnlockable InactiveButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon35.png?fileID=2800000&amp;guid=204d646bf75ba694588d69b1539a2ce9&amp;type=3#Icon35&quot;);" />
+                        <engine:Button name="speed3" class="treeButtonUnlockable InactiveButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon35.png?fileID=2800000&amp;guid=204d646bf75ba694588d69b1539a2ce9&amp;type=3#Icon35&quot;);" />
                         <engine:VisualElement style="flex-grow: 1; position: absolute; width: 100px; height: 50px; flex-direction: row; left: 100px;">
                             <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/coin-1.png?fileID=2800000&amp;guid=2e27a44e903cff54395b4e9cf608802a&amp;type=3#coin-1&quot;); height: 49px; width: 35px; background-size: 70% 70%;" />
                             <engine:Label text="10" style="width: 38px; font-size: 24px; color: rgb(255, 255, 255);" />
@@ -97,14 +99,14 @@
                         </engine:VisualElement>
                     </engine:VisualElement>
                     <engine:VisualElement class="treeButtonFrame" style="flex-grow: 1; position: absolute; left: 510px; top: 225px;">
-                        <engine:Button text="Armour +2" name="armour2" class="treeButtonUnlockable activeButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon10.png?fileID=2800000&amp;guid=067307e5bdf8ac84489fad4bfe054e97&amp;type=3#Icon10&quot;);" />
+                        <engine:Button name="armour2" class="treeButtonUnlockable activeButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon10.png?fileID=2800000&amp;guid=067307e5bdf8ac84489fad4bfe054e97&amp;type=3#Icon10&quot;);" />
                         <engine:VisualElement style="flex-grow: 1; position: absolute; width: 100px; height: 50px; flex-direction: row; left: 100px;">
                             <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/coin-1.png?fileID=2800000&amp;guid=2e27a44e903cff54395b4e9cf608802a&amp;type=3#coin-1&quot;); height: 49px; width: 35px; background-size: 70% 70%;" />
                             <engine:Label text="5" style="width: 38px; font-size: 24px; color: rgb(255, 255, 255);" />
                         </engine:VisualElement>
                     </engine:VisualElement>
                     <engine:VisualElement class="treeButtonFrame" style="flex-grow: 1; position: absolute; left: 510px; top: 400px;">
-                        <engine:Button text="Armour +5" name="armour5" class="treeButtonUnlockable InactiveButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon21.png?fileID=2800000&amp;guid=dbaf17c3741f7434abc357b465ea8fd1&amp;type=3#Icon21&quot;);" />
+                        <engine:Button name="armour5" class="treeButtonUnlockable InactiveButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon21.png?fileID=2800000&amp;guid=dbaf17c3741f7434abc357b465ea8fd1&amp;type=3#Icon21&quot;);" />
                         <engine:VisualElement style="flex-grow: 1; position: absolute; width: 100px; height: 50px; flex-direction: row; left: 100px;">
                             <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/coin-1.png?fileID=2800000&amp;guid=2e27a44e903cff54395b4e9cf608802a&amp;type=3#coin-1&quot;); height: 49px; width: 35px; background-size: 70% 70%;" />
                             <engine:Label text="10" style="width: 38px; font-size: 24px; color: rgb(255, 255, 255);" />
@@ -125,14 +127,14 @@
                         </engine:VisualElement>
                     </engine:VisualElement>
                     <engine:VisualElement class="treeButtonFrame" style="flex-grow: 1; position: absolute; left: 765px; top: 225px;">
-                        <engine:Button text="Health +20" name="hp20" class="treeButtonUnlockable activeButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon2.png?fileID=2800000&amp;guid=20bacc9b00b0cf548a6ae18365d0f5ad&amp;type=3#Icon2&quot;);" />
+                        <engine:Button name="hp20" class="treeButtonUnlockable activeButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon2.png?fileID=2800000&amp;guid=20bacc9b00b0cf548a6ae18365d0f5ad&amp;type=3#Icon2&quot;);" />
                         <engine:VisualElement style="flex-grow: 1; position: absolute; width: 100px; height: 50px; flex-direction: row; left: 100px;">
                             <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/coin-1.png?fileID=2800000&amp;guid=2e27a44e903cff54395b4e9cf608802a&amp;type=3#coin-1&quot;); height: 49px; width: 35px; background-size: 70% 70%;" />
                             <engine:Label text="5" style="width: 38px; font-size: 24px; color: rgb(255, 255, 255);" />
                         </engine:VisualElement>
                     </engine:VisualElement>
                     <engine:VisualElement class="treeButtonFrame" style="flex-grow: 1; position: absolute; left: 765px; top: 400px;">
-                        <engine:Button text="Health +25" name="hp25" class="treeButtonUnlockable InactiveButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon26.png?fileID=2800000&amp;guid=0af3dd953aee2ca4398cc2ce7220886f&amp;type=3#Icon26&quot;);" />
+                        <engine:Button name="hp25" class="treeButtonUnlockable InactiveButton" style="background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/Icon26.png?fileID=2800000&amp;guid=0af3dd953aee2ca4398cc2ce7220886f&amp;type=3#Icon26&quot;);" />
                         <engine:VisualElement style="flex-grow: 1; position: absolute; width: 100px; height: 50px; flex-direction: row; left: 100px;">
                             <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Icons/PNG/coin-1.png?fileID=2800000&amp;guid=2e27a44e903cff54395b4e9cf608802a&amp;type=3#coin-1&quot;); height: 49px; width: 35px; background-size: 70% 70%;" />
                             <engine:Label text="10" style="width: 38px; font-size: 24px; color: rgb(255, 255, 255);" />
