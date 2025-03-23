@@ -25,6 +25,8 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private List<DialogueTrigger> dialogueTriggers; // List of DialogueTriggers
     private int coins = 150;
+
+    private bool firstCoin = true;
     public UnityEvent<int> OnCoinsUpdated = new UnityEvent<int>(); // Event for UI updates
     private SkillsTreeButton[] selectedAbilities = new SkillsTreeButton[4];
 
@@ -93,9 +95,10 @@ public class Inventory : MonoBehaviour
 
     public void AddCoins(int amount)
     {
-        if (coins == 0)
+        if (firstCoin)
         {
             DialogueManager.TriggerDialogue("FirstCoin", dialogueTriggers);
+            firstCoin = false;
         }
         this.coins += amount;
 

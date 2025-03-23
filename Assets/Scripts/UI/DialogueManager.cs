@@ -72,9 +72,11 @@ public class DialogueManager : MonoBehaviour
 
     public static void TriggerDialogue(string triggerID, List<DialogueTrigger> dialogueTriggers)
     {
+
         DialogueTrigger trigger = dialogueTriggers.Find(t => t.triggerID == triggerID);
         if (trigger != null)
         {
+
             trigger.TriggerDialogue();
         }
         else
