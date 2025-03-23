@@ -3923,7 +3923,7 @@ MonoBehaviour:
   tmpRunSpeed: 0
   baseDamage: 5
   armour: 0
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 194396718}
 --- !u!95 &833956910
 Animator:
   serializedVersion: 7
