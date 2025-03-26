@@ -4,15 +4,18 @@ using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private Transform target;  
-    [SerializeField] private float speed = 3.5f;  
+    [SerializeField] private Transform target;
+    [SerializeField] private float speed = 3.5f;
     [SerializeField] private float attackRange = 1.5f;
-    [SerializeField] private float damage = 10f;   
-    [SerializeField] private EnemyStats _enemyStats;  
-    [SerializeField] private PlayerDetection playerDetection;  
-    
-    [SerializeField] private float verticalRangeAbove = 1.5f;  
-    [SerializeField] private float verticalRangeBelow = 1.0f;  
+    [SerializeField] private float damage = 10f;
+    [SerializeField] private EnemyStats _enemyStats;
+    [SerializeField] private PlayerDetection playerDetection;
+
+    [SerializeField] private float verticalRangeAbove = 1.5f;
+    [SerializeField] private float verticalRangeBelow = 1.0f;
+
+    [SerializeField] private GameObject coinPrefab;
+    [SerializeField] private int coinDropCount = 3;
 
     private NavMeshAgent agent;
     private Animator animator;
@@ -22,11 +25,12 @@ public class EnemyMovement : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        playerDetection = GetComponent<PlayerDetection>();  
+        playerDetection = GetComponent<PlayerDetection>();
+        target = GameObject.FindWithTag("Player").transform;
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        agent.speed = speed; 
+        agent.speed = speed;
     }
 
     private void Update()
@@ -43,12 +47,12 @@ public class EnemyMovement : MonoBehaviour
             return; // Skip movement logic while attacking
 
         animator.SetBool("IsAttacking", false);
-        
+
         if (playerDetection.AwareOfPlayer)
         {
-            float distanceToPlayer = Vector3.Distance(new Vector3(transform.position.x, 0f, transform.position.z), 
+            float distanceToPlayer = Vector3.Distance(new Vector3(transform.position.x, 0f, transform.position.z),
                                                     new Vector3(target.position.x, 0f, target.position.z));
-            float verticalDistanceToPlayer = Mathf.Abs(transform.position.y - target.position.y); 
+            float verticalDistanceToPlayer = Mathf.Abs(transform.position.y - target.position.y);
 
             if (distanceToPlayer <= attackRange)
             {
@@ -85,7 +89,7 @@ public class EnemyMovement : MonoBehaviour
     private void HandleMovementAnimations()
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        if (!stateInfo.IsName("Attack"))  
+        if (!stateInfo.IsName("Attack"))
         {
             animator.SetBool("IsMoving", agent.velocity.sqrMagnitude > 0.1f);
         }
@@ -93,12 +97,12 @@ public class EnemyMovement : MonoBehaviour
 
     private void AttackPlayer()
     {
-        if (!isAttacking) 
+        if (!isAttacking)
         {
             isAttacking = true;
             animator.SetBool("IsAttacking", true);
             print("Attack");
-            agent.SetDestination(transform.position);  
+            agent.SetDestination(transform.position);
 
             // Cancel current animation and directly play attack animation
             animator.Play("Attack", 0, 0f); // Play attack immediately, canceling other animations
@@ -113,8 +117,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void StopEnemy()
     {
-        agent.SetDestination(transform.position);  
-        animator.SetBool("IsMoving", false);  
+        agent.SetDestination(transform.position);
+        animator.SetBool("IsMoving", false);
     }
 
 
@@ -184,6 +188,8 @@ public class EnemyMovement : MonoBehaviour
             agent.velocity = Vector3.zero; // Reset the velocity
         }
 
+        DropCoins();
+
         // Trigger the death animation
         animator.SetTrigger("Die");
 
@@ -191,10 +197,26 @@ public class EnemyMovement : MonoBehaviour
         Destroy(gameObject, 1.6f);
     }
 
+    private void DropCoins()
+    {
+        if (coinPrefab == null)
+        {
+            Debug.LogWarning("Coin prefab not set in EnemyMovement.");
+            return;
+        }
+
+        for (int i = 0; i < coinDropCount; i++)
+        {
+            // Random slight offset so coins don't stack on each other
+            Vector3 offset = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.2f, 0.2f), 0);
+            Instantiate(coinPrefab, transform.position + offset, Quaternion.identity);
+        }
+    }
+
 
     public void SetSpeed(float newSpeed)
     {
         speed = newSpeed;
-        agent.speed = newSpeed;  
+        agent.speed = newSpeed;
     }
 }

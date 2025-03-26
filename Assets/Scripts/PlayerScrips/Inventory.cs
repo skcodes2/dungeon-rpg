@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour
 
     private bool firstCoin = true;
     public UnityEvent<int> OnCoinsUpdated = new UnityEvent<int>(); // Event for UI updates
-    public SkillsTreeButton[] selectedAbilities = new SkillsTreeButton[4];
+    public SkillsTreeButton[] selectedAbilities;
 
     //special-0 basic2-1 basic1-2 movement-3
     public void AddSelectedAbility(SkillsTreeButton ability, string name)
@@ -119,6 +119,7 @@ public class Inventory : MonoBehaviour
             pummel, atk10, atk5, atk1, slide, roll, speed3, speed1,
             spin, slash, armour5, armour2, slam, swipe, hp25, hp20
         });
+        selectedAbilities = new SkillsTreeButton[4];
         initializeSelectedAbilites();
 
     }
