@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour
     }
     [SerializeField]
     private List<DialogueTrigger> dialogueTriggers; // List of DialogueTriggers
-    private int coins = 150;
+    private int coins = 0;
 
     public List<SkillsTreeButton> skillTreeButtons = new List<SkillsTreeButton>();
 
