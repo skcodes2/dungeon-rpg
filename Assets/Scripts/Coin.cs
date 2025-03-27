@@ -4,7 +4,7 @@ public class Coin : MonoBehaviour
 {
     private Animator anim;
     private bool isCollected = false;
-    public int coinValue = 5;
+    // public int coinValue = 5;
 
     void Start()
     {
@@ -30,7 +30,7 @@ public class Coin : MonoBehaviour
         AudioManager.Instance.Play("CoinPickUp");
 
         // Add coins to the inventory and trigger UI update
-        Inventory.Instance.AddCoins(coinValue);
+        Inventory.Instance.AddCoins(5);
 
         // Destroy the coin object after animation
         Destroy(gameObject, 0.255f);
