@@ -27,6 +27,7 @@ public class Coin : MonoBehaviour
         {
             anim.SetTrigger("CollectCoin");
         }
+        AudioManager.Instance.Play("CoinPickUp");
 
         // Add coins to the inventory and trigger UI update
         Inventory.Instance.AddCoins(coinValue);
