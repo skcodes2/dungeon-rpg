@@ -60,7 +60,6 @@ public class PlayerController : MonoBehaviour
 
         rollController = new MovementAbilityController(this, anim, KeyCode.Space, 0.4f, 1.5f, 1f);
     }
-
     void Update()
     {
         ProcessInputs();
@@ -75,6 +74,10 @@ public class PlayerController : MonoBehaviour
 
     private void ProcessInputs()
     {
+        if (playerStats.getHealth() <= 0)
+        {
+            return;
+        }
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
 
@@ -90,12 +93,16 @@ public class PlayerController : MonoBehaviour
             lastMoveDirection = input;  // Update the last movement direction
             isWalking = !Input.GetKey(KeyCode.LeftShift);
             isRunning = Input.GetKey(KeyCode.LeftShift);
+
+
             UpdateAbilityRunning();
         }
         else
         {
             isWalking = false;
             isRunning = false;
+
+
         }
 
         input.x = Input.GetAxisRaw("Horizontal");

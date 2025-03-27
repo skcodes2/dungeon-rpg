@@ -82,6 +82,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void FollowPlayer()
     {
+        if (PlayerStats.Instance.getHealth() <= 0)
+        {
+            StopEnemy();
+            return;
+        }
         agent.SetDestination(target.position);
         HandleMovementAnimations();
     }
@@ -97,6 +102,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void AttackPlayer()
     {
+        if (PlayerStats.Instance.getHealth() <= 0)
+        {
+            StopEnemy();
+            return;
+        }
         if (!isAttacking)
         {
             isAttacking = true;
@@ -117,14 +127,17 @@ public class EnemyMovement : MonoBehaviour
 
     private void StopEnemy()
     {
+
         agent.SetDestination(transform.position);
         animator.SetBool("IsMoving", false);
+        _enemyStats.StopEnemyMovement();
     }
 
 
     public void TakeDamage(float amount, Vector2 attackOrigin, float knockbackForce, Vector2 playerFacingDirection)
     {
         _enemyStats.TakeDamage(amount, this);
+        AudioManager.Instance.Play("hit");
         print($"Enemy took {amount} damage. Health left: {_enemyStats.Health}");
 
         // Flicker effect (change color to red)
