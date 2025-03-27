@@ -8271,7 +8271,12 @@ MonoBehaviour:
     - Be careful young one! There is great danger ahead.
     - Long ago, there was a tale that this dungeon had cows under enslavement. But
       now they have escaped and seek to take revenge on any human that passes by.
-    - If you are ever in any danger, hold 'SHIFT' to run. Now go on!
+    - If you are ever in any danger, hold 'SHIFT' to run, 'I, O, and P' are your
+      main attack abilities, for now you only have 'I' as your basic attack, go collect
+      coins and upgrade your skills by pressing the 'ESC' key.
+    - If you are more of an evader/speed type player you can upgrade your speed and
+      unlock a slide or roll ability. Press 'SPACEBAR' to use that while you run
+      with 'SHIFT'
 --- !u!114 &1229378187
 MonoBehaviour:
   m_ObjectHideFlags: 0
