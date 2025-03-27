@@ -4,7 +4,7 @@ public class Coin : MonoBehaviour
 {
     private Animator anim;
     private bool isCollected = false;
-    public int coinValue = 1;
+    public int coinValue = 5;
 
     void Start()
     {
