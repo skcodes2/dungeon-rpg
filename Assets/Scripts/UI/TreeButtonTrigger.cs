@@ -173,10 +173,15 @@ public class ButtonTrigger : MonoBehaviour
 
         Button nextUXMLButton = GetNextButton(skillTreeButton.getNextButton()?.getName());
 
-
-        if (!skillTreeButton.getIsActive() && inventory.getCoins() < skillTreeButton.getPrice())
+        if (inventory.getCoins() < skillTreeButton.getPrice())
         {
-            print("Not enough coins or button is inactive");
+            print("Not enough coins");
+            return;
+        }
+
+        if (!skillTreeButton.getIsActive())
+        {
+            print(" button is inactive");
             return;
         }
 
