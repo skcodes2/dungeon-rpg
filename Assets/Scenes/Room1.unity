@@ -3504,6 +3504,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brown_Cow
       objectReference: {fileID: 0}
+    - target: {fileID: 3609596681812971198, guid: a64feeb7991739c4fa2ae2c6697c82c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4524653772003245993, guid: a64feeb7991739c4fa2ae2c6697c82c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.252995
@@ -7737,6 +7741,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1128528086}
   m_CullTransparentMesh: 1
+--- !u!1001 &1131439858
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1019551182615545148, guid: 06b71ec5cc9814d48a7ff8afad492d9e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1019551182615545148, guid: 06b71ec5cc9814d48a7ff8afad492d9e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609596681812971198, guid: 06b71ec5cc9814d48a7ff8afad492d9e, type: 3}
+      propertyPath: m_Name
+      value: Boss_cow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524653772003245993, guid: 06b71ec5cc9814d48a7ff8afad492d9e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.162342
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524653772003245993, guid: 06b71ec5cc9814d48a7ff8afad492d9e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.41505337
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524653772003245993, guid: 06b71ec5cc9814d48a7ff8afad492d9e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.057391364
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524653772003245993, guid: 06b71ec5cc9814d48a7ff8afad492d9e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524653772003245993, guid: 06b71ec5cc9814d48a7ff8afad492d9e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524653772003245993, guid: 06b71ec5cc9814d48a7ff8afad492d9e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524653772003245993, guid: 06b71ec5cc9814d48a7ff8afad492d9e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524653772003245993, guid: 06b71ec5cc9814d48a7ff8afad492d9e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524653772003245993, guid: 06b71ec5cc9814d48a7ff8afad492d9e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524653772003245993, guid: 06b71ec5cc9814d48a7ff8afad492d9e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 06b71ec5cc9814d48a7ff8afad492d9e, type: 3}
 --- !u!1 &1134129447
 GameObject:
   m_ObjectHideFlags: 0
@@ -10738,6 +10807,10 @@ PrefabInstance:
     - target: {fileID: 3609596681812971198, guid: a64feeb7991739c4fa2ae2c6697c82c2, type: 3}
       propertyPath: m_Name
       value: Brown_Cow (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609596681812971198, guid: a64feeb7991739c4fa2ae2c6697c82c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4524653772003245993, guid: a64feeb7991739c4fa2ae2c6697c82c2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19178,3 +19251,4 @@ SceneRoots:
   - {fileID: 562875074}
   - {fileID: 413792859}
   - {fileID: 1370458348}
+  - {fileID: 1131439858}
