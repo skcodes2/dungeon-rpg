@@ -26,27 +26,40 @@ public class PlayerWeapon : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            // Get the EnemyMovement component from the collided enemy
-            EnemyMovement enemyMovement = collision.gameObject.GetComponent<EnemyMovement>();
+            // Try to get EnemyMovement first
+            var enemyMovement = collision.gameObject.GetComponent<EnemyMovement>();
 
             if (enemyMovement != null)
             {
-                // Apply damage and knockback to the enemy, using lastFacingDirection
                 enemyMovement.TakeDamage(
-                    _damageAmount + PlayerStats.Instance.baseDamage, 
-                    transform.position, 
-                    6f, 
-                    playerController.GetLastMoveDirection() // Use the last known facing direction
+                    _damageAmount + PlayerStats.Instance.baseDamage,
+                    transform.position,
+                    6f,
+                    playerController.GetLastMoveDirection()
                 );
+                return;
             }
-            else
+
+            // Try to get EnemyMovementBoss if regular EnemyMovement not found
+            var enemyBoss = collision.gameObject.GetComponent<EnemyMovementBoss>();
+
+            if (enemyBoss != null)
             {
-                Debug.Log("No EnemyMovement component found on: " + collision.gameObject.name);
+                enemyBoss.TakeDamage(
+                    _damageAmount + PlayerStats.Instance.baseDamage,
+                    transform.position,
+                    6f,
+                    playerController.GetLastMoveDirection()
+                );
+                return;
             }
+
+            Debug.Log("Enemy does not have a compatible movement script: " + collision.gameObject.name);
         }
         else
         {
             Debug.Log("Collision with non-enemy object: " + collision.gameObject.name);
         }
     }
+
 }

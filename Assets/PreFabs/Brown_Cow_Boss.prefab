@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2793555227192117853}
   - component: {fileID: 5079029037180188380}
   - component: {fileID: 1290849061356495752}
+  - component: {fileID: 5520341159694270151}
+  - component: {fileID: 1761186263284607573}
   m_Layer: 0
   m_Name: Cow
   m_TagString: Enemy
@@ -30,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 545265916932346820}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.84, y: 0.91, z: -0.057391364}
+  m_LocalPosition: {x: 3.404, y: 0.744, z: -0.057391364}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -80,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -151882951, guid: 807fac0cefcea3c4c9c345b02937afb5, type: 3}
+  m_Sprite: {fileID: 262497329, guid: f37aaaae055660048888dfd8b250e55b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,7 +130,7 @@ Animator:
   m_GameObject: {fileID: 545265916932346820}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1b07d5f4631b309448c3f5001027db1e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9c3fad7fac9deaa4e93c78a6d31808a9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -198,6 +200,45 @@ NavMeshAgent:
   m_BaseOffset: 0.4
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5520341159694270151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545265916932346820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d55e79d0a4f0ec4fbfb2403d8d19525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 1
+  attackRange: 1.2
+  damage: 10
+  _enemyStats:
+    Speed: 1
+    RotationSpeed: 200
+    Health: 50
+    Damage: 0
+  playerDetection: {fileID: 0}
+  verticalRangeAbove: 1.6
+  verticalRangeBelow: 0.9
+  coinPrefab: {fileID: 6750738261598654154, guid: 979e475272068dc4382047328d36a477, type: 3}
+  coinDropCount: 3
+--- !u!114 &1761186263284607573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545265916932346820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2939de24a8352d046b9da08949166b31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerAwarenessDistance: 0
 --- !u!1 &3609596681812971198
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4524653772003245993}
   m_Layer: 0
-  m_Name: Boss_cow
+  m_Name: Brown_Cow_Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

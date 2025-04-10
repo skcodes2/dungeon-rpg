@@ -2,14 +2,14 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 
-public class EnemyMovement : MonoBehaviour
+public class BossMovement : MonoBehaviour
 {
     [SerializeField] private Transform target;
     [SerializeField] private float speed = 3.5f;
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private float damage = 10f;
     [SerializeField] private EnemyStats _enemyStats;
-    [SerializeField] private PlayerDetection playerDetection;
+    [SerializeField] private PlayerDetectionBoss playerDetection;
 
     [SerializeField] private float verticalRangeAbove = 1.5f;
     [SerializeField] private float verticalRangeBelow = 1.0f;
@@ -17,51 +17,77 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private int coinDropCount = 3;
 
+    [SerializeField] private GameObject[] enemyPrefabs;  // Array of enemy prefabs to spawn
+    [SerializeField] private Transform[] spawnPoints;    // Array of spawn points
+
+
     private NavMeshAgent agent;
     private Animator animator;
     private bool isAttacking = false; // Track attack state
+    private bool isPhase1 = false;
+    private bool isPhase2 = false;
+    private bool isPhase3 = false;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        playerDetection = GetComponent<PlayerDetection>();
+        playerDetection = GetComponent<PlayerDetectionBoss>();
         target = GameObject.FindWithTag("Player").transform;
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.speed = speed;
+        isPhase1 = true;
     }
 
     private void Update()
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        // Reset attack state if animation is done
-        if (stateInfo.IsName("Attack") && stateInfo.normalizedTime >= 1f)
-        {
-            isAttacking = false;
+        if(isPhase1 == true){
+            SpawnEnemies(3);
+            isPhase1 = false;
+
         }
 
-        if (isAttacking)
-            return; // Skip movement logic while attacking
+        // if (playerDetectionBoss.IsPhase3)
+        // {
+        //     // Allow boss to move/attack
+        // }
 
-        animator.SetBool("IsAttacking", false);
 
-        if (playerDetection.AwareOfPlayer)
-        {
-            float distanceToPlayer = Vector3.Distance(new Vector3(transform.position.x, 0f, transform.position.z),
-                                                    new Vector3(target.position.x, 0f, target.position.z));
-            float verticalDistanceToPlayer = Mathf.Abs(transform.position.y - target.position.y);
-
-            if (distanceToPlayer <= attackRange)
+        if(isPhase3 == true){
+            // Reset attack state if animation is done
+            if (stateInfo.IsName("Attack") && stateInfo.normalizedTime >= 1f)
             {
-                if (target.position.y > transform.position.y && verticalDistanceToPlayer <= verticalRangeAbove ||
-                    target.position.y < transform.position.y && verticalDistanceToPlayer <= verticalRangeBelow)
+                isAttacking = false;
+            }
+
+            if (isAttacking)
+                return; // Skip movement logic while attacking
+
+            animator.SetBool("IsAttacking", false);
+
+            if (playerDetection.AwareOfPlayer)
+            {
+                float distanceToPlayer = Vector3.Distance(new Vector3(transform.position.x, 0f, transform.position.z),
+                                                        new Vector3(target.position.x, 0f, target.position.z));
+                float verticalDistanceToPlayer = Mathf.Abs(transform.position.y - target.position.y);
+
+                if (distanceToPlayer <= attackRange)
                 {
-                    if (!stateInfo.IsName("Attack")) // Prevent re-triggering attack mid-animation
+                    if (target.position.y > transform.position.y && verticalDistanceToPlayer <= verticalRangeAbove ||
+                        target.position.y < transform.position.y && verticalDistanceToPlayer <= verticalRangeBelow)
                     {
-                        AttackPlayer();
+                        if (!stateInfo.IsName("Attack")) // Prevent re-triggering attack mid-animation
+                        {
+                            AttackPlayer();
+                        }
+                    }
+                    else
+                    {
+                        FollowPlayer();
                     }
                 }
                 else
@@ -71,12 +97,8 @@ public class EnemyMovement : MonoBehaviour
             }
             else
             {
-                FollowPlayer();
+                StopEnemy();
             }
-        }
-        else
-        {
-            StopEnemy();
         }
     }
 
@@ -134,35 +156,35 @@ public class EnemyMovement : MonoBehaviour
     }
 
 
-    public void TakeDamage(float amount, Vector2 attackOrigin, float knockbackForce, Vector2 playerFacingDirection)
-    {
-        _enemyStats.TakeDamage(amount, this);
-        AudioManager.Instance.Play("hit");
-        print($"Enemy took {amount} damage. Health left: {_enemyStats.Health}");
+    // public void TakeDamage(float amount, Vector2 attackOrigin, float knockbackForce, Vector2 playerFacingDirection)
+    // {
+    //     _enemyStats.TakeDamage(amount, this);
+    //     AudioManager.Instance.Play("hit");
+    //     print($"Enemy took {amount} damage. Health left: {_enemyStats.Health}");
 
-        // Flicker effect (change color to red)
-        StartCoroutine(FlickerRed());
+    //     // Flicker effect (change color to red)
+    //     StartCoroutine(FlickerRed());
 
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            // Apply knockback based on player's facing direction
-            Vector2 knockbackVector = playerFacingDirection.normalized * knockbackForce;
+    //     Rigidbody2D rb = GetComponent<Rigidbody2D>();
+    //     if (rb != null)
+    //     {
+    //         // Apply knockback based on player's facing direction
+    //         Vector2 knockbackVector = playerFacingDirection.normalized * knockbackForce;
 
-            print($"Player's facing direction: {playerFacingDirection}");
-            print($"Applying knockback force: {knockbackVector}");
+    //         print($"Player's facing direction: {playerFacingDirection}");
+    //         print($"Applying knockback force: {knockbackVector}");
 
-            // Apply the knockback velocity to the Rigidbody2D
-            rb.linearVelocity = knockbackVector;
+    //         // Apply the knockback velocity to the Rigidbody2D
+    //         rb.linearVelocity = knockbackVector;
 
-            // Gradually reduce the knockback over time
-            StartCoroutine(ReduceKnockback(rb)); // Gradually stop movement
-        }
-        else
-        {
-            print("Rigidbody2D not found on enemy!");
-        }
-    }
+    //         // Gradually reduce the knockback over time
+    //         StartCoroutine(ReduceKnockback(rb)); // Gradually stop movement
+    //     }
+    //     else
+    //     {
+    //         print("Rigidbody2D not found on enemy!");
+    //     }
+    // }
 
     private IEnumerator FlickerRed()
     {
@@ -232,4 +254,22 @@ public class EnemyMovement : MonoBehaviour
         speed = newSpeed;
         agent.speed = newSpeed;
     }
+
+    private void SpawnEnemies(int count)
+    {
+        // Ensure there are enough spawn points to match the enemy count
+        if (spawnPoints.Length < count)
+        {
+            Debug.LogWarning("Not enough spawn points for all enemies.");
+            count = spawnPoints.Length;  // Adjust to the available number of spawn points
+        }
+
+        for (int i = 0; i < count; i++)
+        {
+            // Assign each spawn point to an enemy in order
+            int enemyIndex = Random.Range(0, enemyPrefabs.Length);  // Randomly choose an enemy prefab
+            Instantiate(enemyPrefabs[enemyIndex], spawnPoints[i].position, Quaternion.identity);  // Spawn the enemy at the i-th spawn point
+        }
+    }
+
 }
