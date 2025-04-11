@@ -1267,6 +1267,9 @@ Transform:
   - {fileID: 1883990350}
   - {fileID: 275960534}
   - {fileID: 695764060}
+  - {fileID: 2066086377}
+  - {fileID: 1769448716}
+  - {fileID: 1894168557}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &333128170
@@ -10110,12 +10113,18 @@ MonoBehaviour:
   verticalRangeBelow: 1
   coinPrefab: {fileID: 0}
   coinDropCount: 3
-  enemyPrefabs:
+  enemyPrefabsPhase1:
   - {fileID: 3609596681812971198, guid: a96f2a54b9aa0f5478f41b166e8668d0, type: 3}
-  spawnPoints:
+  enemyPrefabsPhase2:
+  - {fileID: 7089001281318621615, guid: 3d3af3a3a35693a4a95f9462db0708f1, type: 3}
+  spawnPointsPhase1:
   - {fileID: 1883990350}
   - {fileID: 275960534}
   - {fileID: 695764060}
+  spawnPointsPhase2:
+  - {fileID: 2066086377}
+  - {fileID: 1769448716}
+  - {fileID: 1894168557}
 --- !u!114 &1508190105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10128,7 +10137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0e984dde615c4418cd92ba6f91bfd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerAwarenessDistance: 0
 --- !u!1 &1533360523
 GameObject:
   m_ObjectHideFlags: 0
@@ -11160,6 +11168,37 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!1 &1769448715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1769448716}
+  m_Layer: 0
+  m_Name: Spawn_Point_Boss_Enemy_2 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1769448716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769448715}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.6, y: -4.42, z: -0.004255156}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 321210331}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1883990349
 GameObject:
   m_ObjectHideFlags: 0
@@ -11270,6 +11309,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1894168556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1894168557}
+  m_Layer: 0
+  m_Name: Spawn_Point_Boss_Enemy_2 (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1894168557
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894168556}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.01, y: -4.46, z: -0.004255156}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 321210331}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1900864531
 GameObject:
@@ -19163,6 +19233,37 @@ Transform:
   - {fileID: 1330431223}
   - {fileID: 20767944}
   m_Father: {fileID: 693144922}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2066086376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2066086377}
+  m_Layer: 0
+  m_Name: Spawn_Point_Boss_Enemy_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2066086377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066086376}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.07, y: -3.96, z: -0.004255156}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 321210331}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2069816169
 PrefabInstance:

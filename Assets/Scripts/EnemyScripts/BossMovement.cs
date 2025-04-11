@@ -17,9 +17,10 @@ public class BossMovement : MonoBehaviour
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private int coinDropCount = 3;
 
-    [SerializeField] private GameObject[] enemyPrefabs;  // Array of enemy prefabs to spawn
-    [SerializeField] private Transform[] spawnPoints;    // Array of spawn points
-
+    [SerializeField] private GameObject[] enemyPrefabsPhase1;  // Array of enemy prefabs to spawn
+    [SerializeField] private GameObject[] enemyPrefabsPhase2;
+    [SerializeField] private Transform[] spawnPointsPhase1;    // Array of spawn points
+    [SerializeField] private Transform[] spawnPointsPhase2;  // Phase 2 spawn points
 
     private NavMeshAgent agent;
     private Animator animator;
@@ -27,6 +28,9 @@ public class BossMovement : MonoBehaviour
     private bool isPhase1 = false;
     private bool isPhase2 = false;
     private bool isPhase3 = false;
+    private int phase = 1;
+    private int activeEnemyCount = 0;
+
 
     private void Start()
     {
@@ -46,18 +50,29 @@ public class BossMovement : MonoBehaviour
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
         if(isPhase1 == true){
-            SpawnEnemies(3);
+            SpawnEnemies(1);
             isPhase1 = false;
-
         }
 
-        // if (playerDetectionBoss.IsPhase3)
-        // {
-        //     // Allow boss to move/attack
-        // }
+        if(phase == 1 && activeEnemyCount == 0){
+            print("phase 2");
+            isPhase2 = true;
+            phase = 2;
+        }
 
+        if(isPhase2 == true){
+            SpawnEnemies(1);
+            isPhase2 = false;
+        }
+
+        if(phase == 2 && activeEnemyCount == 0){
+            print("phase 3");
+            isPhase3 = true;
+            phase = 3;
+        }
 
         if(isPhase3 == true){
+            playerDetection.IsPhase3 = true;
             // Reset attack state if animation is done
             if (stateInfo.IsName("Attack") && stateInfo.normalizedTime >= 1f)
             {
@@ -248,28 +263,56 @@ public class BossMovement : MonoBehaviour
         }
     }
 
-
     public void SetSpeed(float newSpeed)
     {
         speed = newSpeed;
         agent.speed = newSpeed;
     }
 
-    private void SpawnEnemies(int count)
+   private void SpawnEnemies(int count)
     {
-        // Ensure there are enough spawn points to match the enemy count
-        if (spawnPoints.Length < count)
+        GameObject[] enemiesToSpawn;
+        Transform[] spawnPointsToUse;
+
+        if (isPhase2)
         {
-            Debug.LogWarning("Not enough spawn points for all enemies.");
-            count = spawnPoints.Length;  // Adjust to the available number of spawn points
+            // For Phase 2, use the Phase 2 spawn points
+            enemiesToSpawn = enemyPrefabsPhase2;
+            spawnPointsToUse = spawnPointsPhase2;
+        }
+        else
+        {
+            // For Phase 1, use the Phase 1 spawn points
+            enemiesToSpawn = enemyPrefabsPhase1;
+            spawnPointsToUse = spawnPointsPhase1;
         }
 
+        // Existing enemy spawn logic...
         for (int i = 0; i < count; i++)
         {
-            // Assign each spawn point to an enemy in order
-            int enemyIndex = Random.Range(0, enemyPrefabs.Length);  // Randomly choose an enemy prefab
-            Instantiate(enemyPrefabs[enemyIndex], spawnPoints[i].position, Quaternion.identity);  // Spawn the enemy at the i-th spawn point
+            // Ensure you have enough spawn points
+            if (i < spawnPointsToUse.Length)
+            {
+                // Randomly pick an enemy prefab from the selected phase's array
+                int enemyIndex = Random.Range(0, enemiesToSpawn.Length);
+
+                // Instantiate the chosen enemy prefab at the respective spawn point
+                GameObject enemy = Instantiate(enemiesToSpawn[enemyIndex], spawnPointsToUse[i].position, Quaternion.identity);
+
+                // Update the active enemy count
+                activeEnemyCount++;
+            }
+            else
+            {
+                Debug.LogWarning("Not enough spawn points for the number of enemies to spawn.");
+            }
         }
     }
+
+    public void RemoveEnemyFromList(GameObject enemy)
+    {
+        activeEnemyCount--;
+    }
+
 
 }

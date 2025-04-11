@@ -197,6 +197,7 @@ public class EnemyMovementBoss : MonoBehaviour
 
     public void Die()
     {
+        Debug.Log("Enemy died: " + gameObject.name); // Add this line
 
         // Stop the NavMeshAgent from moving and tracking the player
         if (agent != null)
@@ -210,9 +211,18 @@ public class EnemyMovementBoss : MonoBehaviour
         // Trigger the death animation
         animator.SetTrigger("Die");
 
+        // Notify the BossMovement script that this enemy is dead
+        BossMovement bossMovement = FindObjectOfType<BossMovement>(); // Find the boss script
+        if (bossMovement != null)
+        {
+            bossMovement.RemoveEnemyFromList(gameObject); // Notify the boss that this enemy is dead
+        }
+
         // Destroy the enemy after the death animation has finished (1.6 seconds here)
         Destroy(gameObject, 1.6f);
     }
+
+
 
     private void DropCoins()
     {
