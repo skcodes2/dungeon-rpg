@@ -13,7 +13,7 @@ public class PlayerSpawnManager : MonoBehaviour
 
         // Retrieve the last saved spawn point
         string lastSpawnPoint = PlayerPrefs.GetString("LastSpawnPoint", "");
-
+        if(lastSpawnPoint =="SpawnFromTreasure")return;
         // If the last spawn point is empty, just keep the player at their default position
         if (string.IsNullOrEmpty(lastSpawnPoint))
         {

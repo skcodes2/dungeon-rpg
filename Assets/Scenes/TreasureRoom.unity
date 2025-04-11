@@ -5615,8 +5615,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5757c18245225724b9168ee60bcb72a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Room2
-  spawnPointTag: SpawnPoint
+  sceneToLoad: Room1
+  spawnPointTag: SpawnFromTreasure
   dialogueTriggers: []
 --- !u!61 &1711920253
 BoxCollider2D:
