@@ -37,6 +37,16 @@ public class EnemyStats
         }
     }
 
+    public void TakeDamage(float amount, BossMovement enemyMovement)
+    {
+        Health -= amount;
+
+        if (Health <= 0)
+        {
+            enemyMovement.Die();
+        }
+    }
+
     public float DealDamage()
     {
         return Damage;
