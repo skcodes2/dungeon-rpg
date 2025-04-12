@@ -153,6 +153,7 @@ public class ButtonTrigger : MonoBehaviour
 
         if (clickedButton.name == "kick")
         {
+            AudioManager.Instance.Play("equip");
             inventory.AddSelectedAbility(new SkillsTreeButton(true, false, 20, "kick", null), "kick");
             basic1Image.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths["kick"]);
             return;
@@ -162,7 +163,10 @@ public class ButtonTrigger : MonoBehaviour
         SkillsTreeButton skillTreeButton = GetSkillTreeButton(clickedButton.name);
 
 
-        if (skillTreeButton == null) return;
+        if (skillTreeButton == null){ 
+            AudioManager.Instance.Play("error");
+            return;
+        }
 
         if (skillTreeButton.getNextButton() == null)
         {
@@ -173,15 +177,17 @@ public class ButtonTrigger : MonoBehaviour
 
         Button nextUXMLButton = GetNextButton(skillTreeButton.getNextButton()?.getName());
 
-        if (inventory.getCoins() < skillTreeButton.getPrice())
+        if (inventory.getCoins() < skillTreeButton.getPrice() && !skillTreeButton.getIsPurchased())
         {
             print("Not enough coins");
+            AudioManager.Instance.Play("error");
             return;
         }
 
         if (!skillTreeButton.getIsActive())
         {
             print(" button is inactive");
+            AudioManager.Instance.Play("error");
             return;
         }
 
@@ -206,11 +212,13 @@ public class ButtonTrigger : MonoBehaviour
 
         else if (!skillTreeButton.getIsPurchased())
         {
+            AudioManager.Instance.Play("buy");
             inventory.RemoveCoins(skillTreeButton.getPrice());
             skillTreeButton.setIsPurchased(true);
             skillTreeButton.setIsActive(true);
             UnlockNextButton(skillTreeButton, nextUXMLButton);
             print("Ability purchased: " + skillTreeButton.getName());
+            
         }
         else
         {
@@ -234,6 +242,7 @@ public class ButtonTrigger : MonoBehaviour
                 }
 
                 inventory.AddSelectedAbility(skillTreeButton, skillTreeButton.getName());
+                AudioManager.Instance.Play("equip");
             }
         }
     }
@@ -249,6 +258,7 @@ public class ButtonTrigger : MonoBehaviour
             btn.SetEnabled(false);
             UnlockNextButton(skillTreeButton, nextUXMLButton);
             ApplyUpgrade(skillTreeButton);
+            AudioManager.Instance.Play("buy");
         }
     }
 
