@@ -57,7 +57,7 @@ public class WeaponController : AbilityController
         {
             attackDurationTimer += Time.deltaTime;
 
-            if (attackDurationTimer >= base.abilityDuration * (3 / 4f))
+            if (attackDurationTimer >= base.abilityDuration * (3 / 5f))
             {
                 base.ability.SetActive(true);
             }

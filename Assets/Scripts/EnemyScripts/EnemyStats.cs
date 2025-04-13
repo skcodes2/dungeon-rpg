@@ -7,6 +7,7 @@ public class EnemyStats
     public float RotationSpeed; // Speed of enemy's rotation towards target
     public float Health; // Health of the enemy
     public float Damage; // Damage the enemy can inflict
+    public string myLocation;
 
     public void Heal(float amount)
     {
@@ -23,6 +24,14 @@ public class EnemyStats
 
         if (Health <= 0)
         {
+            if(myLocation == "Section1")
+            {
+                Room1DoorManager.Instance.EnemyDefeatedSection1();
+            }
+            else if(myLocation == "Section2")
+            {
+                Room1DoorManager.Instance.EnemyDefeatedSection2();
+            }
             enemyMovement.Die();
         }
     }
