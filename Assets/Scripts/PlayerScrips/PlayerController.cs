@@ -48,17 +48,17 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         // Initialize weapon controllers
-        pummelController = new WeaponController(pummelGameObject, anim, KeyCode.I, 0.5f, 1.5f);
+        pummelController = new WeaponController(pummelGameObject, anim, KeyCode.I, 0.5f, 3f);
         kickController = new WeaponController(kickGameObject, anim, KeyCode.I, 1f, 3f);
-        runAttackController = new WeaponController(runAttackGameObject, anim, KeyCode.P, 0.3f, 1.5f);
-        swordSlamController = new WeaponController(swordSlamGameObject, anim, KeyCode.P, 1f, 1.5f);
-        slashController = new WeaponController(slashGameObject, anim, KeyCode.O, 0.5f, 1.5f);
-        swipeController = new WeaponController(swipeGameObject, anim, KeyCode.O, 0.4f, 1.5f);
+        runAttackController = new WeaponController(runAttackGameObject, anim, KeyCode.P, 0.3f, 7f);
+        swordSlamController = new WeaponController(swordSlamGameObject, anim, KeyCode.P, 1f, 7f);
+        slashController = new WeaponController(slashGameObject, anim, KeyCode.O, 0.5f, 5f);
+        swipeController = new WeaponController(swipeGameObject, anim, KeyCode.O, 0.4f, 5f);
 
         // Initialize movement ability controllers
-        slideController = new MovementAbilityController(this, anim, KeyCode.Space, 1f, 1.5f, 1f);
+        slideController = new MovementAbilityController(this, anim, KeyCode.Space, 1f, 4f, 1f);
 
-        rollController = new MovementAbilityController(this, anim, KeyCode.Space, 0.4f, 1.5f, 0.5f);
+        rollController = new MovementAbilityController(this, anim, KeyCode.Space, 0.4f, 4f, 0.5f);
     }
     void Update()
     {

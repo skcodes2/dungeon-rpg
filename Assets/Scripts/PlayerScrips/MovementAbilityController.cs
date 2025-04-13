@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UIElements;
 [System.Serializable]
 public class MovementAbilityController : AbilityController
 {
@@ -9,7 +10,15 @@ public class MovementAbilityController : AbilityController
 
     private MonoBehaviour coroutineRunner;
 
+    private float maxCooldownHeight = 160f;
+
+    private bool isOnCooldown = false;
+
+    private UIDocument uiDocument;
+    private VisualElement cooldownOverlay;
+
     private Inventory inventory;
+
 
     public MovementAbilityController(MonoBehaviour runner, Animator anim, KeyCode keyBind, float abilityDuration, float abilityCooldown, float additionalSpeed)
         : base(anim, keyBind, abilityDuration, abilityCooldown)
@@ -18,10 +27,29 @@ public class MovementAbilityController : AbilityController
         this.playerStats = PlayerStats.Instance;
         this.coroutineRunner = runner;
         this.inventory = Inventory.Instance;
+        this.isOnCooldown = false;
+        GameObject abilityBarObject = GameObject.FindGameObjectWithTag("AbilityBar");
+        this.uiDocument = abilityBarObject.GetComponent<UIDocument>();
+        this.cooldownOverlay = uiDocument.rootVisualElement.Q<VisualElement>("MovementImageCD");
     }
 
     public override void Update()
     {
+        if (this.isOnCooldown)
+        {
+            base.cooldownTimer -= Time.deltaTime;
+            float fillAmount = Mathf.Clamp01(base.cooldownTimer / base.abilityCooldown);
+            float currentHeight = fillAmount * maxCooldownHeight;
+
+            cooldownOverlay.style.height = new Length(currentHeight, LengthUnit.Pixel);
+
+            if (base.cooldownTimer <= 0f)
+            {
+                this.isOnCooldown = false;
+                cooldownOverlay.style.height = new Length(0, LengthUnit.Pixel); // overlay fully disappears
+            }
+        }
+
         string abilityName = abilityDuration == 1f ? "slide" : "roll";
 
         if (inventory.ContainsAbility(abilityName))
@@ -43,11 +71,13 @@ public class MovementAbilityController : AbilityController
     protected override void CheckKeyBoardInput()
     {
         string animationTrigger = abilityDuration == 1f ? "Slide" : "Roll";
-        if (Input.GetKeyDown(keyBind) && cooldownTimer <= 0 && isRunning)
+        if (Input.GetKeyDown(keyBind) && base.cooldownTimer <= 0 && isRunning)
         {
             animator.SetTrigger(animationTrigger);
             coroutineRunner.StartCoroutine(CheckDurationTimer());
-            cooldownTimer = abilityCooldown;
+            base.cooldownTimer = base.abilityCooldown;
+            this.isOnCooldown = true;
+            cooldownOverlay.style.height = new Length(maxCooldownHeight, LengthUnit.Pixel);
         }
     }
 

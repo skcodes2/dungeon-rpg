@@ -56,6 +56,12 @@ public class ButtonTrigger : MonoBehaviour
     private VisualElement basic2Image;
     private List<Button> buttons;
     private UIDocument uiDoc;
+
+    private UIDocument abilityBarDoc;
+    private VisualElement movementImageCD;
+    private VisualElement specialImageCD;
+    private VisualElement basic1ImageCD;
+    private VisualElement basic2ImageCD;
     private PlayerStats playerStats;
     private Inventory inventory;
 
@@ -68,6 +74,22 @@ public class ButtonTrigger : MonoBehaviour
     private void OnDisable()
     {
         UnregisterButtonEvents();
+    }
+
+    void Awake()
+    {
+        // Make the UI documents persistent across scenes
+        GameObject abilityBarObject = GameObject.FindGameObjectWithTag("AbilityBar");
+        if (abilityBarObject != null)
+        {
+            DontDestroyOnLoad(abilityBarObject);
+        }
+
+        GameObject uiDocObject = gameObject;
+        if (uiDocObject != null)
+        {
+            DontDestroyOnLoad(uiDocObject);
+        }
     }
 
     private void InitializeSkillsTree()
@@ -101,18 +123,22 @@ public class ButtonTrigger : MonoBehaviour
             {
                 if (ability.getName() == "roll" || ability.getName() == "slide")
                 {
+                    movementImageCD.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths[ability.getName()]);
                     movementImage.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths[ability.getName()]);
                 }
                 else if (ability.getName() == "swipe" || ability.getName() == "slash")
                 {
+                    basic2ImageCD.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths[ability.getName()]);
                     basic2Image.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths[ability.getName()]);
                 }
                 else if (ability.getName() == "pummel" || ability.getName() == "kick")
                 {
+                    basic1ImageCD.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths[ability.getName()]);
                     basic1Image.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths[ability.getName()]);
                 }
                 else if (ability.getName() == "slam" || ability.getName() == "spin")
                 {
+                    specialImageCD.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths[ability.getName()]);
                     specialImage.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths[ability.getName()]);
                 }
             }
@@ -122,9 +148,11 @@ public class ButtonTrigger : MonoBehaviour
 
     private void InitializeUI()
     {
+        GameObject abilityBarObject = GameObject.FindGameObjectWithTag("AbilityBar");
         playerStats = PlayerStats.Instance;
         inventory = Inventory.Instance;
         uiDoc = GetComponent<UIDocument>();
+        abilityBarDoc = abilityBarObject.GetComponent<UIDocument>();
         VisualElement root = uiDoc.rootVisualElement;
         VisualElement rightSide = root.Q<VisualElement>("RightSide");
         VisualElement leftSide = root.Q<VisualElement>("LeftSide");
@@ -146,6 +174,11 @@ public class ButtonTrigger : MonoBehaviour
         specialImage = leftSide.Q<VisualElement>("SpecialImage");
         basic1Image = leftSide.Q<VisualElement>("Basic1Image");
         basic2Image = leftSide.Q<VisualElement>("Basic2Image");
+
+        movementImageCD = abilityBarDoc.rootVisualElement.Q<VisualElement>("MovementImage");
+        specialImageCD = abilityBarDoc.rootVisualElement.Q<VisualElement>("SpecialImage");
+        basic1ImageCD = abilityBarDoc.rootVisualElement.Q<VisualElement>("Basic1Image");
+        basic2ImageCD = abilityBarDoc.rootVisualElement.Q<VisualElement>("Basic2Image");
 
         buttons = root.Query<Button>().ToList();
 
@@ -228,6 +261,7 @@ public class ButtonTrigger : MonoBehaviour
             AudioManager.Instance.Play("equip");
             inventory.AddSelectedAbility(new SkillsTreeButton(true, false, 20, "kick", null), "kick");
             basic1Image.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths["kick"]);
+            basic1ImageCD.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths["kick"]);
             return;
         }
 
@@ -308,17 +342,21 @@ public class ButtonTrigger : MonoBehaviour
                 if (skillTreeButton.getName() == "roll" || skillTreeButton.getName() == "slide")
                 {
                     movementImage.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths[skillTreeButton.getName()]);
+                    movementImageCD.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths[skillTreeButton.getName()]);
                 }
                 else if (skillTreeButton.getName() == "swipe" || skillTreeButton.getName() == "slash")
                 {
                     basic2Image.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths[skillTreeButton.getName()]);
+                    basic2ImageCD.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths[skillTreeButton.getName()]);
                 }
                 else if (skillTreeButton.getName() == "pummel" || skillTreeButton.getName() == "kick")
                 {
+                    basic1ImageCD.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths[skillTreeButton.getName()]);
                     basic1Image.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths[skillTreeButton.getName()]);
                 }
                 else if (skillTreeButton.getName() == "slam" || skillTreeButton.getName() == "spin")
                 {
+                    specialImageCD.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths[skillTreeButton.getName()]);
                     specialImage.style.backgroundImage = Resources.Load<Texture2D>(imageAbilityPaths[skillTreeButton.getName()]);
                 }
 
