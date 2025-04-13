@@ -50,7 +50,7 @@ public class BossMovement : MonoBehaviour
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
         if(isPhase1 == true){
-            SpawnEnemies(1);
+            SpawnEnemies(3);
             isPhase1 = false;
         }
 
@@ -61,7 +61,7 @@ public class BossMovement : MonoBehaviour
         }
 
         if(isPhase2 == true){
-            SpawnEnemies(1);
+            SpawnEnemies(3);
             isPhase2 = false;
         }
 
@@ -171,35 +171,36 @@ public class BossMovement : MonoBehaviour
     }
 
 
-    // public void TakeDamage(float amount, Vector2 attackOrigin, float knockbackForce, Vector2 playerFacingDirection)
-    // {
-    //     _enemyStats.TakeDamage(amount, this);
-    //     AudioManager.Instance.Play("hit");
-    //     print($"Enemy took {amount} damage. Health left: {_enemyStats.Health}");
+    public void TakeDamage(float amount, Vector2 attackOrigin, float knockbackForce, Vector2 playerFacingDirection)
+    {
+        // Only allow damage during phase 3
+        if (phase < 3)
+        {
+            Debug.Log("Boss is immune to damage until phase 3.");
+            return;
+        }
 
-    //     // Flicker effect (change color to red)
-    //     StartCoroutine(FlickerRed());
+        _enemyStats.TakeDamage(amount, this);
+        AudioManager.Instance.Play("hit");
+        print($"Enemy took {amount} damage. Health left: {_enemyStats.Health}");
 
-    //     Rigidbody2D rb = GetComponent<Rigidbody2D>();
-    //     if (rb != null)
-    //     {
-    //         // Apply knockback based on player's facing direction
-    //         Vector2 knockbackVector = playerFacingDirection.normalized * knockbackForce;
+        StartCoroutine(FlickerRed());
 
-    //         print($"Player's facing direction: {playerFacingDirection}");
-    //         print($"Applying knockback force: {knockbackVector}");
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            Vector2 knockbackVector = playerFacingDirection.normalized * knockbackForce;
+            print($"Player's facing direction: {playerFacingDirection}");
+            print($"Applying knockback force: {knockbackVector}");
+            rb.linearVelocity = knockbackVector;
+            StartCoroutine(ReduceKnockback(rb));
+        }
+        else
+        {
+            print("Rigidbody2D not found on enemy!");
+        }
+    }
 
-    //         // Apply the knockback velocity to the Rigidbody2D
-    //         rb.linearVelocity = knockbackVector;
-
-    //         // Gradually reduce the knockback over time
-    //         StartCoroutine(ReduceKnockback(rb)); // Gradually stop movement
-    //     }
-    //     else
-    //     {
-    //         print("Rigidbody2D not found on enemy!");
-    //     }
-    // }
 
     private IEnumerator FlickerRed()
     {

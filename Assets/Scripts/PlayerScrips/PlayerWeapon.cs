@@ -26,9 +26,8 @@ public class PlayerWeapon : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            // Try to get EnemyMovement first
+            // Try EnemyMovement
             var enemyMovement = collision.gameObject.GetComponent<EnemyMovement>();
-
             if (enemyMovement != null)
             {
                 enemyMovement.TakeDamage(
@@ -40,12 +39,24 @@ public class PlayerWeapon : MonoBehaviour
                 return;
             }
 
-            // Try to get EnemyMovementBoss if regular EnemyMovement not found
+            // Try EnemyMovementBoss
             var enemyBoss = collision.gameObject.GetComponent<EnemyMovementBoss>();
-
             if (enemyBoss != null)
             {
                 enemyBoss.TakeDamage(
+                    _damageAmount + PlayerStats.Instance.baseDamage,
+                    transform.position,
+                    6f,
+                    playerController.GetLastMoveDirection()
+                );
+                return;
+            }
+
+            // Try BossMovement
+            var bossMovement = collision.gameObject.GetComponent<BossMovement>();
+            if (bossMovement != null)
+            {
+                bossMovement.TakeDamage(
                     _damageAmount + PlayerStats.Instance.baseDamage,
                     transform.position,
                     6f,
