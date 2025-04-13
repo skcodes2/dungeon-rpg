@@ -1,0 +1,25 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/bar.uss?fileID=7433441132597879392&amp;guid=e3ca84efec39e1444909814ac02b4d87&amp;type=3#bar" />
+    <engine:VisualElement name="Container" style="flex-grow: 1; background-color: rgb(0, 0, 0); width: 800px; height: 150px; max-width: 800px; max-height: 150px; justify-content: space-around; align-self: center; align-content: stretch; align-items: stretch; padding-top: 0; margin-top: 900px; background-image: url(&quot;project://database/Assets/Art/GUI_Parts/Gui_parts/Frame_mid.png?fileID=2800000&amp;guid=d5bda4f272648f34c8020e4e2772de3f&amp;type=3#Frame_mid&quot;); flex-direction: row;">
+        <engine:VisualElement name="Movement" class="abilityContainer" style="flex-grow: 1;">
+            <engine:VisualElement name="MovementImage" class="abilityImage" style="flex-grow: 1;">
+                <engine:VisualElement name="MovementImageCD" class="cooldown" style="flex-grow: 1;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="Basic1Container" class="abilityContainer" style="flex-grow: 1;">
+            <engine:VisualElement name="Basic1Image" class="abilityImage" style="flex-grow: 1; background-image: resource(&apos;Icon23&apos;);">
+                <engine:VisualElement name="Basic1ImageCD" class="cooldown" style="flex-grow: 1;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="Basic2Container" class="abilityContainer" style="flex-grow: 1;">
+            <engine:VisualElement name="Basic2Image" class="abilityImage" style="flex-grow: 1; max-height: 175px;">
+                <engine:VisualElement name="Basic2ImageCD" class="cooldown" style="flex-grow: 1;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="SpecialContainer" class="abilityContainer" style="flex-grow: 1;">
+            <engine:VisualElement name="SpecialImage" class="abilityImage" style="flex-grow: 1;">
+                <engine:VisualElement name="SpecialImageCD" class="cooldown" style="flex-grow: 1;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

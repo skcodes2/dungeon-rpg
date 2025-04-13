@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
         // Initialize weapon controllers
         pummelController = new WeaponController(pummelGameObject, anim, KeyCode.I, 0.5f, 1.5f);
-        kickController = new WeaponController(kickGameObject, anim, KeyCode.I, 1f, 1.5f);
+        kickController = new WeaponController(kickGameObject, anim, KeyCode.I, 1f, 3f);
         runAttackController = new WeaponController(runAttackGameObject, anim, KeyCode.P, 0.3f, 1.5f);
         swordSlamController = new WeaponController(swordSlamGameObject, anim, KeyCode.P, 1f, 1.5f);
         slashController = new WeaponController(slashGameObject, anim, KeyCode.O, 0.5f, 1.5f);

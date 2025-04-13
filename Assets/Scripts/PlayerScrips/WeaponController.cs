@@ -1,20 +1,66 @@
 using UnityEngine;
+using UnityEngine.UIElements;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class WeaponController : AbilityController
 {
     private float attackDurationTimer = 0f;
+
+    private float maxCooldownHeight = 160f; // Maximum height of the cooldown overlay
+
     private Inventory inventory;
+
+    private bool isOnCooldown;
+
+    private UIDocument uiDocument;
+
+
+    private VisualElement cooldownOverlay;
 
 
     public WeaponController(GameObject weapon, Animator anim, KeyCode keyBind, float attackDuration, float attackCooldown)
         : base(weapon, anim, keyBind, attackDuration, attackCooldown)
     {
         this.inventory = Inventory.Instance;
+        this.isOnCooldown = false;
+        GameObject abilityBarObject = GameObject.FindGameObjectWithTag("AbilityBar");
+        this.uiDocument = abilityBarObject.GetComponent<UIDocument>();
+        this.cooldownOverlay = uiDocument.rootVisualElement.Q<VisualElement>(getAbilityType(base.ability.name));
+
+
+    }
+
+    private string getAbilityType(string abilityName)
+    {
+        return abilityName switch
+        {
+            "SwordSlam" => "SpecialImageCD",
+            "SpinAttack" => "SpecialImageCD",
+            "Pummel" => "Basic1ImageCD",
+            "Kick" => "Basic1ImageCD",
+            "Swipe" => "Basic2ImageCD",
+            "Slash" => "Basic2ImageCD",
+        };
     }
 
     public override void Update()
     {
+        if (this.isOnCooldown)
+        {
+            base.cooldownTimer -= Time.deltaTime;
+            float fillAmount = Mathf.Clamp01(cooldownTimer / base.abilityCooldown);
+            float currentHeight = fillAmount * maxCooldownHeight;
+
+            cooldownOverlay.style.height = new Length(currentHeight, LengthUnit.Pixel);
+
+            if (base.cooldownTimer <= 0f)
+            {
+                this.isOnCooldown = false;
+                cooldownOverlay.style.height = new Length(0, LengthUnit.Pixel); // overlay fully disappears
+            }
+        }
+
         string abilityName = "";
         if (base.ability.name == "SpinAttack")
         {
@@ -48,6 +94,8 @@ public class WeaponController : AbilityController
             base.animator.SetTrigger(base.ability.name);
             onAttack();
             base.cooldownTimer = base.abilityCooldown;
+            this.isOnCooldown = true;
+            cooldownOverlay.style.height = new Length(maxCooldownHeight, LengthUnit.Pixel); // overlay fully appears
         }
     }
 
@@ -76,7 +124,7 @@ public class WeaponController : AbilityController
         if (!base.isUsingAbility)
         {
             base.isUsingAbility = true;
-            
+
         }
     }
 }
