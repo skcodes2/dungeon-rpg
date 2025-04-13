@@ -20471,10 +20471,22 @@ MonoBehaviour:
   sounds:
   - name: CoinPickUp
     clip: {fileID: 8300000, guid: 7f6beb5d575ba2c47aa97698e20c2039, type: 3}
-    volume: 1
+    volume: 0.253
     loop: 0
   - name: hit
     clip: {fileID: 8300000, guid: d11deb0a5afc216449905a419a9fbe4e, type: 3}
+    volume: 1
+    loop: 0
+  - name: equip
+    clip: {fileID: 8300000, guid: 6927f2f392c9bd843a6bb709da6d69e5, type: 3}
+    volume: 1
+    loop: 0
+  - name: error
+    clip: {fileID: 8300000, guid: dd8c6172078f1b44082c0c9ac960ff7b, type: 3}
+    volume: 1
+    loop: 0
+  - name: buy
+    clip: {fileID: 8300000, guid: f69e2965208a78b4382ec7b6e9854df0, type: 3}
     volume: 1
     loop: 0
 --- !u!4 &1370458348

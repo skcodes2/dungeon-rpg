@@ -24,9 +24,9 @@ public class ButtonTrigger : MonoBehaviour
     { "kick", "Press I to use Kick Attack\nThis attacks increases weapon damage by 5 points" },
     { "pummel", "Press I to use Pummel Attack\nThis attacks increases weapon damage by 5 points" },
     { "slash", "Press O to use Slash\nThis attacks increases weapon damage by 10 points" },
-    { "swipe", "Press O to use Swipe Attack\nThis attacks increases weapon damage by 10 points" },
+    { "swipe", "Press O to use Swipe Attack\nThis attacks increases weapon\ndamage by 10 points" },
     { "spin", "Press P to use Spin Attack\nThis attacks increases weapon damage by 20 points\n Attack can only be used while running" },
-    { "slam", "Press P to use Sword Slam Attack\nThis attacks increases weapon damage by 20 points" },
+    { "slam", "Press P to use Sword Slam Attack\nThis attacks increases weapon\ndamage by 20 points" },
     { "roll", "Press Space to Roll.\nRolling briefly increases speed by 1" },
     { "slide", "Press Space to Slide.\nSliding briefly increases speed by 0.5" },
 
@@ -38,8 +38,8 @@ public class ButtonTrigger : MonoBehaviour
     { "speed3", "Increase walk speed by 1.5 units.\nRun speed scales with it." },
     { "armour2", "Increase armour by 2 points to reduce incoming damage." },
     { "armour5", "Increase armour by 5 points to significantly reduce damage." },
-    { "hp20", "Boost your maximum health by 20 points." },
-    { "hp25", "Boost your maximum health by 25 points." },
+    { "hp20", "Boost your maximum health by 20" },
+    { "hp25", "Boost your maximum health by 25" },
 };
 
 
@@ -174,23 +174,46 @@ public class ButtonTrigger : MonoBehaviour
         }
     }
 
-    private void OnMouseEnter(MouseEnterEvent evt)
-    {
+  private void OnMouseEnter(MouseEnterEvent evt)
+{
     Button hoveredButton = evt.target as Button;
     if (hoveredButton == null || !buttonTooltips.ContainsKey(hoveredButton.name)) return;
 
     tooltipLabel.text = buttonTooltips[hoveredButton.name];
     tooltipLabel.style.display = DisplayStyle.Flex;
 
-    // Optional: Position near the mouse (or button)
-    tooltipLabel.style.left = hoveredButton.worldBound.xMax + 10;
-    tooltipLabel.style.top = hoveredButton.worldBound.yMin;
+    Rect buttonBounds = hoveredButton.worldBound;
+
+    // Tooltip Y: slightly above the button
+    tooltipLabel.style.top = buttonBounds.y - 35;
+
+    // Tooltip X: more to the left for certain buttons
+    bool shouldShiftLeft = hoveredButton.name == "spin" ||
+                           hoveredButton.name == "slam" ||
+                           hoveredButton.name == "slash" ||
+                           hoveredButton.name == "swipe" ||
+                           hoveredButton.name == "hp20" ||
+                           hoveredButton.name == "hp25" ||
+                           hoveredButton.name == "armour2" ||
+                           hoveredButton.name == "armour5";
+
+    if (shouldShiftLeft)
+    {
+        tooltipLabel.style.left = buttonBounds.x - 180; // Well away from mouse
+        tooltipLabel.style.top = buttonBounds.y - 80;
     }
+    else
+    {
+        tooltipLabel.style.left = buttonBounds.xMax + 15; // Default: right side of button
+    }
+}
+
 
     private void OnMouseLeave(MouseLeaveEvent evt)
     {
         tooltipLabel.style.display = DisplayStyle.None;
     }
+    
 
     private void OnClick(ClickEvent evt)
     {

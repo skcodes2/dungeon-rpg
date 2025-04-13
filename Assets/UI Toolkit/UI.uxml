@@ -162,14 +162,14 @@
     <engine:Label name="Tooltip" text="" 
               style="position: absolute; 
                      display: none; 
-                     background-color: rgba(0, 0, 0, 0.85); 
+                     background-color: rgba(0, 0, 0, 1); 
                      color: white; 
                      padding-left: 10px; 
                      padding-right: 10px;
                      padding-top: 5px;
                      padding-bottom: 5px;
                      border-radius: 4px; 
-                     font-size: 16px;
+                     font-size: 20px;
                      z-index: 1000;" />
 
 </engine:UXML>
