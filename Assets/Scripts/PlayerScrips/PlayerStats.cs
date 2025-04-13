@@ -44,6 +44,7 @@ public class PlayerStats : MonoBehaviour
         if (healthBar != null)
         {
             healthBar.SetMaxHealth((int)maxHealth);
+            healthBar.SetHealth((int)health);
         }
         else
         {
@@ -96,7 +97,7 @@ public class PlayerStats : MonoBehaviour
     }
     public void TakeDamage(float amount)
     {
-        this.health -= amount;
+        this.health -= amount - this.armour;
         AudioManager.Instance.Play("hit");
         // Flicker effect (change color to red)
         StartCoroutine(FlickerRed());
@@ -117,8 +118,6 @@ public class PlayerStats : MonoBehaviour
             this.anim.SetTrigger("Die");
             this.walkSpeed = 0;
             this.runSpeed = 0;
-
-
             // Handle player death (e.g., call a method to handle death)
         }
     }
@@ -131,9 +130,11 @@ public class PlayerStats : MonoBehaviour
     public void Heal(float amount)
     {
         this.health += amount;
-        if (health > 100f)
+        this.healthBar.SetHealth((int)this.health);
+        if (this.health > this.maxHealth)
         {
-            this.health = 100f; // Cap health at 100
+            this.health = this.maxHealth; // Cap health at 100
+            this.healthBar.SetHealth(this.maxHealth);
         }
     }
 

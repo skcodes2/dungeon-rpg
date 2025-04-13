@@ -76,6 +76,7 @@ public class WeaponController : AbilityController
         if (!base.isUsingAbility)
         {
             base.isUsingAbility = true;
+            
         }
     }
 }

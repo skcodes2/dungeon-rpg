@@ -11,15 +11,18 @@ public class PlayerWeapon : MonoBehaviour
     // Reference to the PlayerController (assign in the Inspector or via code)
     private PlayerController playerController;
 
+    private PlayerStats playerStats;
+
     private void Start()
     {
         // Find the PlayerController component attached to the player (you could also set this reference via the Inspector)
         playerController = GetComponentInParent<PlayerController>();
+        playerStats = PlayerStats.Instance;
     }
 
     private void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,6 +39,16 @@ public class PlayerWeapon : MonoBehaviour
                     6f,
                     playerController.GetLastMoveDirection()
                 );
+
+                if (gameObject.name == "Swipe")
+                {
+                    playerStats.Heal(5f);
+                }
+                if (gameObject.name == "SwordSlam")
+                {
+                    playerStats.Heal(10f);
+                }
+
                 return;
             }
 

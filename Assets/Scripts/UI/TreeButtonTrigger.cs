@@ -23,12 +23,12 @@ public class ButtonTrigger : MonoBehaviour
 {
     { "kick", "Press I to use Kick Attack\nThis attacks increases weapon damage by 5 points" },
     { "pummel", "Press I to use Pummel Attack\nThis attacks increases weapon damage by 5 points" },
-    { "slash", "Press O to use Slash\nThis attacks increases weapon damage by 10 points" },
-    { "swipe", "Press O to use Swipe Attack\nThis attacks increases weapon\ndamage by 10 points" },
-    { "spin", "Press P to use Spin Attack\nThis attacks increases weapon damage by 20 points\n Attack can only be used while running" },
-    { "slam", "Press P to use Sword Slam Attack\nThis attacks increases weapon\ndamage by 20 points" },
-    { "roll", "Press Space to Roll.\nRolling briefly increases speed by 1" },
-    { "slide", "Press Space to Slide.\nSliding briefly increases speed by 0.5" },
+    { "slash", "Press O to use Slash\nThis attacks increases weapon damage by 10 points\n " },
+    { "swipe", "Press O to use Swipe Attack\nThis attacks increases weapon\ndamage by 10 points and adds\nLifesteal +5 On-Hit" },
+    { "spin", "Press P to use Spin Attack\nThis attacks increases weapon damage by 20 points\n Attack can only be used while running\n Increase Armour by 2 points" },
+    { "slam", "Press P to use Sword Slam Attack\nThis attacks increases weapon\ndamage by 20 points and adds\n Lifesteal +10 On-Hit" },
+    { "roll", "Press Space to Roll.\nRolling briefly increases speed by 0.5" },
+    { "slide", "Press Space to Slide.\nSliding briefly increases speed by 1" },
 
     // Stat upgrade buttons
     { "atk1", "Increase base attack by 1 point." },
@@ -36,8 +36,8 @@ public class ButtonTrigger : MonoBehaviour
     { "atk10", "Increase base attack by 10 points." },
     { "speed1", "Increase walk speed by 1 unit.\nRun speed scales with it." },
     { "speed3", "Increase walk speed by 1.5 units.\nRun speed scales with it." },
-    { "armour2", "Increase armour by 2 points to reduce incoming damage." },
-    { "armour5", "Increase armour by 5 points to significantly reduce damage." },
+    { "armour2", "Increase armour by 1 points to reduce incoming damage." },
+    { "armour5", "Increase armour by 1 points to reduce damage." },
     { "hp20", "Boost your maximum health by 20" },
     { "hp25", "Boost your maximum health by 25" },
 };
@@ -174,46 +174,46 @@ public class ButtonTrigger : MonoBehaviour
         }
     }
 
-  private void OnMouseEnter(MouseEnterEvent evt)
-{
-    Button hoveredButton = evt.target as Button;
-    if (hoveredButton == null || !buttonTooltips.ContainsKey(hoveredButton.name)) return;
-
-    tooltipLabel.text = buttonTooltips[hoveredButton.name];
-    tooltipLabel.style.display = DisplayStyle.Flex;
-
-    Rect buttonBounds = hoveredButton.worldBound;
-
-    // Tooltip Y: slightly above the button
-    tooltipLabel.style.top = buttonBounds.y - 35;
-
-    // Tooltip X: more to the left for certain buttons
-    bool shouldShiftLeft = hoveredButton.name == "spin" ||
-                           hoveredButton.name == "slam" ||
-                           hoveredButton.name == "slash" ||
-                           hoveredButton.name == "swipe" ||
-                           hoveredButton.name == "hp20" ||
-                           hoveredButton.name == "hp25" ||
-                           hoveredButton.name == "armour2" ||
-                           hoveredButton.name == "armour5";
-
-    if (shouldShiftLeft)
+    private void OnMouseEnter(MouseEnterEvent evt)
     {
-        tooltipLabel.style.left = buttonBounds.x - 180; // Well away from mouse
-        tooltipLabel.style.top = buttonBounds.y - 80;
+        Button hoveredButton = evt.target as Button;
+        if (hoveredButton == null || !buttonTooltips.ContainsKey(hoveredButton.name)) return;
+
+        tooltipLabel.text = buttonTooltips[hoveredButton.name];
+        tooltipLabel.style.display = DisplayStyle.Flex;
+
+        Rect buttonBounds = hoveredButton.worldBound;
+
+        // Tooltip Y: slightly above the button
+        tooltipLabel.style.top = buttonBounds.y - 35;
+
+        // Tooltip X: more to the left for certain buttons
+        bool shouldShiftLeft = hoveredButton.name == "spin" ||
+                               hoveredButton.name == "slam" ||
+                               hoveredButton.name == "slash" ||
+                               hoveredButton.name == "swipe" ||
+                               hoveredButton.name == "hp20" ||
+                               hoveredButton.name == "hp25" ||
+                               hoveredButton.name == "armour2" ||
+                               hoveredButton.name == "armour5";
+
+        if (shouldShiftLeft)
+        {
+            tooltipLabel.style.left = buttonBounds.x - 180; // Well away from mouse
+            tooltipLabel.style.top = buttonBounds.y - 80;
+        }
+        else
+        {
+            tooltipLabel.style.left = buttonBounds.xMax + 15; // Default: right side of button
+        }
     }
-    else
-    {
-        tooltipLabel.style.left = buttonBounds.xMax + 15; // Default: right side of button
-    }
-}
 
 
     private void OnMouseLeave(MouseLeaveEvent evt)
     {
         tooltipLabel.style.display = DisplayStyle.None;
     }
-    
+
 
     private void OnClick(ClickEvent evt)
     {
@@ -235,7 +235,8 @@ public class ButtonTrigger : MonoBehaviour
         SkillsTreeButton skillTreeButton = GetSkillTreeButton(clickedButton.name);
 
 
-        if (skillTreeButton == null){ 
+        if (skillTreeButton == null)
+        {
             AudioManager.Instance.Play("error");
             return;
         }
@@ -284,13 +285,21 @@ public class ButtonTrigger : MonoBehaviour
 
         else if (!skillTreeButton.getIsPurchased())
         {
+            if (skillTreeButton.getName() == "Slash")
+            {
+                playerStats.IncreaseArmour(1f);
+            }
+            if (skillTreeButton.getName() == "SpinAttack")
+            {
+                playerStats.IncreaseArmour(2f);
+            }
             AudioManager.Instance.Play("buy");
             inventory.RemoveCoins(skillTreeButton.getPrice());
             skillTreeButton.setIsPurchased(true);
             skillTreeButton.setIsActive(true);
             UnlockNextButton(skillTreeButton, nextUXMLButton);
             print("Ability purchased: " + skillTreeButton.getName());
-            
+
         }
         else
         {
@@ -371,11 +380,11 @@ public class ButtonTrigger : MonoBehaviour
                 speedLabel.text = playerStats.walkSpeed.ToString();
                 break;
             case "armour2":
-                playerStats.armour += 2;
+                playerStats.IncreaseArmour(1f);
                 armourLabel.text = playerStats.armour.ToString();
                 break;
             case "armour5":
-                playerStats.armour += 5;
+                playerStats.IncreaseArmour(1f);
                 armourLabel.text = playerStats.armour.ToString();
                 break;
             case "hp25":

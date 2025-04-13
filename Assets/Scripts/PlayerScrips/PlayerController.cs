@@ -56,9 +56,9 @@ public class PlayerController : MonoBehaviour
         swipeController = new WeaponController(swipeGameObject, anim, KeyCode.O, 0.4f, 1.5f);
 
         // Initialize movement ability controllers
-        slideController = new MovementAbilityController(this, anim, KeyCode.Space, 1f, 1.5f, 0.5f);
+        slideController = new MovementAbilityController(this, anim, KeyCode.Space, 1f, 1.5f, 1f);
 
-        rollController = new MovementAbilityController(this, anim, KeyCode.Space, 0.4f, 1.5f, 1f);
+        rollController = new MovementAbilityController(this, anim, KeyCode.Space, 0.4f, 1.5f, 0.5f);
     }
     void Update()
     {
