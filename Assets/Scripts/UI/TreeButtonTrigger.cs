@@ -19,10 +19,36 @@ public class ButtonTrigger : MonoBehaviour
 
     };
 
+    private Dictionary<string, string> buttonTooltips = new Dictionary<string, string>()
+{
+    { "kick", "Press I to use Kick Attack\nThis attacks increases weapon damage by 5 points" },
+    { "pummel", "Press I to use Pummel Attack\nThis attacks increases weapon damage by 5 points" },
+    { "slash", "Press O to use Slash\nThis attacks increases weapon damage by 10 points" },
+    { "swipe", "Press O to use Swipe Attack\nThis attacks increases weapon damage by 10 points" },
+    { "spin", "Press P to use Spin Attack\nThis attacks increases weapon damage by 20 points\n Attack can only be used while running" },
+    { "slam", "Press P to use Sword Slam Attack\nThis attacks increases weapon damage by 20 points" },
+    { "roll", "Press Space to Roll.\nRolling briefly increases speed by 1" },
+    { "slide", "Press Space to Slide.\nSliding briefly increases speed by 0.5" },
+
+    // Stat upgrade buttons
+    { "atk1", "Increase base attack by 1 point." },
+    { "atk5", "Increase base attack by 5 points." },
+    { "atk10", "Increase base attack by 10 points." },
+    { "speed1", "Increase walk speed by 1 unit.\nRun speed scales with it." },
+    { "speed3", "Increase walk speed by 1.5 units.\nRun speed scales with it." },
+    { "armour2", "Increase armour by 2 points to reduce incoming damage." },
+    { "armour5", "Increase armour by 5 points to significantly reduce damage." },
+    { "hp20", "Boost your maximum health by 20 points." },
+    { "hp25", "Boost your maximum health by 25 points." },
+};
+
+
     private Label healthLabel;
     private Label damageLabel;
     private Label speedLabel;
     private Label armourLabel;
+
+    private Label tooltipLabel;
 
     private VisualElement movementImage;
     private VisualElement specialImage;
@@ -104,6 +130,8 @@ public class ButtonTrigger : MonoBehaviour
         VisualElement leftSide = root.Q<VisualElement>("LeftSide");
         VisualElement stats = rightSide.Q<VisualElement>("Stats");
 
+        tooltipLabel = root.Q<Label>("Tooltip");
+
         healthLabel = stats.Query<Label>("Health");
         damageLabel = stats.Query<Label>("Attack");
         speedLabel = stats.Query<Label>("Speed");
@@ -129,6 +157,8 @@ public class ButtonTrigger : MonoBehaviour
         {
             btn.BringToFront();
             btn.RegisterCallback<ClickEvent>(OnClick);
+            btn.RegisterCallback<MouseEnterEvent>(OnMouseEnter);
+            btn.RegisterCallback<MouseLeaveEvent>(OnMouseLeave);
 
         }
         InitializeSkillsTree();
@@ -140,7 +170,26 @@ public class ButtonTrigger : MonoBehaviour
         foreach (Button btn in buttons)
         {
             btn.UnregisterCallback<ClickEvent>(OnClick);
+
         }
+    }
+
+    private void OnMouseEnter(MouseEnterEvent evt)
+    {
+    Button hoveredButton = evt.target as Button;
+    if (hoveredButton == null || !buttonTooltips.ContainsKey(hoveredButton.name)) return;
+
+    tooltipLabel.text = buttonTooltips[hoveredButton.name];
+    tooltipLabel.style.display = DisplayStyle.Flex;
+
+    // Optional: Position near the mouse (or button)
+    tooltipLabel.style.left = hoveredButton.worldBound.xMax + 10;
+    tooltipLabel.style.top = hoveredButton.worldBound.yMin;
+    }
+
+    private void OnMouseLeave(MouseLeaveEvent evt)
+    {
+        tooltipLabel.style.display = DisplayStyle.None;
     }
 
     private void OnClick(ClickEvent evt)
