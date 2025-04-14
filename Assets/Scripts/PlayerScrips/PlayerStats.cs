@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -95,6 +96,11 @@ public class PlayerStats : MonoBehaviour
             spriteRenderer.color = Color.white;
         }
     }
+    private IEnumerator HandleDeath()
+    {
+        yield return new WaitForSeconds(1.5f); // play death animation for 1.5 seconds
+        SceneManager.LoadScene("GameOverScene"); // game over scene
+    }
     public void TakeDamage(float amount)
     {
         this.health -= amount - this.armour;
@@ -119,6 +125,8 @@ public class PlayerStats : MonoBehaviour
             this.walkSpeed = 0;
             this.runSpeed = 0;
             // Handle player death (e.g., call a method to handle death)
+
+            StartCoroutine(HandleDeath());
         }
     }
 
