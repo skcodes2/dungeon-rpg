@@ -50,7 +50,7 @@ public class BossMovement : MonoBehaviour
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
         if(isPhase1 == true){
-            SpawnEnemies(3);
+            SpawnEnemies(7);
             isPhase1 = false;
         }
 
@@ -61,7 +61,7 @@ public class BossMovement : MonoBehaviour
         }
 
         if(isPhase2 == true){
-            SpawnEnemies(3);
+            SpawnEnemies(5);
             isPhase2 = false;
         }
 

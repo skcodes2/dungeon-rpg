@@ -648,6 +648,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &82092637
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 82092638}
+  m_Layer: 0
+  m_Name: Spawn_Point_Boss_Enemy (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &82092638
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82092637}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 29.73, y: -29.69, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 321210331}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &92622251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1746,6 +1777,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &221007206
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 221007207}
+  m_Layer: 0
+  m_Name: Spawn_Point_Boss_Enemy (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &221007207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221007206}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 27.6, y: -24.16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 321210331}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &231402724
 GameObject:
   m_ObjectHideFlags: 0
@@ -2573,9 +2635,15 @@ Transform:
   - {fileID: 1883990350}
   - {fileID: 275960534}
   - {fileID: 695764060}
+  - {fileID: 768957084}
+  - {fileID: 221007207}
+  - {fileID: 1479533706}
+  - {fileID: 82092638}
   - {fileID: 2066086377}
   - {fileID: 1769448716}
   - {fileID: 1894168557}
+  - {fileID: 657983264}
+  - {fileID: 646532883}
   - {fileID: 873998961}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11206,7 +11274,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.97, y: 2.39, z: -10}
+  m_LocalPosition: {x: -7.07, y: 2.35, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12567,6 +12635,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &646532882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 646532883}
+  m_Layer: 0
+  m_Name: Spawn_Point_Boss_Enemy_2 (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &646532883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646532882}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 27.36, y: -24.04, z: -0.004255156}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 321210331}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &657087231
 GameObject:
   m_ObjectHideFlags: 0
@@ -12597,6 +12696,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &657983263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 657983264}
+  m_Layer: 0
+  m_Name: Spawn_Point_Boss_Enemy_2 (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &657983264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657983263}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 23.37, y: -24.22, z: -0.004255156}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 321210331}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &663946094
 PrefabInstance:
@@ -13175,7 +13305,7 @@ Transform:
   m_GameObject: {fileID: 693144917}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.97, y: 2.39, z: 0}
+  m_LocalPosition: {x: -7.07, y: 2.35, z: 0}
   m_LocalScale: {x: 1, y: 0.993, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13773,6 +13903,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752065246}
   m_CullTransparentMesh: 1
+--- !u!1 &768957083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 768957084}
+  m_Layer: 0
+  m_Name: Spawn_Point_Boss_Enemy (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &768957084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768957083}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 23.04, y: -24.19, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 321210331}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &776982652
 GameObject:
   m_ObjectHideFlags: 0
@@ -21163,7 +21324,7 @@ Transform:
   m_GameObject: {fileID: 1359359097}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.97, y: 2.39, z: -10}
+  m_LocalPosition: {x: -7.07, y: 2.35, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22721,6 +22882,37 @@ Transform:
   - {fileID: 2076733742}
   - {fileID: 203374733}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1479533705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1479533706}
+  m_Layer: 0
+  m_Name: Spawn_Point_Boss_Enemy (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1479533706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479533705}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 29.79, y: -27.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 321210331}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1533360523
 GameObject:
@@ -55311,23 +55503,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1361818724273314409, guid: 39a99864d252d1948a57f180a7e01890, type: 3}
       propertyPath: damage
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1361818724273314409, guid: 39a99864d252d1948a57f180a7e01890, type: 3}
       propertyPath: _enemyStats.Speed
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1361818724273314409, guid: 39a99864d252d1948a57f180a7e01890, type: 3}
       propertyPath: _enemyStats.Damage
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1361818724273314409, guid: 39a99864d252d1948a57f180a7e01890, type: 3}
       propertyPath: _enemyStats.Health
-      value: 200
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1361818724273314409, guid: 39a99864d252d1948a57f180a7e01890, type: 3}
       propertyPath: _enemyStats.RotationSpeed
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1361818724273314409, guid: 39a99864d252d1948a57f180a7e01890, type: 3}
+      propertyPath: spawnPointsPhase1.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1361818724273314409, guid: 39a99864d252d1948a57f180a7e01890, type: 3}
+      propertyPath: spawnPointsPhase2.Array.size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1361818724273314409, guid: 39a99864d252d1948a57f180a7e01890, type: 3}
       propertyPath: 'spawnPointsPhase1.Array.data[0]'
@@ -55342,6 +55542,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 695764060}
     - target: {fileID: 1361818724273314409, guid: 39a99864d252d1948a57f180a7e01890, type: 3}
+      propertyPath: 'spawnPointsPhase1.Array.data[3]'
+      value: 
+      objectReference: {fileID: 768957084}
+    - target: {fileID: 1361818724273314409, guid: 39a99864d252d1948a57f180a7e01890, type: 3}
+      propertyPath: 'spawnPointsPhase1.Array.data[4]'
+      value: 
+      objectReference: {fileID: 221007207}
+    - target: {fileID: 1361818724273314409, guid: 39a99864d252d1948a57f180a7e01890, type: 3}
+      propertyPath: 'spawnPointsPhase1.Array.data[5]'
+      value: 
+      objectReference: {fileID: 1479533706}
+    - target: {fileID: 1361818724273314409, guid: 39a99864d252d1948a57f180a7e01890, type: 3}
+      propertyPath: 'spawnPointsPhase1.Array.data[6]'
+      value: 
+      objectReference: {fileID: 82092638}
+    - target: {fileID: 1361818724273314409, guid: 39a99864d252d1948a57f180a7e01890, type: 3}
       propertyPath: 'spawnPointsPhase2.Array.data[0]'
       value: 
       objectReference: {fileID: 2066086377}
@@ -55353,6 +55569,14 @@ PrefabInstance:
       propertyPath: 'spawnPointsPhase2.Array.data[2]'
       value: 
       objectReference: {fileID: 1894168557}
+    - target: {fileID: 1361818724273314409, guid: 39a99864d252d1948a57f180a7e01890, type: 3}
+      propertyPath: 'spawnPointsPhase2.Array.data[3]'
+      value: 
+      objectReference: {fileID: 657983264}
+    - target: {fileID: 1361818724273314409, guid: 39a99864d252d1948a57f180a7e01890, type: 3}
+      propertyPath: 'spawnPointsPhase2.Array.data[4]'
+      value: 
+      objectReference: {fileID: 646532883}
     - target: {fileID: 1626006404853589007, guid: 39a99864d252d1948a57f180a7e01890, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.59

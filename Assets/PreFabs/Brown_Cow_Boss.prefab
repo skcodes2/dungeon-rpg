@@ -213,15 +213,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 1
+  speed: 1.5
   attackRange: 1.2
   damage: 10
   _enemyStats:
-    Speed: 1
+    Speed: 1.5
     RotationSpeed: 200
-    Health: 50
-    Damage: 0
+    Health: 100
+    Damage: 10
+    myLocation: 
   playerDetection: {fileID: 0}
+  bossMovement: {fileID: 0}
   verticalRangeAbove: 1.6
   verticalRangeBelow: 0.9
   coinPrefab: {fileID: 6750738261598654154, guid: 979e475272068dc4382047328d36a477, type: 3}
