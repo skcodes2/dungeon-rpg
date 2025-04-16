@@ -11325,7 +11325,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 57a2126f5dec6d5439b71b8ccb6fad9f, type: 3}
   m_Resource: {fileID: 8300000, guid: 57a2126f5dec6d5439b71b8ccb6fad9f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.749
+  m_Volume: 0.843
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -13892,10 +13892,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 961820913}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -246.6, y: 33}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 220, y: -40}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &727328193
 CanvasRenderer:
@@ -13952,8 +13952,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -15873,7 +15873,7 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 24
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -19891,7 +19891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1128528087
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22174,23 +22174,23 @@ MonoBehaviour:
   sounds:
   - name: CoinPickUp
     clip: {fileID: 8300000, guid: 7f6beb5d575ba2c47aa97698e20c2039, type: 3}
-    volume: 0.253
+    volume: 0.082
     loop: 0
   - name: hit
     clip: {fileID: 8300000, guid: d11deb0a5afc216449905a419a9fbe4e, type: 3}
-    volume: 1
+    volume: 0.109
     loop: 0
   - name: equip
     clip: {fileID: 8300000, guid: 6927f2f392c9bd843a6bb709da6d69e5, type: 3}
-    volume: 1
+    volume: 0.304
     loop: 0
   - name: error
     clip: {fileID: 8300000, guid: dd8c6172078f1b44082c0c9ac960ff7b, type: 3}
-    volume: 1
+    volume: 0.245
     loop: 0
   - name: buy
     clip: {fileID: 8300000, guid: f69e2965208a78b4382ec7b6e9854df0, type: 3}
-    volume: 1
+    volume: 0.209
     loop: 0
 --- !u!4 &1370458348
 Transform:
@@ -56074,10 +56074,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
+  - {fileID: 1359359100}
   - {fileID: 873473296}
   - {fileID: 693144922}
   - {fileID: 1576490184}
-  - {fileID: 1359359100}
   - {fileID: 1451532894}
   - {fileID: 5416988123342418298}
   - {fileID: 1160241622}
