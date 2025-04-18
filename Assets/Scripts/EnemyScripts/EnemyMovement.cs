@@ -111,7 +111,7 @@ public class EnemyMovement : MonoBehaviour
         {
             isAttacking = true;
             animator.SetBool("IsAttacking", true);
-            print("Attack");
+            
             agent.SetDestination(transform.position);
 
             // Cancel current animation and directly play attack animation
@@ -149,9 +149,7 @@ public class EnemyMovement : MonoBehaviour
             // Apply knockback based on player's facing direction
             Vector2 knockbackVector = playerFacingDirection.normalized * knockbackForce;
 
-            print($"Player's facing direction: {playerFacingDirection}");
-            print($"Applying knockback force: {knockbackVector}");
-
+    
             // Apply the knockback velocity to the Rigidbody2D
             rb.linearVelocity = knockbackVector;
 

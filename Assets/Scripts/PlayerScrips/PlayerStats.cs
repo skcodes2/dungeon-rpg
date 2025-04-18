@@ -25,7 +25,7 @@ public class PlayerStats : MonoBehaviour
 
     public float health;
 
-    public float maxHealth = 100f;
+    public float maxHealth = 1000f;
     public float walkSpeed = 2f;
     public float runSpeed;
 

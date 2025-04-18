@@ -52,14 +52,7 @@ public class WeaponController : AbilityController
             base.cooldownTimer -= Time.deltaTime;
             float fillAmount = Mathf.Clamp01(cooldownTimer / base.abilityCooldown);
             float currentHeight = fillAmount * maxCooldownHeight;
-            if (cooldownOverlay != null)
-            {
-                Debug.Log($"CooldownOverlay initialized successfully for ability: {base.ability.name}");
-            }
-            else
-            {
-                Debug.LogError($"CooldownOverlay is null for ability: {base.ability.name}");
-            }
+            
             cooldownOverlay.style.height = new Length(currentHeight, LengthUnit.Pixel);
 
             if (base.cooldownTimer <= 0f)

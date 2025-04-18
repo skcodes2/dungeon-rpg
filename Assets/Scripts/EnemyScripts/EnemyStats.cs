@@ -21,7 +21,7 @@ public class EnemyStats
     public void TakeDamage(float amount, EnemyMovement enemyMovement)
     {
         Health -= amount;
-
+        Debug.Log("Current Health: " + Health);
         if (Health <= 0)
         {
             if(myLocation == "Section1")

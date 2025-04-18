@@ -15,6 +15,7 @@ public class PlayerWeapon : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
         // Find the PlayerController component attached to the player (you could also set this reference via the Inspector)
         playerController = GetComponentInParent<PlayerController>();
         playerStats = PlayerStats.Instance;
@@ -30,9 +31,14 @@ public class PlayerWeapon : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             // Try EnemyMovement
+            
             var enemyMovement = collision.gameObject.GetComponent<EnemyMovement>();
-            if (enemyMovement != null)
+            var enemyMovementBoss = collision.gameObject.GetComponent<EnemyMovementBoss>();
+            
+            if (enemyMovement != null )
             {
+                
+                print("PlayerWeapon: EnemyMovement detected");
                 enemyMovement.TakeDamage(
                     _damageAmount + PlayerStats.Instance.baseDamage,
                     transform.position,
@@ -43,6 +49,7 @@ public class PlayerWeapon : MonoBehaviour
                 if (gameObject.name == "Swipe")
                 {
                     playerStats.Heal(5f);
+                    print("Swipe heal: " );
                 }
                 if (gameObject.name == "SwordSlam")
                 {
@@ -62,6 +69,15 @@ public class PlayerWeapon : MonoBehaviour
                     6f,
                     playerController.GetLastMoveDirection()
                 );
+                if (gameObject.name == "Swipe")
+                {
+                    playerStats.Heal(5f);
+                    print("Swipe heal: " );
+                }
+                if (gameObject.name == "SwordSlam")
+                {
+                    playerStats.Heal(10f);
+                }
                 return;
             }
 
