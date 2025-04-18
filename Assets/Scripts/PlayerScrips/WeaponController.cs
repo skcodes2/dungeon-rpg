@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class WeaponController : AbilityController
@@ -19,15 +20,13 @@ public class WeaponController : AbilityController
     private VisualElement cooldownOverlay;
 
 
-    public WeaponController(GameObject weapon, Animator anim, KeyCode keyBind, float attackDuration, float attackCooldown)
+    public WeaponController(GameObject weapon, Animator anim, KeyCode keyBind, float attackDuration, float attackCooldown, GameObject abilityBarUI)
         : base(weapon, anim, keyBind, attackDuration, attackCooldown)
     {
         this.inventory = Inventory.Instance;
         this.isOnCooldown = false;
-        GameObject abilityBarObject = GameObject.FindGameObjectWithTag("AbilityBar");
-        this.uiDocument = abilityBarObject.GetComponent<UIDocument>();
+        this.uiDocument = abilityBarUI.GetComponent<UIDocument>();
         this.cooldownOverlay = uiDocument.rootVisualElement.Q<VisualElement>(getAbilityType(base.ability.name));
-
 
     }
 
@@ -43,15 +42,24 @@ public class WeaponController : AbilityController
             "Slash" => "Basic2ImageCD",
         };
     }
+    
 
     public override void Update()
     {
+        
         if (this.isOnCooldown)
         {
             base.cooldownTimer -= Time.deltaTime;
             float fillAmount = Mathf.Clamp01(cooldownTimer / base.abilityCooldown);
             float currentHeight = fillAmount * maxCooldownHeight;
-
+            if (cooldownOverlay != null)
+            {
+                Debug.Log($"CooldownOverlay initialized successfully for ability: {base.ability.name}");
+            }
+            else
+            {
+                Debug.LogError($"CooldownOverlay is null for ability: {base.ability.name}");
+            }
             cooldownOverlay.style.height = new Length(currentHeight, LengthUnit.Pixel);
 
             if (base.cooldownTimer <= 0f)
@@ -95,6 +103,7 @@ public class WeaponController : AbilityController
             onAttack();
             base.cooldownTimer = base.abilityCooldown;
             this.isOnCooldown = true;
+            Debug.Log(cooldownOverlay.name);
             cooldownOverlay.style.height = new Length(maxCooldownHeight, LengthUnit.Pixel); // overlay fully appears
         }
     }

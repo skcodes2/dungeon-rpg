@@ -5,6 +5,23 @@ using System.Collections; // Required for IEnumerator / Coroutines
 
 public class SceneTransitionHandler : MonoBehaviour
 {
+    private static SceneTransitionHandler instance;
+
+    private void Awake()
+    {
+        PlayerPrefs.SetString("LastSpawnPoint", "SpawnPoint"); // Default spawn point
+        PlayerPrefs.Save(); // Ensure it's written immediately
+        print("Awake called for Scene transition");
+        // Ensure only one instance of SceneTransitionHandler exists
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject); // Make this object persistent across scenes
+    }
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -28,8 +45,9 @@ public class SceneTransitionHandler : MonoBehaviour
 
         // Find player and spawn point in the new scene
         GameObject player = GameObject.FindWithTag("Player");
-        GameObject spawnPoint = GameObject.Find("SpawnPoint");
-
+       string spawnPointTag = PlayerPrefs.HasKey("LastSpawnPoint") ? PlayerPrefs.GetString("LastSpawnPoint") : "SpawnPoint";
+        print("Spawn point tag: " + spawnPointTag); // Debugging line
+        GameObject spawnPoint = GameObject.FindWithTag(spawnPointTag);
         if (player != null && spawnPoint != null)
         {
             player.transform.position = spawnPoint.transform.position;

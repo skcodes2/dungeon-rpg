@@ -20,7 +20,7 @@ public class MovementAbilityController : AbilityController
     private Inventory inventory;
 
 
-    public MovementAbilityController(MonoBehaviour runner, Animator anim, KeyCode keyBind, float abilityDuration, float abilityCooldown, float additionalSpeed)
+    public MovementAbilityController(MonoBehaviour runner, Animator anim, KeyCode keyBind, float abilityDuration, float abilityCooldown, float additionalSpeed, GameObject abilityBarUI)
         : base(anim, keyBind, abilityDuration, abilityCooldown)
     {
         this.additionalSpeed = additionalSpeed;
@@ -28,13 +28,13 @@ public class MovementAbilityController : AbilityController
         this.coroutineRunner = runner;
         this.inventory = Inventory.Instance;
         this.isOnCooldown = false;
-        GameObject abilityBarObject = GameObject.FindGameObjectWithTag("AbilityBar");
-        this.uiDocument = abilityBarObject.GetComponent<UIDocument>();
+        this.uiDocument = abilityBarUI.GetComponent<UIDocument>();
         this.cooldownOverlay = uiDocument.rootVisualElement.Q<VisualElement>("MovementImageCD");
     }
 
     public override void Update()
     {
+        this.cooldownOverlay = uiDocument.rootVisualElement.Q<VisualElement>("MovementImageCD");
         if (this.isOnCooldown)
         {
             base.cooldownTimer -= Time.deltaTime;
