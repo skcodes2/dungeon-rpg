@@ -28,6 +28,7 @@ public class PlayerWeapon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.CompareTag("Enemy"))
         { 
             // Try EnemyMovement
@@ -49,7 +50,7 @@ public class PlayerWeapon : MonoBehaviour
                 if (gameObject.name == "Swipe")
                 {
                     playerStats.Heal(5f);
-                    print("Swipe heal: " );
+                
                 }
                 if (gameObject.name == "SwordSlam")
                 {
@@ -72,7 +73,7 @@ public class PlayerWeapon : MonoBehaviour
                 if (gameObject.name == "Swipe")
                 {
                     playerStats.Heal(5f);
-                    print("Swipe heal: " );
+                    
                 }
                 if (gameObject.name == "SwordSlam")
                 {
@@ -91,6 +92,15 @@ public class PlayerWeapon : MonoBehaviour
                     6f,
                     playerController.GetLastMoveDirection()
                 );
+                if (gameObject.name == "Swipe")
+                {
+                    playerStats.Heal(5f);
+                    
+                }
+                if (gameObject.name == "SwordSlam")
+                {
+                    playerStats.Heal(10f);
+                }
                 return;
             }
 
