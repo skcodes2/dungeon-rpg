@@ -227,7 +227,7 @@ MonoBehaviour:
   verticalRangeAbove: 1.6
   verticalRangeBelow: 0.9
   coinPrefab: {fileID: 6750738261598654154, guid: 979e475272068dc4382047328d36a477, type: 3}
-  coinDropCount: 3
+  coinDropCount: 0
 --- !u!114 &1761186263284607573
 MonoBehaviour:
   m_ObjectHideFlags: 0

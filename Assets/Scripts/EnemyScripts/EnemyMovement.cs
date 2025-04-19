@@ -16,7 +16,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float verticalRangeBelow = 1.0f;
 
     [SerializeField] private GameObject coinPrefab;
-    [SerializeField] private int coinDropCount = 3;
+    [SerializeField] private int coinDropCount = 1;
 
     [Header("Health Bar UI")]
     [SerializeField] private GameObject healthBarPrefab;      // assign EnemyHealthBar.prefab
