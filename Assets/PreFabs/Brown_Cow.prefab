@@ -163,11 +163,14 @@ MonoBehaviour:
     RotationSpeed: 200
     Health: 50
     Damage: 0
+    myLocation: 
   playerDetection: {fileID: 826686882375377478}
   verticalRangeAbove: 1.6
   verticalRangeBelow: 0.9
   coinPrefab: {fileID: 6750738261598654154, guid: 979e475272068dc4382047328d36a477, type: 3}
   coinDropCount: 3
+  healthBarPrefab: {fileID: 1355698080893358037, guid: 4b4e1fc8cf5bece458266fdc10109789, type: 3}
+  healthBarOffset: {x: 0, y: 1.2, z: 0}
 --- !u!114 &826686882375377478
 MonoBehaviour:
   m_ObjectHideFlags: 0
