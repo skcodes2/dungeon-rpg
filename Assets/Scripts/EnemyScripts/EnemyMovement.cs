@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using System.Collections;
 
 public class EnemyMovement : MonoBehaviour
@@ -17,6 +18,14 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private int coinDropCount = 3;
 
+    [Header("Health Bar UI")]
+    [SerializeField] private GameObject healthBarPrefab;      // assign EnemyHealthBar.prefab
+    [SerializeField] private Vector3 healthBarOffset = new Vector3(0, 1.2f, 0);
+
+    private GameObject healthBarInstance;
+    private Slider healthSlider;
+    private float maxHealth;
+
     private NavMeshAgent agent;
     private Animator animator;
     private bool isAttacking = false; // Track attack state
@@ -31,6 +40,16 @@ public class EnemyMovement : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.speed = speed;
+
+        maxHealth = _enemyStats.Health;
+        healthBarInstance = Instantiate(
+            healthBarPrefab,
+            transform.position + healthBarOffset,
+            Quaternion.identity,
+            transform
+        );
+        healthSlider = healthBarInstance.GetComponentInChildren<Slider>();
+        healthSlider.value = 1f;
     }
 
     private void Update()
@@ -111,7 +130,7 @@ public class EnemyMovement : MonoBehaviour
         {
             isAttacking = true;
             animator.SetBool("IsAttacking", true);
-            
+
             agent.SetDestination(transform.position);
 
             // Cancel current animation and directly play attack animation
@@ -140,6 +159,9 @@ public class EnemyMovement : MonoBehaviour
         AudioManager.Instance.Play("hit");
         print($"Enemy took {amount} damage. Health left: {_enemyStats.Health}");
 
+        if (healthSlider != null)
+            healthSlider.value = _enemyStats.Health / maxHealth;
+
         // Flicker effect (change color to red)
         StartCoroutine(FlickerRed());
 
@@ -149,7 +171,7 @@ public class EnemyMovement : MonoBehaviour
             // Apply knockback based on player's facing direction
             Vector2 knockbackVector = playerFacingDirection.normalized * knockbackForce;
 
-    
+
             // Apply the knockback velocity to the Rigidbody2D
             rb.linearVelocity = knockbackVector;
 
@@ -192,6 +214,9 @@ public class EnemyMovement : MonoBehaviour
 
     public void Die()
     {
+        if (healthBarInstance != null)
+            Destroy(healthBarInstance);
+
         // Stop the NavMeshAgent from moving and tracking the player
         if (agent != null)
         {
@@ -229,5 +254,11 @@ public class EnemyMovement : MonoBehaviour
     {
         speed = newSpeed;
         agent.speed = newSpeed;
+    }
+
+    private void LateUpdate()
+    {
+        if (healthBarInstance != null)
+            healthBarInstance.transform.rotation = Camera.main.transform.rotation;
     }
 }
