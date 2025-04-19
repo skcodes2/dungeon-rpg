@@ -65,11 +65,20 @@ public class BossMovement : MonoBehaviour
             isPhase2 = false;
         }
 
-        if(phase == 2 && activeEnemyCount == 0){
+        if (phase == 2 && activeEnemyCount == 0)
+        {
             print("phase 3");
             isPhase3 = true;
             phase = 3;
+
+            // Unfreeze movement now
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
         }
+
 
         if(isPhase3 == true){
             playerDetection.IsPhase3 = true;
