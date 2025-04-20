@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class BossMovement : MonoBehaviour
 {
@@ -193,6 +194,13 @@ public class BossMovement : MonoBehaviour
         AudioManager.Instance.Play("hit");
         print($"Enemy took {amount} damage. Health left: {_enemyStats.Health}");
 
+        if (_enemyStats.Health <= 0)
+        {
+            Debug.Log("Boss health reached 0. Calling Die().");
+            Die();
+            return;
+        }
+
         StartCoroutine(FlickerRed());
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -241,6 +249,7 @@ public class BossMovement : MonoBehaviour
 
     public void Die()
     {
+        Debug.Log("Boss Die() triggered.");
         // Stop the NavMeshAgent from moving and tracking the player
         if (agent != null)
         {
@@ -253,8 +262,15 @@ public class BossMovement : MonoBehaviour
         // Trigger the death animation
         animator.SetTrigger("Die");
 
-        // Destroy the enemy after the death animation has finished (10 seconds here)
-        Destroy(gameObject, 1.6f);
+        // Load VictoryScene after a short delay (after animation)
+        StartCoroutine(LoadVictoryAfterDelay(1.6f));
+    }
+
+    private IEnumerator LoadVictoryAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Debug.Log("Loading VictoryScene now...");
+        SceneManager.LoadScene("VictoryScene");
     }
 
     private void DropCoins()
