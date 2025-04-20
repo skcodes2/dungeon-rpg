@@ -322,6 +322,7 @@ public class ButtonTrigger : MonoBehaviour
             
             inventory.RemoveCoins(skillTreeButton.getPrice());
             skillTreeButton.setIsPurchased(true);
+            AudioManager.Instance.Play("buy");
         }
 
         else if (!skillTreeButton.getIsPurchased())
