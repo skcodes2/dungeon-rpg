@@ -277,13 +277,14 @@ public class ButtonTrigger : MonoBehaviour
 
         if (skillTreeButton.getNextButton() == null)
         {
+            print("here1");
             HandleAbilityClicked(skillTreeButton, null);
             return;
         }
 
 
         Button nextUXMLButton = GetNextButton(skillTreeButton.getNextButton()?.getName());
-
+        
         if (inventory.getCoins() < skillTreeButton.getPrice() && !skillTreeButton.getIsPurchased())
         {
             print("Not enough coins");
@@ -311,14 +312,21 @@ public class ButtonTrigger : MonoBehaviour
 
     private void HandleAbilityClicked(SkillsTreeButton skillTreeButton, Button nextUXMLButton)
     {
+        if(inventory.getCoins()<skillTreeButton.getPrice() && !skillTreeButton.getIsPurchased()){
+            print("Not enough coins");
+            AudioManager.Instance.Play("error");
+            return;
+        }
         if (nextUXMLButton == null && !skillTreeButton.getIsPurchased())
         {
+            
             inventory.RemoveCoins(skillTreeButton.getPrice());
             skillTreeButton.setIsPurchased(true);
         }
 
         else if (!skillTreeButton.getIsPurchased())
         {
+            
             if (skillTreeButton.getName() == "Slash")
             {
                 playerStats.IncreaseArmour(1f);
